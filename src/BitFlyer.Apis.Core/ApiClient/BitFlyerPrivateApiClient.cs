@@ -4,10 +4,8 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using BitFlyer.Apis.Core.Exceptions;
-using BitFlyer.Apis.Core.Extensions;
 
-namespace BitFlyer.Apis.Core
+namespace BitFlyer.Apis
 {
     public class BitFlyerPrivateApiClient
     {

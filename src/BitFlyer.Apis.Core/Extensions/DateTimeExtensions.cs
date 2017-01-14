@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BitFlyer.Apis.Core.Extensions
+namespace BitFlyer.Apis
 {
     internal static class DateTimeExtensions
     {

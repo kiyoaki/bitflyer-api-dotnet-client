@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BitFlyer.Apis.Core.RequestData
+namespace BitFlyer.Apis
 {
     public struct CancelChildOrderParameter
     {

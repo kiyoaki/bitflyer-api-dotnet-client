@@ -2,9 +2,8 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using BitFlyer.Apis.Core.Exceptions;
 
-namespace BitFlyer.Apis.Core
+namespace BitFlyer.Apis
 {
     public class BitFlyerPublicApiClient
     {

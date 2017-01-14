@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BitFlyer.Apis.Core
+namespace BitFlyer.Apis
 {
     internal static class BitFlyerConstants
     {

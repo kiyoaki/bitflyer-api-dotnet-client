@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace BitFlyer.Apis.Core.RequestData
+namespace BitFlyer.Apis
 {
     public class CryptoCurrencyWithdrawParameter
     {

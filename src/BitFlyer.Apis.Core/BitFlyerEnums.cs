@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace BitFlyer.Apis.Core
+namespace BitFlyer.Apis
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum CurrencyCode

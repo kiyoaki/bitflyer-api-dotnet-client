@@ -7,7 +7,7 @@
     <ProjectGuid>{01865C9C-7B03-486F-976C-6AF3976CDB3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitFlyer.Apis.Core</RootNamespace>
+    <RootNamespace>BitFlyer.Apis</RootNamespace>
     <AssemblyName>BitFlyer.Apis.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace BitFlyer.Apis.Core.RequestData
+namespace BitFlyer.Apis
 {
     public struct ParentOrderParameter
     {

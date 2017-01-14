@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace BitFlyer.Apis.Core.Exceptions
+namespace BitFlyer.Apis
 {
     public class BitFlyerApiException : Exception
     {

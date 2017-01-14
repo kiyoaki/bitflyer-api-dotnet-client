@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace BitFlyer.Apis.Core.ResponseData
+namespace BitFlyer.Apis
 {
     public struct CryptoCurrencyDeposit
     {

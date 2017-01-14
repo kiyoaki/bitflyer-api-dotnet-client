@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace BitFlyer.Apis.Core.ResponseData
+namespace BitFlyer.Apis
 {
     public struct Ticker
     {
