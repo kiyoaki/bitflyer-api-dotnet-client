@@ -2,10 +2,12 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace BitFlyer.Apis
 {
-    public class BitFlyerPublicApiClient
+    public partial class BitFlyerPublicApiClient
     {
         private static readonly HttpClient HttpClient = new HttpClient();
 
@@ -32,27 +34,41 @@ namespace BitFlyer.Apis
             return _instance;
         }
 
-        public async Task<string> Get(string path, string query)
+        internal async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
         {
-            return await SendRequest(HttpMethod.Get, path, query);
+            return await SendRequest<T>(HttpMethod.Get, path, query);
         }
 
-        public async Task<string> Post(string path, string query, string body)
+        internal async Task<T> Post<T>(string path, string body)
         {
-            return await SendRequest(HttpMethod.Post, path, query, body);
+            return await SendRequest<T>(HttpMethod.Post, path, null, body);
         }
 
-        private static async Task<string> SendRequest(HttpMethod httpMethod, string path, string query, string json = "")
+        internal async Task<T> Post<T>(string path, Dictionary<string, object> query, string body)
         {
-            using (var message = new HttpRequestMessage(httpMethod, path + query)
+            return await SendRequest<T>(HttpMethod.Post, path, query, body);
+        }
+
+        private static async Task<T> SendRequest<T>(HttpMethod httpMethod, string path, Dictionary<string, object> query = null, string body = "")
+        {
+            string queryString = string.Empty;
+            if (query != null)
             {
-                Content = new StringContent(json, Encoding.UTF8, "application/json")
-            })
+                queryString = query.ToQueryString();
+            }
+
+            using (var message = new HttpRequestMessage(httpMethod, path + queryString))
             {
+                if (!string.IsNullOrEmpty(body))
+                {
+                    message.Content = new StringContent(body, Encoding.UTF8, "application/json");
+                }
+
                 try
                 {
                     var response = await HttpClient.SendAsync(message);
-                    return await response.Content.ReadAsStringAsync();
+                    var json = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<T>(json);
                 }
                 catch (TaskCanceledException)
                 {

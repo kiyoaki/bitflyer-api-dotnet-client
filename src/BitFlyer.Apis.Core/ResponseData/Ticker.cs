@@ -17,10 +17,10 @@ namespace BitFlyer.Apis
         public long TickId { get; set; }
 
         [JsonProperty("best_bid")]
-        public int BestBid { get; set; }
+        public double BestBid { get; set; }
 
         [JsonProperty("best_ask")]
-        public int BestAsk { get; set; }
+        public double BestAsk { get; set; }
 
         [JsonProperty("best_bid_size")]
         public double BestBidSize { get; set; }
@@ -35,7 +35,7 @@ namespace BitFlyer.Apis
         public double TotalAskDepth { get; set; }
 
         [JsonProperty("ltp")]
-        public int LatestPrice { get; set; }
+        public double LatestPrice { get; set; }
 
         [JsonProperty("volume")]
         public double Volume { get; set; }

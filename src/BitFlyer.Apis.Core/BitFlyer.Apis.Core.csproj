@@ -45,12 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiClient\PublicApi\ExecutionsApi.cs" />
+    <Compile Include="ApiClient\PublicApi\TickerApi.cs" />
+    <Compile Include="ApiClient\PublicApi\BoardApi.cs" />
     <Compile Include="BitFlyerConstants.cs" />
-    <Compile Include="ApiClient\BitFlyerPublicApiClient.cs" />
+    <Compile Include="ApiClient\PublicApi\BitFlyerPublicApiClient.cs" />
     <Compile Include="ApiClient\BitFlyerPrivateApiClient.cs" />
     <Compile Include="BitFlyerEnums.cs" />
     <Compile Include="Exceptions\BitFlyerApiException.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestData\CancelChildOrderParameter.cs" />
     <Compile Include="RequestData\ParentOrderParameter.cs" />
