@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BitFlyer.Apis
 {
-    public struct Ticker
+    public class Ticker
     {
         [JsonProperty("product_code")]
         public ProductCode ProductCode { get; set; }

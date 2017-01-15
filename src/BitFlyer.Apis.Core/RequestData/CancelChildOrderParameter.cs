@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct CancelChildOrderParameter
+    public class CancelChildOrderParameter
     {
         [JsonProperty("product_code")]
         public ProductCode ProductCode { get; set; }

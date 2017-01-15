@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct CryptoCurrencyAddress
+    public class CryptoCurrencyAddress
     {
         [JsonProperty("type")]
         public AddresseType Type { get; set; }

@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct Order
+    public class Order
     {
         [JsonProperty("id")]
         public int Id { get; set; }

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BitFlyer.Apis
 {
-    public struct ParentOrderParameter
+    public class ParentOrderParameter
     {
         [JsonProperty("order_method")]
         public OrderMethod OrderMethod { get; set; }

@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct Collateral
+    public class Collateral
     {
         [JsonProperty("collateral")]
         public double Amount { get; set; }

@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct PostResult
+    public class PostResult
     {
         [JsonProperty("message_id")]
         public string MessageId { get; set; }

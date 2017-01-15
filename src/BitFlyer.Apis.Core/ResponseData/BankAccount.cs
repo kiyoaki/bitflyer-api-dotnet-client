@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct BankAccount
+    public class BankAccount
     {
         [JsonProperty("id")]
         public long Id { get; set; }

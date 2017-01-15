@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct Balance
+    public class Balance
     {
         [JsonProperty("currency_code")]
         public CurrencyCode CurrencyCode { get; set; }

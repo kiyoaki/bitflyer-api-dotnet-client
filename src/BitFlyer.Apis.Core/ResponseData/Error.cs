@@ -9,8 +9,5 @@ namespace BitFlyer.Apis
 
         [JsonProperty("error_message")]
         public string ErrorMessage { get; set; }
-
-        [JsonProperty("data")]
-        public string Data { get; set; }
     }
 }

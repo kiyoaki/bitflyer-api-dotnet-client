@@ -14,13 +14,13 @@ namespace BitFlyer.Apis.Test
         {
             var apiKey = ConfigurationManager.AppSettings["ApiKey"];
             var apiSecret = ConfigurationManager.AppSettings["ApiSecret"];
-            _apiClient = BitFlyerPrivateApiClient.GetInstance(apiKey, apiSecret);
+            _apiClient = new BitFlyerPrivateApiClient(apiKey, apiSecret);
         }
 
         [TestMethod]
         public async Task ApiKeyNotFound()
         {
-            var apiClient = BitFlyerPrivateApiClient.GetInstance("xxxxxxxxxxx", "xxxxxxxxxxx");
+            var apiClient = new BitFlyerPrivateApiClient("xxxxxxxxxxx", "xxxxxxxxxxx");
             try
             {
                 await apiClient.GetPermissions();
@@ -57,6 +57,86 @@ namespace BitFlyer.Apis.Test
         public async Task GetAddresses()
         {
             var res1 = await _apiClient.GetAddresses();
+            Assert.AreNotEqual(res1, null);
+        }
+
+        [TestMethod]
+        public async Task GetCoinIns()
+        {
+            var res1 = await _apiClient.GetCoinIns();
+            Assert.AreNotEqual(res1, null);
+        }
+
+        /*
+        [TestMethod]
+        public async Task SendCoin()
+        {
+            var res1 = await _apiClient.SendCoin(new SendCoinParameter
+            {
+                CurrencyCode = CurrencyCode.Btc,
+                Amount = 0.001,
+                AdditionalFee = 0,
+                Address = "xxxxxx",
+                Code = 123456
+            });
+            Assert.AreNotEqual(res1, null);
+        }
+
+        [TestMethod]
+        public async Task GetCoinOut()
+        {
+            var res1 = await _apiClient.GetCoinOut("xxxxx");
+            Assert.AreNotEqual(res1, null);
+        }
+        */
+
+        [TestMethod]
+        public async Task GetCoinOuts()
+        {
+            var res1 = await _apiClient.GetCoinOuts();
+            Assert.AreNotEqual(res1, null);
+        }
+
+        [TestMethod]
+        public async Task GetBankAccounts()
+        {
+            var res1 = await _apiClient.GetBankAccounts();
+            Assert.AreNotEqual(res1, null);
+        }
+
+        [TestMethod]
+        public async Task GetDeposits()
+        {
+            var res1 = await _apiClient.GetDeposits();
+            Assert.AreNotEqual(res1, null);
+        }
+
+        /*
+        [TestMethod]
+        public async Task Withdraw()
+        {
+            var res1 = await _apiClient.Withdraw(new WithdrawParameter
+            {
+                CurrencyCode = CurrencyCode.Jpy,
+                Amount = 1,
+                BankAccountId = 1234567890,
+                Code = 123456
+            });
+            Assert.AreNotEqual(res1, null);
+        }
+
+        [TestMethod]
+        public async Task GetWithdrawal()
+        {
+            var res1 = await _apiClient.GetWithdrawal("xxxxx");
+            Assert.AreNotEqual(res1, null);
+        }
+        */
+
+        [TestMethod]
+        public async Task GetWithdrawals()
+        {
+            var res1 = await _apiClient.GetWithdrawals();
             Assert.AreNotEqual(res1, null);
         }
     }

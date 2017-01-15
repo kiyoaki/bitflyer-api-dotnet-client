@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BitFlyer.Apis
 {
-    public struct Chat
+    public class Chat
     {
         [JsonProperty("nickname")]
         public string Nickname { get; set; }

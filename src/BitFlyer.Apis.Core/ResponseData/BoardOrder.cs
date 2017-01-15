@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct BoardOrder
+    public class BoardOrder
     {
         [JsonProperty("price")]
         public double Price { get; set; }

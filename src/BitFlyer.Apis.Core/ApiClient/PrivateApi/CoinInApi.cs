@@ -3,17 +3,14 @@ using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPublicApiClient
+    public partial class BitFlyerPrivateApiClient
     {
-        private const string ExecutionsApiPath = "/v1/executions";
+        private const string CoinInApiPath = "/v1/me/getcoinins";
 
-        public async Task<Execution[]> GetExecutions(ProductCode productCode,
+        public async Task<CoinIn[]> GetCoinIns(AddresseType type = AddresseType.Normal,
             int? count = null, int? before = null, int? after = null)
         {
-            var query = new Dictionary<string, object>
-            {
-                { "product_code", productCode.Value() }
-            };
+            var query = new Dictionary<string, object>();
 
             if (count != null)
             {
@@ -28,7 +25,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<Execution[]>(ExecutionsApiPath, query);
+            return await Get<CoinIn[]>(CoinInApiPath, query);
         }
     }
 }

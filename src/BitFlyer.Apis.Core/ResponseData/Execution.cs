@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BitFlyer.Apis
 {
-    public struct Execution
+    public class Execution
     {
         [JsonProperty("id")]
         public long Id { get; set; }
