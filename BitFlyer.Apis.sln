@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2911F2CC-1BDB-46FD-806E-129202A37F75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Apis", "src\BitFlyer.Apis\BitFlyer.Apis.csproj", "{01865C9C-7B03-486F-976C-6AF3976CDB3D}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BitFlyer.Apis.NetCore", "src\BitFlyer.Apis.NetCore\BitFlyer.Apis.NetCore.xproj", "{FB53F379-1CAA-4D55-9DA4-181EAB75DE86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Apis.Test", "test\BitFlyer.Apis.Test\BitFlyer.Apis.Test.csproj", "{4CA54F7D-66E8-4DD1-A8AA-4C7D7321ABF0}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BitFlyer.Apis.Test.NetCore", "test\BitFlyer.Apis.Test.NetCore\BitFlyer.Apis.Test.NetCore.xproj", "{26F4ED0E-073C-498C-AB0B-54C09B07360D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA599251-5AAC-4BEF-9001-05A3F35585D6}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01865C9C-7B03-486F-976C-6AF3976CDB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01865C9C-7B03-486F-976C-6AF3976CDB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01865C9C-7B03-486F-976C-6AF3976CDB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01865C9C-7B03-486F-976C-6AF3976CDB3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB53F379-1CAA-4D55-9DA4-181EAB75DE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB53F379-1CAA-4D55-9DA4-181EAB75DE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB53F379-1CAA-4D55-9DA4-181EAB75DE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB53F379-1CAA-4D55-9DA4-181EAB75DE86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA54F7D-66E8-4DD1-A8AA-4C7D7321ABF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA54F7D-66E8-4DD1-A8AA-4C7D7321ABF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA54F7D-66E8-4DD1-A8AA-4C7D7321ABF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA54F7D-66E8-4DD1-A8AA-4C7D7321ABF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F4ED0E-073C-498C-AB0B-54C09B07360D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F4ED0E-073C-498C-AB0B-54C09B07360D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F4ED0E-073C-498C-AB0B-54C09B07360D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F4ED0E-073C-498C-AB0B-54C09B07360D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01865C9C-7B03-486F-976C-6AF3976CDB3D} = {2911F2CC-1BDB-46FD-806E-129202A37F75}
+		{FB53F379-1CAA-4D55-9DA4-181EAB75DE86} = {2911F2CC-1BDB-46FD-806E-129202A37F75}
+		{4CA54F7D-66E8-4DD1-A8AA-4C7D7321ABF0} = {6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}
+		{26F4ED0E-073C-498C-AB0B-54C09B07360D} = {6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}
+	EndGlobalSection
+EndGlobal
