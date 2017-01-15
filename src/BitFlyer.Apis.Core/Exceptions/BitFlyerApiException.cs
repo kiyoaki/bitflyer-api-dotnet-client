@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 
 namespace BitFlyer.Apis
 {
@@ -7,23 +6,34 @@ namespace BitFlyer.Apis
     {
         public string Path { get; }
 
-        public BitFlyerApiException(string path, string message, Exception inner)
+        public Error ErrorResponse { get; }
+
+        public BitFlyerApiException(string path, string message, Error errorResponse, Exception inner)
             : base(message, inner)
         {
             if (path == null) throw new ArgumentNullException(nameof(path));
             Path = path;
+            ErrorResponse = errorResponse;
         }
 
         public BitFlyerApiException(string path, string message) :
-            this(path, message, null)
+            this(path, message, null, null)
         {
         }
 
-        public HttpStatusCode HttpStatusCode { get; set; }
+        public BitFlyerApiException(string path, string message, Error errorResponse) :
+            this(path, message, errorResponse, null)
+        {
+        }
+
+        public BitFlyerApiException(string path, string message, Exception inner) :
+            this(path, message, null, inner)
+        {
+        }
 
         public override string ToString()
         {
-            return string.Format("The request to {1} has thrown an exception: {0}", base.ToString(), Path);
+            return $"The request to {Path} has thrown an exception: {base.ToString()}";
         }
     }
 }

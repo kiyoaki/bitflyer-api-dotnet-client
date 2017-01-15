@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Net;
 
 namespace BitFlyer.Apis
 {
@@ -49,7 +50,8 @@ namespace BitFlyer.Apis
             return await SendRequest<T>(HttpMethod.Post, path, query, body);
         }
 
-        private static async Task<T> SendRequest<T>(HttpMethod httpMethod, string path, Dictionary<string, object> query = null, string body = "")
+        private static async Task<T> SendRequest<T>(HttpMethod method, string path, 
+            Dictionary<string, object> query = null, string body = "")
         {
             string queryString = string.Empty;
             if (query != null)
@@ -57,7 +59,7 @@ namespace BitFlyer.Apis
                 queryString = query.ToQueryString();
             }
 
-            using (var message = new HttpRequestMessage(httpMethod, path + queryString))
+            using (var message = new HttpRequestMessage(method, path + queryString))
             {
                 if (!string.IsNullOrEmpty(body))
                 {
@@ -68,6 +70,17 @@ namespace BitFlyer.Apis
                 {
                     var response = await HttpClient.SendAsync(message);
                     var json = await response.Content.ReadAsStringAsync();
+                    if (response.StatusCode != HttpStatusCode.OK)
+                    {
+                        var error = JsonConvert.DeserializeObject<Error>(json);
+                        if (!string.IsNullOrEmpty(error?.ErrorMessage))
+                        {
+                            throw new BitFlyerApiException(path, error.ErrorMessage, error);
+                        }
+                        throw new BitFlyerApiException(path,
+                            $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
+                    }
+
                     return JsonConvert.DeserializeObject<T>(json);
                 }
                 catch (TaskCanceledException)

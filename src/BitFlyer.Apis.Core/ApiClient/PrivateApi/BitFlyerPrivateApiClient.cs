@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace BitFlyer.Apis
 {
-    public class BitFlyerPrivateApiClient
+    public partial class BitFlyerPrivateApiClient
     {
         private static readonly HttpClient HttpClient = new HttpClient();
 
@@ -39,28 +41,36 @@ namespace BitFlyer.Apis
             return _instance;
         }
 
-        public async Task<string> Get(string path, string query)
+        internal async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
         {
-            return await SendRequest(HttpMethod.Get, path, query);
+            return await SendRequest<T>(HttpMethod.Get, path, query);
         }
 
-        public async Task<string> Post(string path, string body)
+        internal async Task<T> Post<T>(string path, string body)
         {
-            return await SendRequest(HttpMethod.Post, path, "", body);
+            return await SendRequest<T>(HttpMethod.Post, path, null, body);
         }
 
-        public async Task<string> Post(string path, string query, string body)
+        internal async Task<T> Post<T>(string path, Dictionary<string, object> query, string body)
         {
-            return await SendRequest(HttpMethod.Post, path, query, body);
+            return await SendRequest<T>(HttpMethod.Post, path, query, body);
         }
 
-        private async Task<string> SendRequest(HttpMethod method, string path, string query, string json = "")
+        private async Task<T> SendRequest<T>(HttpMethod method, string path,
+            Dictionary<string, object> query = null, string body = "")
         {
-            using (var message = new HttpRequestMessage(method, path + query)
+            string queryString = string.Empty;
+            if (query != null)
             {
-                Content = new StringContent(json, Encoding.UTF8, "application/json")
-            })
+                queryString = query.ToQueryString();
+            }
+
+            using (var message = new HttpRequestMessage(method, path + queryString))
             {
+                if (!string.IsNullOrEmpty(body))
+                {
+                    message.Content = new StringContent(body, Encoding.UTF8, "application/json");
+                }
                 var timestamp = DateTimeOffset.UtcNow.ToUnixTime().ToString();
                 var hash = SignWithHmacsha256(timestamp + method + path + query);
                 message.Headers.Add("ACCESS-KEY", _apiKey);
@@ -70,7 +80,19 @@ namespace BitFlyer.Apis
                 try
                 {
                     var response = await HttpClient.SendAsync(message);
-                    return await response.Content.ReadAsStringAsync();
+                    var json = await response.Content.ReadAsStringAsync();
+                    if (response.StatusCode != HttpStatusCode.OK)
+                    {
+                        var error = JsonConvert.DeserializeObject<Error>(json);
+                        if (!string.IsNullOrEmpty(error?.ErrorMessage))
+                        {
+                            throw new BitFlyerApiException(path, error.ErrorMessage, error);
+                        }
+                        throw new BitFlyerApiException(path,
+                            $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
+                    }
+
+                    return JsonConvert.DeserializeObject<T>(json);
                 }
                 catch (TaskCanceledException)
                 {
