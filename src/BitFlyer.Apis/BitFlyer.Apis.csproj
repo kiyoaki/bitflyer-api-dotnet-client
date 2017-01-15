@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BitFlyer.Apis</RootNamespace>
-    <AssemblyName>BitFlyer.Apis.Core</AssemblyName>
+    <AssemblyName>BitFlyer.Apis</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,29 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiClient\PrivateApi\PositionApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\ExecutionApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\ParentOrderApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\ChildOrderApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\WithdrawalApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\WithdrawApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\DepositApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\BankAccountApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\CoinOutApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\SendCoinApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\CoinInApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\AddressApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\CollateralApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\BalanceApi.cs" />
-    <Compile Include="ApiClient\PrivateApi\PermissionApi.cs" />
-    <Compile Include="ApiClient\PublicApi\ExecutionApi.cs" />
-    <Compile Include="ApiClient\PublicApi\ChatApi.cs" />
-    <Compile Include="ApiClient\PublicApi\HealthApi.cs" />
-    <Compile Include="ApiClient\PublicApi\TickerApi.cs" />
-    <Compile Include="ApiClient\PublicApi\BoardApi.cs" />
+    <Compile Include="ApiClient\PositionApi.cs" />
+    <Compile Include="ApiClient\PrivateExecutionApi.cs" />
+    <Compile Include="ApiClient\ParentOrderApi.cs" />
+    <Compile Include="ApiClient\ChildOrderApi.cs" />
+    <Compile Include="ApiClient\WithdrawalApi.cs" />
+    <Compile Include="ApiClient\WithdrawApi.cs" />
+    <Compile Include="ApiClient\DepositApi.cs" />
+    <Compile Include="ApiClient\BankAccountApi.cs" />
+    <Compile Include="ApiClient\CoinOutApi.cs" />
+    <Compile Include="ApiClient\SendCoinApi.cs" />
+    <Compile Include="ApiClient\CoinInApi.cs" />
+    <Compile Include="ApiClient\AddressApi.cs" />
+    <Compile Include="ApiClient\CollateralApi.cs" />
+    <Compile Include="ApiClient\BalanceApi.cs" />
+    <Compile Include="ApiClient\PermissionApi.cs" />
+    <Compile Include="ApiClient\PublicExecutionApi.cs" />
+    <Compile Include="ApiClient\ChatApi.cs" />
+    <Compile Include="ApiClient\HealthApi.cs" />
+    <Compile Include="ApiClient\TickerApi.cs" />
+    <Compile Include="ApiClient\BoardApi.cs" />
     <Compile Include="BitFlyerConstants.cs" />
-    <Compile Include="ApiClient\PublicApi\BitFlyerPublicApiClient.cs" />
-    <Compile Include="ApiClient\PrivateApi\BitFlyerPrivateApiClient.cs" />
+    <Compile Include="ApiClient\BitFlyerPublicApiClient.cs" />
+    <Compile Include="ApiClient\BitFlyerPrivateApiClient.cs" />
     <Compile Include="BitFlyerEnums.cs" />
     <Compile Include="Exceptions\BitFlyerApiException.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
