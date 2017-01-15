@@ -1,6 +1,5 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace BitFlyer.Apis
 {
@@ -10,7 +9,6 @@ namespace BitFlyer.Apis
         public long Id { get; set; }
 
         [JsonProperty("side")]
-        [JsonConverter(typeof(StringEnumConverter))]
         public Side Side { get; set; }
 
         [JsonProperty("price")]

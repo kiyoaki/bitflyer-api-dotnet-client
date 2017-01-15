@@ -23,7 +23,7 @@ namespace BitFlyer.Apis.Test
             var apiClient = BitFlyerPrivateApiClient.GetInstance("xxxxxxxxxxx", "xxxxxxxxxxx");
             try
             {
-                var res1 = await apiClient.GetPermissions();
+                await apiClient.GetPermissions();
             }
             catch (BitFlyerApiException ex)
             {
@@ -36,6 +36,27 @@ namespace BitFlyer.Apis.Test
         public async Task GetPermissions()
         {
             var res1 = await _apiClient.GetPermissions();
+            Assert.AreNotEqual(res1, null);
+        }
+
+        [TestMethod]
+        public async Task GetBalance()
+        {
+            var res1 = await _apiClient.GetBalance();
+            Assert.AreNotEqual(res1, null);
+        }
+
+        [TestMethod]
+        public async Task GetCollateral()
+        {
+            var res1 = await _apiClient.GetCollateral();
+            Assert.AreNotEqual(res1, null);
+        }
+
+        [TestMethod]
+        public async Task GetAddresses()
+        {
+            var res1 = await _apiClient.GetAddresses();
             Assert.AreNotEqual(res1, null);
         }
     }

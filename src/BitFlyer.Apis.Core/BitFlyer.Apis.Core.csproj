@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiClient\PrivateApi\AddressesApi.cs" />
+    <Compile Include="ApiClient\PrivateApi\CollateralApi.cs" />
+    <Compile Include="ApiClient\PrivateApi\BalanceApi.cs" />
     <Compile Include="ApiClient\PrivateApi\PermissionsApi.cs" />
     <Compile Include="ApiClient\PublicApi\ExecutionsApi.cs" />
     <Compile Include="ApiClient\PublicApi\ChatApi.cs" />
@@ -70,8 +73,8 @@
     <Compile Include="ResponseData\CurrencyWithdraw.cs" />
     <Compile Include="ResponseData\CurrencyDeposit.cs" />
     <Compile Include="ResponseData\CryptoCurrencyWithdraw.cs" />
-    <Compile Include="ResponseData\CurrencyAddress.cs" />
-    <Compile Include="ResponseData\Asset.cs" />
+    <Compile Include="ResponseData\CryptoCurrencyAddress.cs" />
+    <Compile Include="ResponseData\Balance.cs" />
     <Compile Include="ResponseData\Board.cs" />
     <Compile Include="ResponseData\BoardOrder.cs" />
     <Compile Include="ResponseData\Chat.cs" />
@@ -79,7 +82,7 @@
     <Compile Include="ResponseData\Error.cs" />
     <Compile Include="ResponseData\Execution.cs" />
     <Compile Include="ResponseData\Health.cs" />
-    <Compile Include="ResponseData\Margin.cs" />
+    <Compile Include="ResponseData\Collateral.cs" />
     <Compile Include="ResponseData\Order.cs" />
     <Compile Include="ResponseData\PostResult.cs" />
     <Compile Include="ResponseData\Ticker.cs" />

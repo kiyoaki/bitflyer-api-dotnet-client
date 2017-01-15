@@ -123,4 +123,11 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "TRAIL")]
         Trail,
     }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum AddresseType
+    {
+        [EnumMember(Value = "NORMAL")]
+        Normal
+    }
 }

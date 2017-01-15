@@ -1,13 +1,11 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace BitFlyer.Apis
 {
     public struct Ticker
     {
         [JsonProperty("product_code")]
-        [JsonConverter(typeof(StringEnumConverter))]
         public ProductCode ProductCode { get; set; }
 
         [JsonProperty("timestamp")]
