@@ -40,7 +40,24 @@ namespace BitFlyer.Apis
             return await SendRequest<T>(HttpMethod.Post, path, query, body);
         }
 
+        internal async Task Post(string path, object body)
+        {
+            await SendRequest(HttpMethod.Post, path, null, body);
+        }
+
+        internal async Task Post(string path, Dictionary<string, object> query, object body)
+        {
+            await SendRequest(HttpMethod.Post, path, query, body);
+        }
+
         private async Task<T> SendRequest<T>(HttpMethod method, string path,
+            Dictionary<string, object> query = null, object body = null)
+        {
+            var responseJson = await SendRequest(method, path, query, body);
+            return JsonConvert.DeserializeObject<T>(responseJson);
+        }
+
+        private async Task<string> SendRequest(HttpMethod method, string path,
             Dictionary<string, object> query = null, object body = null)
         {
             var queryString = string.Empty;
@@ -78,7 +95,7 @@ namespace BitFlyer.Apis
                             $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
                     }
 
-                    return JsonConvert.DeserializeObject<T>(responseJson);
+                    return responseJson;
                 }
                 catch (TaskCanceledException)
                 {

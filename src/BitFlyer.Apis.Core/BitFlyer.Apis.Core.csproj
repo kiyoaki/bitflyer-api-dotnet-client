@@ -45,6 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiClient\PrivateApi\PositionApi.cs" />
+    <Compile Include="ApiClient\PrivateApi\ExecutionApi.cs" />
+    <Compile Include="ApiClient\PrivateApi\ParentOrderApi.cs" />
+    <Compile Include="ApiClient\PrivateApi\ChildOrderApi.cs" />
     <Compile Include="ApiClient\PrivateApi\WithdrawalApi.cs" />
     <Compile Include="ApiClient\PrivateApi\WithdrawApi.cs" />
     <Compile Include="ApiClient\PrivateApi\DepositApi.cs" />
@@ -56,7 +60,7 @@
     <Compile Include="ApiClient\PrivateApi\CollateralApi.cs" />
     <Compile Include="ApiClient\PrivateApi\BalanceApi.cs" />
     <Compile Include="ApiClient\PrivateApi\PermissionApi.cs" />
-    <Compile Include="ApiClient\PublicApi\ExecutionsApi.cs" />
+    <Compile Include="ApiClient\PublicApi\ExecutionApi.cs" />
     <Compile Include="ApiClient\PublicApi\ChatApi.cs" />
     <Compile Include="ApiClient\PublicApi\HealthApi.cs" />
     <Compile Include="ApiClient\PublicApi\TickerApi.cs" />
@@ -70,13 +74,19 @@
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestData\CancelAllOrdersParameter.cs" />
+    <Compile Include="RequestData\CancelParentOrderParameter.cs" />
     <Compile Include="RequestData\CancelChildOrderParameter.cs" />
-    <Compile Include="RequestData\ParentOrderParameter.cs" />
-    <Compile Include="RequestData\ChildOrderParameter.cs" />
+    <Compile Include="RequestData\SendParentOrderParameter.cs" />
+    <Compile Include="RequestData\SendChildOrderParameter.cs" />
     <Compile Include="RequestData\WithdrawParameter.cs" />
     <Compile Include="RequestData\SendCoinParameter.cs" />
+    <Compile Include="ResponseData\Position.cs" />
     <Compile Include="ResponseData\BankAccount.cs" />
+    <Compile Include="ResponseData\PrivateExecution.cs" />
+    <Compile Include="ResponseData\ParentOrder.cs" />
     <Compile Include="ResponseData\ChildOrder.cs" />
+    <Compile Include="ResponseData\ParentOrderDetail.cs" />
     <Compile Include="ResponseData\Withdrawal.cs" />
     <Compile Include="ResponseData\Deposit.cs" />
     <Compile Include="ResponseData\CoinOut.cs" />
@@ -87,10 +97,9 @@
     <Compile Include="ResponseData\Chat.cs" />
     <Compile Include="ResponseData\CoinIn.cs" />
     <Compile Include="ResponseData\Error.cs" />
-    <Compile Include="ResponseData\Execution.cs" />
+    <Compile Include="ResponseData\PublicExecution.cs" />
     <Compile Include="ResponseData\Health.cs" />
     <Compile Include="ResponseData\Collateral.cs" />
-    <Compile Include="ResponseData\Order.cs" />
     <Compile Include="ResponseData\PostResult.cs" />
     <Compile Include="ResponseData\Ticker.cs" />
   </ItemGroup>

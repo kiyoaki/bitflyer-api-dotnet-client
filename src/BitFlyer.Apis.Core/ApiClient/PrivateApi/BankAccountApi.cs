@@ -4,11 +4,11 @@ namespace BitFlyer.Apis
 {
     public partial class BitFlyerPrivateApiClient
     {
-        private const string BankAccountApiPath = "/v1/me/getbankaccounts";
+        private const string BankAccountsApiPath = "/v1/me/getbankaccounts";
 
         public async Task<BankAccount[]> GetBankAccounts()
         {
-            return await Get<BankAccount[]>(BankAccountApiPath);
+            return await Get<BankAccount[]>(BankAccountsApiPath);
         }
     }
 }

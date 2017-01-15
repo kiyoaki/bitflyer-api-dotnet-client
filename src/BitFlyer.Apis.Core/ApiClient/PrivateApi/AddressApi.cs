@@ -4,11 +4,11 @@ namespace BitFlyer.Apis
 {
     public partial class BitFlyerPrivateApiClient
     {
-        private const string AddressApiPath = "/v1/me/getaddresses";
+        private const string AddressesApiPath = "/v1/me/getaddresses";
 
         public async Task<CryptoCurrencyAddress[]> GetAddresses()
         {
-            return await Get<CryptoCurrencyAddress[]>(AddressApiPath);
+            return await Get<CryptoCurrencyAddress[]>(AddressesApiPath);
         }
     }
 }

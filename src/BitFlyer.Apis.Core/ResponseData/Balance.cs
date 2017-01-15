@@ -8,9 +8,9 @@ namespace BitFlyer.Apis
         public CurrencyCode CurrencyCode { get; set; }
 
         [JsonProperty("amount")]
-        public double? Amount { get; set; }
+        public double Amount { get; set; }
 
         [JsonProperty("available")]
-        public double? Available { get; set; }
+        public double Available { get; set; }
     }
 }

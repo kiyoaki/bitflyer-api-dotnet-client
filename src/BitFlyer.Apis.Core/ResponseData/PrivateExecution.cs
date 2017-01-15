@@ -3,10 +3,13 @@ using Newtonsoft.Json;
 
 namespace BitFlyer.Apis
 {
-    public class Execution
+    public class PrivateExecution
     {
         [JsonProperty("id")]
         public long Id { get; set; }
+
+        [JsonProperty("child_order_id")]
+        public string ChildOrderId { get; set; }
 
         [JsonProperty("side")]
         public Side Side { get; set; }
@@ -17,13 +20,13 @@ namespace BitFlyer.Apis
         [JsonProperty("size")]
         public double Size { get; set; }
 
+        [JsonProperty("commission")]
+        public double Commission { get; set; }
+
         [JsonProperty("exec_date")]
         public DateTime ExecDate { get; set; }
 
-        [JsonProperty("buy_child_order_acceptance_id")]
-        public string BuyChildOrderAcceptanceId { get; set; }
-
-        [JsonProperty("sell_child_order_acceptance_id")]
-        public string SellChildOrderAcceptanceId { get; set; }
+        [JsonProperty("child_order_acceptance_id")]
+        public string ChildOrderAcceptanceId { get; set; }
     }
 }

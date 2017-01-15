@@ -11,7 +11,7 @@ namespace BitFlyer.Apis
         public string ChildOrderId { get; set; }
 
         [JsonProperty("product_code")]
-        public string ProductCode { get; set; }
+        public ProductCode ProductCode { get; set; }
 
         [JsonProperty("side")]
         public string Side { get; set; }
@@ -29,7 +29,7 @@ namespace BitFlyer.Apis
         public double Size { get; set; }
 
         [JsonProperty("child_order_state")]
-        public string ChildOrderState { get; set; }
+        public ChildOrderState ChildOrderState { get; set; }
 
         [JsonProperty("expire_date")]
         public string ExpireDate { get; set; }

@@ -24,7 +24,10 @@ namespace BitFlyer.Apis
         Buy,
 
         [EnumMember(Value = "SELL")]
-        Sell
+        Sell,
+
+        [EnumMember(Value = "BUYSELL")]
+        BuySell
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -80,13 +83,13 @@ namespace BitFlyer.Apis
     public enum TimeInForce
     {
         [EnumMember(Value = "GTC")]
-        Gtc,
+        GoodTilCanceled,
 
         [EnumMember(Value = "IOC")]
-        Ioc,
+        ImmediateOrCancel,
 
         [EnumMember(Value = "FOK")]
-        Fok
+        FillOrKill
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -121,7 +124,7 @@ namespace BitFlyer.Apis
         StopLimit,
 
         [EnumMember(Value = "TRAIL")]
-        Trail,
+        Trail
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -129,5 +132,43 @@ namespace BitFlyer.Apis
     {
         [EnumMember(Value = "NORMAL")]
         Normal
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum ChildOrderState
+    {
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
+
+        [EnumMember(Value = "CANCELED")]
+        Canceled,
+
+        [EnumMember(Value = "EXPIRED")]
+        Expired,
+
+        [EnumMember(Value = "REJECTED")]
+        Rejected
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum ParentOrderState
+    {
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
+
+        [EnumMember(Value = "CANCELED")]
+        Canceled,
+
+        [EnumMember(Value = "EXPIRED")]
+        Expired,
+
+        [EnumMember(Value = "REJECTED")]
+        Rejected
     }
 }

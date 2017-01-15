@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace BitFlyer.Apis
 {
-    public class ParentOrderParameter
+    public class SendParentOrderParameter
     {
         [JsonProperty("order_method")]
         public OrderMethod OrderMethod { get; set; }
@@ -15,7 +14,7 @@ namespace BitFlyer.Apis
         public TimeInForce TimeInForce { get; set; }
 
         [JsonProperty("parameters")]
-        public List<ParentOrderDetailParameter> Parameters { get; set; }
+        public ParentOrderDetailParameter[] Parameters { get; set; }
     }
 
     public class ParentOrderDetailParameter
@@ -31,33 +30,14 @@ namespace BitFlyer.Apis
 
         [JsonProperty("size")]
         public double Size { get; set; }
-    }
 
-    public class LimitOrder : ParentOrderDetailParameter
-    {
         [JsonProperty("price")]
-        public int Price { get; set; }
-    }
+        public double Price { get; set; }
 
-    public class MarketOrder : ParentOrderDetailParameter
-    {
-    }
-
-    public class StopOrder : ParentOrderDetailParameter
-    {
         [JsonProperty("trigger_price")]
-        public int TriggerPrice { get; set; }
-    }
+        public double TriggerPrice { get; set; }
 
-    public class ParentOrderStopLimitParameter : ParentOrderDetailParameter
-    {
-        [JsonProperty("price")]
-        public int Price { get; set; }
-    }
-
-    public class ParentOrderStopTrailParameter : ParentOrderDetailParameter
-    {
         [JsonProperty("offset")]
-        public int Offset { get; set; }
+        public double Offset { get; set; }
     }
 }

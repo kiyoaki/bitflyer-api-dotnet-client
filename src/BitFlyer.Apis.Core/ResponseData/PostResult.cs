@@ -9,5 +9,8 @@ namespace BitFlyer.Apis
 
         [JsonProperty("child_order_acceptance_id")]
         public string ChildOrderAcceptanceId { get; set; }
+
+        [JsonProperty("parent_order_acceptance_id")]
+        public string ParentOrderAcceptanceId { get; set; }
     }
 }

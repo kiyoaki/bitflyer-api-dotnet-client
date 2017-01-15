@@ -6,7 +6,7 @@ namespace BitFlyer.Apis
 {
     public partial class BitFlyerPrivateApiClient
     {
-        private const string WithdrawalApiPath = "/v1/me/getwithdrawals";
+        private const string GetWithdrawalsApiPath = "/v1/me/getwithdrawals";
 
         public async Task<Withdrawal> GetWithdrawal(string messageId)
         {
@@ -20,7 +20,7 @@ namespace BitFlyer.Apis
                 { "message_id", messageId }
             };
 
-            return await Get<Withdrawal>(WithdrawalApiPath, query);
+            return await Get<Withdrawal>(GetWithdrawalsApiPath, query);
         }
 
         public async Task<Withdrawal[]> GetWithdrawals(int? count = null, int? before = null, int? after = null)
@@ -40,7 +40,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<Withdrawal[]>(WithdrawalApiPath, query);
+            return await Get<Withdrawal[]>(GetWithdrawalsApiPath, query);
         }
     }
 }
