@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BitFlyer.Apis</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <title>BitFlyer.Apis</title>
         <authors>Kiyoaki Tsurutani</authors>
         <owners>Kiyoaki Tsurutani</owners>
@@ -20,6 +20,12 @@
                 <dependency id="Newtonsoft.Json" version="9.0.1" />
             </group>
         </dependencies>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.5" />
+            <frameworkAssembly assemblyName="System.Net.Http" targetFramework=".NETFramework4.5" />
+            <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework=".NETFramework4.5" />
+        </frameworkAssemblies>
     </metadata>
     <files>
         <file src="..\src\BitFlyer.Apis\bin\Release\BitFlyer.Apis.dll" target="lib\net45\BitFlyer.Apis.dll" />
