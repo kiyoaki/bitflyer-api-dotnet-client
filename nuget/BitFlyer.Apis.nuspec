@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>BitFlyer.Apis</id>
+        <version>1.0.0</version>
+        <title>BitFlyer.Apis</title>
+        <authors>Kiyoaki Tsurutani</authors>
+        <owners>Kiyoaki Tsurutani</owners>
+        <licenseUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>bitFlyer APIs Client Library for .NET</description>
+        <tags>bitFlyer</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="Newtonsoft.Json" version="9.0.1" />
+            </group>
+            <group targetFramework=".NETStandard1.6">
+                <dependency id="NETStandard.Library" version="1.6.0" />
+                <dependency id="Newtonsoft.Json" version="9.0.1" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\src\BitFlyer.Apis\bin\Release\BitFlyer.Apis.dll" target="lib\net45\BitFlyer.Apis.dll" />
+        <file src="..\src\BitFlyer.Apis.NetCore\bin\Release\netstandard1.6\BitFlyer.Apis.dll" target="lib\netstandard1.6\BitFlyer.Apis.dll" />
+    </files>
+</package>
