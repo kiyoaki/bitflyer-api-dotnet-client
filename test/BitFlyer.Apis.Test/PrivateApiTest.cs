@@ -200,6 +200,11 @@ namespace BitFlyer.Apis.Test
         [TestMethod]
         public async Task ParentOrder()
         {
+            await _apiClient.CancelAllOrders(new CancelAllOrdersParameter
+            {
+                ProductCode = ProductCode.FxBtcJpy
+            });
+
             var parameter = new SendParentOrderParameter
             {
                 OrderMethod = OrderMethod.IfDone,
