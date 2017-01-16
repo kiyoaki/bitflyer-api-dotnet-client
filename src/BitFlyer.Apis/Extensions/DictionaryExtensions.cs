@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace BitFlyer.Apis
 {
-    public static class DictionaryExtensions
+    internal static class DictionaryExtensions
     {
-        public static string ToQueryString(this Dictionary<string, object> source)
+        internal static string ToQueryString(this Dictionary<string, object> source)
         {
             if (source == null) throw new ArgumentNullException();
             if (source.Count == 0) return string.Empty;

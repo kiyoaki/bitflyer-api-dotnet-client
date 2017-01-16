@@ -8,11 +8,11 @@ using System.Reflection;
 
 namespace BitFlyer.Apis
 {
-    public static class EnumExtensions
+    internal static class EnumExtensions
     {
         private static readonly ConcurrentDictionary<Enum, string> EnumMemberCache = new ConcurrentDictionary<Enum, string>();
 
-        public static string Value(this Enum value)
+        internal static string Value(this Enum value)
         {
             string returnValue;
             if (EnumMemberCache.TryGetValue(value, out returnValue))
