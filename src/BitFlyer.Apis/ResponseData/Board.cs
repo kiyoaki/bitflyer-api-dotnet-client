@@ -12,5 +12,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("bids")]
         public BoardOrder[] Bids { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

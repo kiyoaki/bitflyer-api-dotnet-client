@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Runtime.Serialization;
+
 #if NET_CORE
 using System.Reflection;
 #endif
@@ -12,7 +13,7 @@ namespace BitFlyer.Apis
     {
         private static readonly ConcurrentDictionary<Enum, string> EnumMemberCache = new ConcurrentDictionary<Enum, string>();
 
-        internal static string Value(this Enum value)
+        internal static string GetEnumMemberValue(this Enum value)
         {
             string returnValue;
             if (EnumMemberCache.TryGetValue(value, out returnValue))

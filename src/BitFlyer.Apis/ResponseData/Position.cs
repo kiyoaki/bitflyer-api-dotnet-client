@@ -34,5 +34,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("pnl")]
         public double ProfitOrLoss { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

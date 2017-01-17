@@ -171,4 +171,44 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "REJECTED")]
         Rejected
     }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PubnubChannel
+    {
+        [EnumMember(Value = "lightning_board_snapshot_BTC_JPY")]
+        BoardSnapshotBtcJpy,
+
+        [EnumMember(Value = "lightning_board_snapshot_FX_BTC_JPY")]
+        BoardSnapshotFxBtcJpy,
+
+        [EnumMember(Value = "lightning_board_snapshot_ETH_BTC")]
+        BoardSnapshotEthBtc,
+
+        [EnumMember(Value = "lightning_board_BTC_JPY")]
+        BoardBtcJpy,
+
+        [EnumMember(Value = "lightning_board_FX_BTC_JPY")]
+        BoardFxBtcJpy,
+
+        [EnumMember(Value = "lightning_board_ETH_BTC")]
+        BoardEthBtc,
+
+        [EnumMember(Value = "lightning_ticker_BTC_JPY")]
+        TickerBtcJpy,
+
+        [EnumMember(Value = "lightning_ticker_FX_BTC_JPY")]
+        TickerFxBtcJpy,
+
+        [EnumMember(Value = "lightning_ticker_ETH_BTC")]
+        TickerEthBtc,
+
+        [EnumMember(Value = "lightning_executions_BTC_JPY")]
+        ExecutionsBtcJpy,
+
+        [EnumMember(Value = "lightning_executions_FX_BTC_JPY")]
+        ExecutionsFxBtcJpy,
+
+        [EnumMember(Value = "lightning_executions_ETH_BTC")]
+        ExecutionsEthBtc
+    }
 }

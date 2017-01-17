@@ -12,7 +12,7 @@ namespace BitFlyer.Apis
         {
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.Value() }
+                { "product_code", productCode.GetEnumMemberValue() }
             };
 
             if (count != null)

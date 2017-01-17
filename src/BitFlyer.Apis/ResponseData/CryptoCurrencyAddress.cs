@@ -12,5 +12,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("address")]
         public string Address { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

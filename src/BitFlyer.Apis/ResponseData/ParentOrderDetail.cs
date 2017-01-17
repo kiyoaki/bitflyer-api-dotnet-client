@@ -18,5 +18,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("parameters")]
         public ParentOrderDetailParameter[] Parameters { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

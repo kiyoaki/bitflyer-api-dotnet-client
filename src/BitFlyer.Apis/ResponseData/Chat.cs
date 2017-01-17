@@ -13,5 +13,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("date")]
         public DateTime Date { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

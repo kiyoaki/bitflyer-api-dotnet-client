@@ -15,5 +15,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("keep_rate")]
         public double KeepRate { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

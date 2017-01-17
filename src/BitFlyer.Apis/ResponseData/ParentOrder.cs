@@ -52,5 +52,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("total_commission")]
         public double TotalCommission { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

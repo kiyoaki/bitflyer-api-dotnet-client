@@ -12,5 +12,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("available")]
         public double Available { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

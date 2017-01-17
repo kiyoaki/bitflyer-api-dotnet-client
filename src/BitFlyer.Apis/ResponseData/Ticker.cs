@@ -40,5 +40,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("volume_by_product")]
         public double VolumeByProduct { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

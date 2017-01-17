@@ -15,10 +15,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Apis.Test", "test\
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BitFlyer.Apis.Test.NetCore", "test\BitFlyer.Apis.Test.NetCore\BitFlyer.Apis.Test.NetCore.xproj", "{26F4ED0E-073C-498C-AB0B-54C09B07360D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA599251-5AAC-4BEF-9001-05A3F35585D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_other", "_other", "{EA599251-5AAC-4BEF-9001-05A3F35585D6}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{1A3A23F8-DA4A-44BD-BD8E-6EF61C2A8007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.PubNub.Sample", "sample\BitFlyer.PubNub.Sample\BitFlyer.PubNub.Sample.csproj", "{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +46,10 @@ Global
 		{26F4ED0E-073C-498C-AB0B-54C09B07360D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26F4ED0E-073C-498C-AB0B-54C09B07360D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26F4ED0E-073C-498C-AB0B-54C09B07360D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +59,6 @@ Global
 		{FB53F379-1CAA-4D55-9DA4-181EAB75DE86} = {2911F2CC-1BDB-46FD-806E-129202A37F75}
 		{4CA54F7D-66E8-4DD1-A8AA-4C7D7321ABF0} = {6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}
 		{26F4ED0E-073C-498C-AB0B-54C09B07360D} = {6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}
+		{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1} = {1A3A23F8-DA4A-44BD-BD8E-6EF61C2A8007}
 	EndGlobalSection
 EndGlobal

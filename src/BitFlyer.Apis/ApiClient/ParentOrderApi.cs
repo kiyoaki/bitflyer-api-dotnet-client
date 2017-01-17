@@ -31,7 +31,7 @@ namespace BitFlyer.Apis
 
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.Value() }
+                { "product_code", productCode.GetEnumMemberValue() }
             };
 
             if (parentOrderId != null)
@@ -52,8 +52,8 @@ namespace BitFlyer.Apis
         {
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.Value() },
-                { "parent_order_state", parentOrderState.Value() }
+                { "product_code", productCode.GetEnumMemberValue() },
+                { "parent_order_state", parentOrderState.GetEnumMemberValue() }
             };
 
             if (count != null)

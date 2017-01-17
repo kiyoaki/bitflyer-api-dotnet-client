@@ -24,5 +24,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("account_name")]
         public string AccountName { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

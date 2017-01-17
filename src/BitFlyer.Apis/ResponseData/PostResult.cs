@@ -12,5 +12,10 @@ namespace BitFlyer.Apis
 
         [JsonProperty("parent_order_acceptance_id")]
         public string ParentOrderAcceptanceId { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }
