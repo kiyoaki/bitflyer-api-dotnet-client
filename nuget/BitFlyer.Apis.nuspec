@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BitFlyer.Apis</id>
-        <version>1.0.2</version>
+        <version>1.1.0</version>
         <title>BitFlyer.Apis</title>
         <authors>Kiyoaki Tsurutani</authors>
         <owners>Kiyoaki Tsurutani</owners>
@@ -10,14 +10,17 @@
         <projectUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>bitFlyer APIs Client Library for .NET</description>
+        <releaseNotes>Add Realtime API support.</releaseNotes>
         <tags>bitFlyer</tags>
         <dependencies>
             <group targetFramework=".NETFramework4.5">
                 <dependency id="Newtonsoft.Json" version="9.0.1" />
+                <dependency id="Pubnub" version="3.8.5.0" />
             </group>
             <group targetFramework=".NETStandard1.6">
                 <dependency id="NETStandard.Library" version="1.6.0" />
                 <dependency id="Newtonsoft.Json" version="9.0.1" />
+                <dependency id="PubnubNetPlatform" version="3.8.5" />
             </group>
         </dependencies>
         <frameworkAssemblies>
