@@ -67,7 +67,7 @@ class Program
     {
         var api = new RealtimeApi();
         
-        api.Subscribe<Ticker>(PubnubChannel.TickerFxBtcJpy, OnReceiveMessage, OnConnect, OnError);
+        api.Subscribe<Ticker>(PubnubChannel.TickerFxBtcJpy, OnReceive, OnConnect, OnError);
         
         Console.ReadKey();
     }
@@ -77,7 +77,7 @@ class Program
         Console.WriteLine(message);
     }
     
-    static void OnReceiveMessage(Ticker data)
+    static void OnReceive(Ticker data)
     {
         Console.WriteLine(data);
     }
