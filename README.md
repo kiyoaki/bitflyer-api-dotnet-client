@@ -19,9 +19,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        var apiClient = new PublicApi();
+        var api = new PublicApi();
 
-        Ticker ticker = apiClient.GetTicker(ProductCode.BtcJpy);
+        Ticker ticker = api.GetTicker(ProductCode.BtcJpy);
         
         Console.WriteLine(ticker);
         Console.ReadKey();
@@ -39,9 +39,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        var apiClient = new PrivateApi("{Your API Key}", "{Your API Secret}");
+        var api = new PrivateApi("{Your API Key}", "{Your API Secret}");
         
-        PostResult result = await _apiClient.SendChildOrder(new SendChildOrderParameter
+        PostResult result = await api.SendChildOrder(new SendChildOrderParameter
         {
             ProductCode = ProductCode.FxBtcJpy,
             ChildOrderType = ChildOrderType.Limit,
@@ -65,9 +65,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        var client = new RealtimeApi();
+        var api = new RealtimeApi();
         
-        client.Subscribe<Ticker>(PubnubChannel.TickerFxBtcJpy, OnReceiveMessage, OnConnect, OnError);
+        api.Subscribe<Ticker>(PubnubChannel.TickerFxBtcJpy, OnReceiveMessage, OnConnect, OnError);
         
         Console.ReadKey();
     }
