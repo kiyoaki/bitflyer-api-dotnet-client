@@ -17,7 +17,7 @@ namespace BitFlyer.Apis
         public Side Side { get; set; }
 
         [JsonProperty("child_order_type")]
-        public string ChildOrderType { get; set; }
+        public ChildOrderType ChildOrderType { get; set; }
 
         [JsonProperty("price")]
         public double Price { get; set; }
