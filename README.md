@@ -19,7 +19,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var apiClient = new BitFlyerPublicApiClient();
+        var apiClient = new PublicApi();
 
         Ticker ticker = apiClient.GetTicker(ProductCode.BtcJpy);
         
@@ -39,7 +39,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var apiClient = new BitFlyerPrivateApiClient("{Your API Key}", "{Your API Secret}");
+        var apiClient = new PrivateApi("{Your API Key}", "{Your API Secret}");
         
         PostResult result = await _apiClient.SendChildOrder(new SendChildOrderParameter
         {
@@ -65,7 +65,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var client = new BitFlyerPubnubClient();
+        var client = new RealtimeApi();
         
         client.Subscribe<Ticker>(PubnubChannel.TickerFxBtcJpy, OnReceiveMessage, OnConnect, OnError);
         
