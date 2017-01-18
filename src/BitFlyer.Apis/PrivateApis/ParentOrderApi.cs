@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPrivateApiClient
+    public partial class PrivateApi
     {
         private const string SendParentOrderApiPath = "/v1/me/sendparentorder";
         private const string CancelParentOrderApiPath = "/v1/me/cancelparentorder";

@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public struct SendCoinParameter
+    public class SendCoinParameter
     {
         [JsonProperty("currency_code")]
         public CurrencyCode CurrencyCode { get; set; }

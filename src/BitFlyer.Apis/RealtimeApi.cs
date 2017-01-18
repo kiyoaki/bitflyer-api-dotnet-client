@@ -4,20 +4,20 @@ using PubNubMessaging.Core;
 
 namespace BitFlyer.Apis
 {
-    public class BitFlyerPubnubClient
+    public class RealtimeApi
     {
         private readonly Pubnub _pubnub;
 
-        public BitFlyerPubnubClient()
+        public RealtimeApi()
         {
             _pubnub = new Pubnub("nopublishkey", BitFlyerConstants.SubscribeKey);
         }
 
-        public void Subscribe<T>(PubnubChannel channel, Action<T> onMessageReceive, Action<string> onConnect, Action<string, Exception> onError)
+        public void Subscribe<T>(PubnubChannel channel, Action<T> onReceive, Action<string> onConnect, Action<string, Exception> onError)
         {
             _pubnub.Subscribe(
                 channel.GetEnumMemberValue(),
-                s => OnReceiveMessage(s, onMessageReceive, onError),
+                s => OnReceiveMessage(s, onReceive, onError),
                 onConnect,
                 error =>
                 {
@@ -25,7 +25,7 @@ namespace BitFlyer.Apis
                 });
         }
 
-        private void OnReceiveMessage<T>(string result, Action<T> onMessageReceive, Action<string, Exception> onError)
+        private void OnReceiveMessage<T>(string result, Action<T> onReceive, Action<string, Exception> onError)
         {
             if (string.IsNullOrWhiteSpace(result))
             {
@@ -55,7 +55,7 @@ namespace BitFlyer.Apis
                 onError(ex.Message, ex);
                 return;
             }
-            onMessageReceive(deserialized);
+            onReceive(deserialized);
         }
     }
 }

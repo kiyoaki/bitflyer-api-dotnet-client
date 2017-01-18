@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPrivateApiClient
+    public partial class PrivateApi
     {
         private static readonly HttpClient HttpClient = new HttpClient
         {
@@ -19,7 +19,7 @@ namespace BitFlyer.Apis
         private readonly string _apiKey;
         private readonly byte[] _apiSecret;
 
-        public BitFlyerPrivateApiClient(string apiKey, string apiSecret)
+        public PrivateApi(string apiKey, string apiSecret)
         {
             _apiKey = apiKey;
             _apiSecret = Encoding.UTF8.GetBytes(apiSecret);

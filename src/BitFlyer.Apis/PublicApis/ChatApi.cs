@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPublicApiClient
+    public partial class PublicApi
     {
         private const string ChatApiPath = "/v1/getchats";
 

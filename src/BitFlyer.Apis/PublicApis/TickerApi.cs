@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPublicApiClient
+    public partial class PublicApi
     {
         private const string TickerApiPath = "/v1/ticker";
 

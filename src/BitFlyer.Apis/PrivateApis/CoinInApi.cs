@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPrivateApiClient
+    public partial class PrivateApi
     {
         private const string CoinInApiPath = "/v1/me/getcoinins";
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPublicApiClient
+    public partial class PublicApi
     {
         private static readonly HttpClient HttpClient = new HttpClient
         {

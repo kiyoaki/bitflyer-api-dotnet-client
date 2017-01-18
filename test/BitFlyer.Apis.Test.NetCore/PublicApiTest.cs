@@ -6,11 +6,11 @@ namespace BitFlyer.Apis.Test
 {
     public class PublicApiTest
     {
-        private readonly BitFlyerPublicApiClient _apiClient;
+        private readonly PublicApi _apiClient;
 
         public PublicApiTest()
         {
-            _apiClient = new BitFlyerPublicApiClient();
+            _apiClient = new PublicApi();
         }
 
         [Fact]

@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPrivateApiClient
+    public partial class PrivateApi
     {
         private const string DepositApiPath = "/v1/me/getdeposits";
 

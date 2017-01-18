@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPrivateApiClient
+    public partial class PrivateApi
     {
-        private const string GetWithdrawalsApiPath = "/v1/me/getwithdrawals";
+        private const string CoinOutApiPath = "/v1/me/getcoinouts";
 
-        public async Task<Withdrawal> GetWithdrawal(string messageId)
+        public async Task<CoinOut> GetCoinOut(string messageId)
         {
             if (messageId == null)
             {
@@ -20,10 +20,10 @@ namespace BitFlyer.Apis
                 { "message_id", messageId }
             };
 
-            return await Get<Withdrawal>(GetWithdrawalsApiPath, query);
+            return await Get<CoinOut>(CoinOutApiPath, query);
         }
 
-        public async Task<Withdrawal[]> GetWithdrawals(int? count = null, int? before = null, int? after = null)
+        public async Task<CoinOut[]> GetCoinOuts(int? count = null, int? before = null, int? after = null)
         {
             var query = new Dictionary<string, object>();
 
@@ -40,7 +40,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<Withdrawal[]>(GetWithdrawalsApiPath, query);
+            return await Get<CoinOut[]>(CoinOutApiPath, query);
         }
     }
 }

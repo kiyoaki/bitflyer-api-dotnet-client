@@ -8,18 +8,18 @@ namespace BitFlyer.Apis.Test
     [TestClass]
     public class PrivateApiTest
     {
-        private BitFlyerPrivateApiClient _apiClient;
+        private PrivateApi _apiClient;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _apiClient = new BitFlyerPrivateApiClient("xxxxxxxxxxx", "xxxxxxxxxxx");
+            _apiClient = new PrivateApi("xxxxxxxxxxx", "xxxxxxxxxxx");
         }
 
         [TestMethod]
         public async Task ApiKeyNotFound()
         {
-            var apiClient = new BitFlyerPrivateApiClient("xxxxxxxxxxx", "xxxxxxxxxxx");
+            var apiClient = new PrivateApi("xxxxxxxxxxx", "xxxxxxxxxxx");
             try
             {
                 await apiClient.GetPermissions();

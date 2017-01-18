@@ -7,12 +7,12 @@ namespace BitFlyer.Apis.Test
     [TestClass]
     public class PublicApiTest
     {
-        private BitFlyerPublicApiClient _apiClient;
+        private PublicApi _apiClient;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _apiClient = new BitFlyerPublicApiClient();
+            _apiClient = new PublicApi();
         }
 
         [TestMethod]

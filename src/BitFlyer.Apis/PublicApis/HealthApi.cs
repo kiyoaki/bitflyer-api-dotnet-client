@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public partial class BitFlyerPublicApiClient
+    public partial class PublicApi
     {
         private const string HealthApiPath = "/v1/gethealth";
 

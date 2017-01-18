@@ -7,7 +7,7 @@ namespace BitFlyer.Pubnub.Sample
     {
         static void Main(string[] args)
         {
-            var client = new BitFlyerPubnubClient();
+            var client = new RealtimeApi();
 
             //client.Subscribe<Board>(PubnubChannel.BoardSnapshotFxBtcJpy, OnReceiveMessage, OnConnect, OnError);
             //client.Subscribe<Board>(PubnubChannel.BoardFxBtcJpy, OnReceiveMessage, OnConnect, OnError);
