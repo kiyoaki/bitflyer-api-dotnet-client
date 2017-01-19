@@ -14,7 +14,7 @@ namespace BitFlyer.Apis
         public Side Side { get; set; }
 
         [JsonProperty("price")]
-        public int Price { get; set; }
+        public double Price { get; set; }
 
         [JsonProperty("size")]
         public double Size { get; set; }
