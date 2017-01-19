@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BitFlyer.Apis</id>
-        <version>2.0.1</version>
+        <version>2.0.2</version>
         <title>BitFlyer.Apis</title>
         <authors>Kiyoaki Tsurutani</authors>
         <owners>Kiyoaki Tsurutani</owners>
@@ -11,7 +11,7 @@
         <iconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>bitFlyer APIs Client Library for .NET</description>
-        <releaseNotes>Change class names. (incompatible change)</releaseNotes>
+        <releaseNotes>Change EnumExtensions to public for getting Enum string value. example: ProductCode.GetEnumMemberValue() returns like a "BTC_JPY" string.</releaseNotes>
         <tags>bitFlyer Bitcoin</tags>
         <dependencies>
             <group targetFramework=".NETFramework4.5">
