@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_other", "_other", "{EA5992
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{1A3A23F8-DA4A-44BD-BD8E-6EF61C2A8007}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.PubNub.Sample", "sample\BitFlyer.PubNub.Sample\BitFlyer.PubNub.Sample.csproj", "{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Sample", "sample\BitFlyer.Sample\BitFlyer.Sample.csproj", "{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
