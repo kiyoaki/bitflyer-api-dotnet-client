@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("bitFlyer APIs Client Library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BitFlyer.Apis.Core")]
+[assembly: AssemblyProduct("BitFlyer.Apis")]
 [assembly: AssemblyCopyright("Copyright © Kiyoaki Tsurutani 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
