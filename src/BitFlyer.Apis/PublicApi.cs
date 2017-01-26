@@ -14,7 +14,7 @@ namespace BitFlyer.Apis
             Timeout = TimeSpan.FromSeconds(10)
         };
 
-        internal async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
+        internal static async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
         {
             var queryString = string.Empty;
             if (query != null)
