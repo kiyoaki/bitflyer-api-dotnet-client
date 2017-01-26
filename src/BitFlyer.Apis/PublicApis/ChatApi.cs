@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
     {
         private const string ChatApiPath = "/v1/getchats";
 
-        public async Task<Chat[]> GetChat(DateTime? fromDate = null)
+        public static async Task<Chat[]> GetChat(DateTime? fromDate = null)
         {
             if (fromDate != null)
             {

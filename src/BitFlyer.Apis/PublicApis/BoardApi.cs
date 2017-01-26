@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string BoardApiPath = "/v1/board";
 
-        public async Task<Board> GetBoard(ProductCode productCode)
+        public static async Task<Board> GetBoard(ProductCode productCode)
         {
             var query = new Dictionary<string, object>
             {

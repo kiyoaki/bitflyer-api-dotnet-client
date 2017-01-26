@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string TickerApiPath = "/v1/ticker";
 
-        public async Task<Ticker> GetTicker(ProductCode productCode)
+        public static async Task<Ticker> GetTicker(ProductCode productCode)
         {
             var query = new Dictionary<string, object>
             {

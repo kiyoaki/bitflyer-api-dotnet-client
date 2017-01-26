@@ -6,7 +6,7 @@ namespace BitFlyer.Apis
     {
         private const string HealthApiPath = "/v1/gethealth";
 
-        public async Task<Health> GetHealth()
+        public static async Task<Health> GetHealth()
         {
             return await Get<Health>(HealthApiPath);
         }

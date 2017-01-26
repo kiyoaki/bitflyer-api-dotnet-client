@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string ExecutionsApiPath = "/v1/executions";
 
-        public async Task<PublicExecution[]> GetExecutions(ProductCode productCode,
+        public static async Task<PublicExecution[]> GetExecutions(ProductCode productCode,
             int? count = null, int? before = null, int? after = null)
         {
             var query = new Dictionary<string, object>
