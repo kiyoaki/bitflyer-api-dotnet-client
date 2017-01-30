@@ -19,9 +19,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var api = new PublicApi();
-
-        Ticker ticker = api.GetTicker(ProductCode.BtcJpy);
+        Ticker ticker = PublicApi.GetTicker(ProductCode.BtcJpy);
         
         Console.WriteLine(ticker);
         Console.ReadKey();
