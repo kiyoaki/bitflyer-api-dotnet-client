@@ -39,7 +39,7 @@ namespace BitFlyer.Apis.Test
             var res1 = await PublicApi.GetExecutions(ProductCode.BtcJpy);
             Assert.AreNotEqual(res1, null);
 
-            var res2 = await PublicApi.GetExecutions(ProductCode.FxBtcJpy);
+            var res2 = await PublicApi.GetExecutions(ProductCode.FxBtcJpy, 500, 272500, 272000);
             Assert.AreNotEqual(res2, null);
 
             var res3 = await PublicApi.GetExecutions(ProductCode.EthBtc);

@@ -20,6 +20,9 @@ namespace BitFlyer.Apis
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Side
     {
+        [EnumMember(Value = "")]
+        Unknown,
+
         [EnumMember(Value = "BUY")]
         Buy,
 
