@@ -11,7 +11,7 @@
         <iconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>bitFlyer APIs Client Library for .NET</description>
-        <releaseNotes>Workaround /v1/executions API returns empty side response</releaseNotes>
+        <releaseNotes>Added PCL support.</releaseNotes>
         <tags>bitFlyer Bitcoin</tags>
         <dependencies>
             <group targetFramework=".NETFramework4.5">
