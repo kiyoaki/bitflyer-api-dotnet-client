@@ -1,19 +1,53 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 
 namespace BitFlyer.Apis.Test
 {
     [TestClass]
     public class PrivateApiTest
     {
+        public class Config
+        {
+            [JsonProperty("apiKey")]
+            public string ApiKey { get; set; }
+            [JsonProperty("apiSecret")]
+            public string ApiSecret { get; set; }
+        }
+
         private PrivateApi _apiClient;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _apiClient = new PrivateApi("xxxxxxxxxxx", "xxxxxxxxxxx");
+            var apiKey = Environment.GetEnvironmentVariable("BITFLYER_API_KEY");
+            var apiSecret = Environment.GetEnvironmentVariable("BITFLYER_API_SECRET");
+            if (apiKey == null || apiSecret == null)
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "apikey.json")
+                    .Replace(@"BitFlyer.Apis.Test\bin\Debug\", string.Empty)
+                    .Replace(@"BitFlyer.Apis.Test\bin\Release\", string.Empty);
+
+                var text = File.ReadAllText(path);
+                if (!string.IsNullOrWhiteSpace(text))
+                {
+                    var config = JsonConvert.DeserializeObject<Config>(text);
+                    _apiClient = new PrivateApi(config.ApiKey, config.ApiSecret);
+                }
+            }
+            else
+            {
+                _apiClient = new PrivateApi(apiKey, apiSecret);
+            }
+
+            if (_apiClient == null)
+            {
+                throw new Exception("BITFLYER_API_KEY or BITFLYER_API_SECRET is null.");
+            }
         }
 
         [TestMethod]
