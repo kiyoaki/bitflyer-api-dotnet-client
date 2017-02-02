@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="BitFlyer.Apis.Test.Portable.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BitFlyer.Apis.Test.Portable"
+    RequestedTheme="Light">
+
+</Application>
