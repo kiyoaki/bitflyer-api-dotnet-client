@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BitFlyer.Apis</id>
-        <version>2.1.1</version>
+        <version>3.0.0</version>
         <title>BitFlyer.Apis</title>
         <authors>Kiyoaki Tsurutani</authors>
         <owners>Kiyoaki Tsurutani</owners>
@@ -23,6 +23,11 @@
                 <dependency id="Newtonsoft.Json" version="9.0.1" />
                 <dependency id="PubnubNetPlatform" version="3.8.5" />
             </group>
+            <group targetFramework=".NETPortable0.0-net45+wp8+win8">
+                <dependency id="Newtonsoft.Json" version="9.0.1" />
+                <dependency id="PubnubPCL" version="3.8.5.0" />
+                <dependency id="Portable.BouncyCastle-Signed" version="1.7.0.2" />
+            </group>
         </dependencies>
         <frameworkAssemblies>
             <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5" />
@@ -34,5 +39,6 @@
     <files>
         <file src="..\src\BitFlyer.Apis\bin\Release\BitFlyer.Apis.dll" target="lib\net45\BitFlyer.Apis.dll" />
         <file src="..\src\BitFlyer.Apis.NetCore\bin\Release\netstandard1.6\BitFlyer.Apis.dll" target="lib\netstandard1.6\BitFlyer.Apis.dll" />
+        <file src="..\src\BitFlyer.Apis.Portable\bin\Release\BitFlyer.Apis.dll" target="lib\portable-net45+wp8+win8\BitFlyer.Apis.dll" />
     </files>
 </package>
