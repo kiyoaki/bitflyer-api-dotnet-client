@@ -1,26 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2911F2CC-1BDB-46FD-806E-129202A37F75}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_other", "_other", "{EA599251-5AAC-4BEF-9001-05A3F35585D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{1A3A23F8-DA4A-44BD-BD8E-6EF61C2A8007}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Apis", "src\BitFlyer.Apis\BitFlyer.Apis.csproj", "{01865C9C-7B03-486F-976C-6AF3976CDB3D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BitFlyer.Apis.NetCore", "src\BitFlyer.Apis.NetCore\BitFlyer.Apis.NetCore.xproj", "{FB53F379-1CAA-4D55-9DA4-181EAB75DE86}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitFlyer.Apis.NetCore", "src\BitFlyer.Apis.NetCore\BitFlyer.Apis.NetCore.csproj", "{FB53F379-1CAA-4D55-9DA4-181EAB75DE86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Apis.Test", "test\BitFlyer.Apis.Test\BitFlyer.Apis.Test.csproj", "{4CA54F7D-66E8-4DD1-A8AA-4C7D7321ABF0}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BitFlyer.Apis.Test.NetCore", "test\BitFlyer.Apis.Test.NetCore\BitFlyer.Apis.Test.NetCore.xproj", "{26F4ED0E-073C-498C-AB0B-54C09B07360D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_other", "_other", "{EA599251-5AAC-4BEF-9001-05A3F35585D6}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{1A3A23F8-DA4A-44BD-BD8E-6EF61C2A8007}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitFlyer.Apis.Test.NetCore", "test\BitFlyer.Apis.Test.NetCore\BitFlyer.Apis.Test.NetCore.csproj", "{26F4ED0E-073C-498C-AB0B-54C09B07360D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Sample", "sample\BitFlyer.Sample\BitFlyer.Sample.csproj", "{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}"
 EndProject
