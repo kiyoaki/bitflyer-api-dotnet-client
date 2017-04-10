@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Xunit;
 
-namespace BitFlyer.Apis.Test
+namespace BitFlyer.Apis.Test.NetCore
 {
     public class PublicApiTest
     {

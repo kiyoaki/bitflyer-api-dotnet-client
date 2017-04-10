@@ -127,6 +127,7 @@ namespace BitFlyer.Sample
 
                 Thread.Sleep(1000);
             }
+            // ReSharper disable once FunctionNeverReturns
         }
     }
 
