@@ -7,8 +7,8 @@
     <ProjectGuid>{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitFlyer.PubNub.Sample</RootNamespace>
-    <AssemblyName>BitFlyer.PubNub.Sample</AssemblyName>
+    <RootNamespace>BitFlyer.Sample</RootNamespace>
+    <AssemblyName>BitFlyer.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
