@@ -6,7 +6,7 @@ namespace BitFlyer.Apis
     public class Position
     {
         [JsonProperty("product_code")]
-        public ProductCode ProductCode { get; set; }
+        public string ProductCode { get; set; }
 
         [JsonProperty("side")]
         public Side Side { get; set; }

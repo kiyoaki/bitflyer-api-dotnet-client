@@ -7,11 +7,11 @@ namespace BitFlyer.Apis
     {
         private const string BoardApiPath = "/v1/board";
 
-        public static async Task<Board> GetBoard(ProductCode productCode)
+        public static async Task<Board> GetBoard(string productCode)
         {
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.GetEnumMemberValue() }
+                { "product_code", productCode }
             };
             return await Get<Board>(BoardApiPath, query);
         }

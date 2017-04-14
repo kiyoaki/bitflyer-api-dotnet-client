@@ -6,7 +6,7 @@ namespace BitFlyer.Apis
     public class Ticker
     {
         [JsonProperty("product_code")]
-        public ProductCode ProductCode { get; set; }
+        public string ProductCode { get; set; }
 
         [JsonProperty("timestamp")]
         public DateTime Timestamp { get; set; }

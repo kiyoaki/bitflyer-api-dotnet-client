@@ -5,7 +5,7 @@ namespace BitFlyer.Apis
     public class CancelParentOrderParameter
     {
         [JsonProperty("product_code")]
-        public ProductCode ProductCode { get; set; }
+        public string ProductCode { get; set; }
 
         [JsonProperty("parent_order_id")]
         public string ParentOrderId { get; set; }

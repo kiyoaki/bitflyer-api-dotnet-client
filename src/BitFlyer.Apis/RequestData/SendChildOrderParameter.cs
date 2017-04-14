@@ -5,7 +5,7 @@ namespace BitFlyer.Apis
     public class SendChildOrderParameter
     {
         [JsonProperty("product_code")]
-        public ProductCode ProductCode { get; set; }
+        public string ProductCode { get; set; }
 
         [JsonProperty("child_order_type")]
         public ChildOrderType ChildOrderType { get; set; }

@@ -13,10 +13,10 @@ namespace BitFlyer.Apis
             _pubnub = new Pubnub("nopublishkey", BitFlyerConstants.SubscribeKey);
         }
 
-        public void Subscribe<T>(PubnubChannel channel, Action<T> onReceive, Action<string> onConnect, Action<string, Exception> onError)
+        public void Subscribe<T>(string channel, Action<T> onReceive, Action<string> onConnect, Action<string, Exception> onError)
         {
             _pubnub.Subscribe(
-                channel.GetEnumMemberValue(),
+                channel,
                 s => OnReceiveMessage(s, onReceive, onError),
                 onConnect,
                 error =>

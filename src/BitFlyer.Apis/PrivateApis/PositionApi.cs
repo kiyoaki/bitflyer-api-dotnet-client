@@ -7,11 +7,11 @@ namespace BitFlyer.Apis
     {
         private const string GetPositionsApiPath = "/v1/me/getpositions";
 
-        public async Task<Position[]> GetPositions(ProductCode productCode)
+        public async Task<Position[]> GetPositions(string productCode)
         {
             return await Get<Position[]>(GetPositionsApiPath, new Dictionary<string, object>
             {
-                { "product_code", productCode.GetEnumMemberValue() }
+                { "product_code", productCode }
             });
         }
     }

@@ -25,12 +25,12 @@ namespace BitFlyer.Apis
             await Post(CancelAllOrdersApiPath, parameter);
         }
 
-        public async Task<ChildOrder[]> GetChildOrders(ProductCode productCode,
+        public async Task<ChildOrder[]> GetChildOrders(string productCode,
             int? count = null, int? before = null, int? after = null)
         {
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.GetEnumMemberValue() }
+                { "product_code", productCode }
             };
 
             if (count != null)

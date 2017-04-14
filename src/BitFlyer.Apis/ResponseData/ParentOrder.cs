@@ -12,7 +12,7 @@ namespace BitFlyer.Apis
         public string ParentOrderId { get; set; }
 
         [JsonProperty("product_code")]
-        public ProductCode ProductCode { get; set; }
+        public string ProductCode { get; set; }
 
         [JsonProperty("side")]
         public Side Side { get; set; }

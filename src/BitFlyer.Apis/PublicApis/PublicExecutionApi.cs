@@ -7,12 +7,12 @@ namespace BitFlyer.Apis
     {
         private const string ExecutionsApiPath = "/v1/executions";
 
-        public static async Task<PublicExecution[]> GetExecutions(ProductCode productCode,
+        public static async Task<PublicExecution[]> GetExecutions(string productCode,
             int? count = null, int? before = null, int? after = null)
         {
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.GetEnumMemberValue() }
+                { "product_code", productCode }
             };
 
             if (count != null)

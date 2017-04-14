@@ -20,7 +20,7 @@ namespace BitFlyer.Apis
     public class ParentOrderDetailParameter
     {
         [JsonProperty("product_code")]
-        public ProductCode ProductCode { get; set; }
+        public string ProductCode { get; set; }
 
         [JsonProperty("condition_type")]
         public ConditionType ConditionType { get; set; }

@@ -60,13 +60,16 @@
     <Compile Include="PrivateApis\CollateralApi.cs" />
     <Compile Include="PrivateApis\BalanceApi.cs" />
     <Compile Include="PrivateApis\PermissionApi.cs" />
+    <Compile Include="ProductCode.cs" />
     <Compile Include="PublicApis\PublicExecutionApi.cs" />
     <Compile Include="PublicApis\ChatApi.cs" />
     <Compile Include="PublicApis\HealthApi.cs" />
+    <Compile Include="PublicApis\MarketApi.cs" />
     <Compile Include="PublicApis\TickerApi.cs" />
     <Compile Include="PublicApis\BoardApi.cs" />
     <Compile Include="PublicApi.cs" />
     <Compile Include="PrivateApi.cs" />
+    <Compile Include="PubnubChannel.cs" />
     <Compile Include="RealtimeApi.cs" />
     <Compile Include="BitFlyerConstants.cs" />
     <Compile Include="BitFlyerEnums.cs" />
@@ -82,6 +85,7 @@
     <Compile Include="RequestData\SendCoinParameter.cs" />
     <Compile Include="RequestData\SendParentOrderParameter.cs" />
     <Compile Include="RequestData\WithdrawParameter.cs" />
+    <Compile Include="ResponseData\Market.cs" />
     <Compile Include="ResponseData\Balance.cs" />
     <Compile Include="ResponseData\BankAccount.cs" />
     <Compile Include="ResponseData\Board.cs" />

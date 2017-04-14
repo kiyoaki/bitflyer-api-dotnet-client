@@ -7,11 +7,11 @@ namespace BitFlyer.Apis
     {
         private const string TickerApiPath = "/v1/ticker";
 
-        public static async Task<Ticker> GetTicker(ProductCode productCode)
+        public static async Task<Ticker> GetTicker(string productCode)
         {
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.GetEnumMemberValue() }
+                { "product_code", productCode }
             };
             return await Get<Ticker>(TickerApiPath, query);
         }

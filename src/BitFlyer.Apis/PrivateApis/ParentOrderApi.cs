@@ -20,7 +20,7 @@ namespace BitFlyer.Apis
             await Post(CancelParentOrderApiPath, parameter);
         }
 
-        public async Task<ParentOrderDetail> GetParentOrder(ProductCode productCode,
+        public async Task<ParentOrderDetail> GetParentOrder(string productCode,
             string parentOrderId = null, string parentOrderAcceptanceId = null)
         {
             if (parentOrderId == null && parentOrderAcceptanceId == null)
@@ -31,7 +31,7 @@ namespace BitFlyer.Apis
 
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.GetEnumMemberValue() }
+                { "product_code", productCode }
             };
 
             if (parentOrderId != null)
@@ -46,13 +46,13 @@ namespace BitFlyer.Apis
             return await Get<ParentOrderDetail>(GetParentOrderApiPath, query);
         }
 
-        public async Task<ParentOrder[]> GetParentOrders(ProductCode productCode,
+        public async Task<ParentOrder[]> GetParentOrders(string productCode,
             int? count = null, int? before = null, int? after = null,
             ParentOrderState parentOrderState = ParentOrderState.Active)
         {
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode.GetEnumMemberValue() },
+                { "product_code", productCode },
                 { "parent_order_state", parentOrderState.GetEnumMemberValue() }
             };
 
