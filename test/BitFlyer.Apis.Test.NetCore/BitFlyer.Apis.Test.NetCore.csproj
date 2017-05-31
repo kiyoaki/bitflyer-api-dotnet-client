@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>1.6.0</VersionPrefix>
-    <TargetFramework>netcoreapp1.6</TargetFramework>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>BitFlyer.Apis.Test.NetCore</AssemblyName>
     <PackageId>BitFlyer.Apis.Test.NetCore</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>

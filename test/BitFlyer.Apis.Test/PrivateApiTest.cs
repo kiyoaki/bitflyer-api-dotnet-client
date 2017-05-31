@@ -158,7 +158,7 @@ namespace BitFlyer.Apis.Test
                 ProductCode = ProductCode.FxBtcJpy,
                 ChildOrderType = ChildOrderType.Limit,
                 Side = Side.Buy,
-                Price = 90000,
+                Price = 200000,
                 Size = 0.01,
                 MinuteToExpire = 10000,
                 TimeInForce = TimeInForce.GoodTilCanceled
@@ -183,7 +183,7 @@ namespace BitFlyer.Apis.Test
                 ProductCode = ProductCode.FxBtcJpy,
                 ChildOrderType = ChildOrderType.Limit,
                 Side = Side.Buy,
-                Price = 90000,
+                Price = 200000,
                 Size = 0.01,
                 MinuteToExpire = 10000,
                 TimeInForce = TimeInForce.GoodTilCanceled
@@ -223,7 +223,7 @@ namespace BitFlyer.Apis.Test
                         ProductCode = ProductCode.FxBtcJpy,
                         ConditionType = ConditionType.Limit,
                         Side = Side.Buy,
-                        Price = 90000,
+                        Price = 200000,
                         Size = 0.01
                     },
                     new ParentOrderDetailParameter
@@ -231,7 +231,7 @@ namespace BitFlyer.Apis.Test
                         ProductCode = ProductCode.FxBtcJpy,
                         ConditionType = ConditionType.Stop,
                         Side = Side.Sell,
-                        TriggerPrice = 95000,
+                        TriggerPrice = 210000,
                         Size = 0.01
                     }
                 }
@@ -243,6 +243,32 @@ namespace BitFlyer.Apis.Test
 
             Thread.Sleep(1000);
 
+            var trail = new SendParentOrderParameter
+            {
+                Parameters = new[]
+                {
+                    new ParentOrderDetailParameter
+                    {
+                        ProductCode = ProductCode.FxBtcJpy,
+                        ConditionType = ConditionType.Trail,
+                        Side = Side.Buy,
+                        Offset = 10000,
+                        Size = 0.01
+                    }
+                }
+            };
+
+            var resTrail = await _apiClient.SendParentOrder(trail);
+            var trailParentOrderAcceptanceId = resTrail?.ParentOrderAcceptanceId;
+            Assert.NotEqual(trailParentOrderAcceptanceId, null);
+
+            Thread.Sleep(1000);
+
+            var resAll = await _apiClient.GetParentOrders(ProductCode.FxBtcJpy, 10);
+            Assert.NotEqual(resAll, null);
+
+            Thread.Sleep(1000);
+
             var res2 = await _apiClient.GetParentOrder(ProductCode.FxBtcJpy, parentOrderAcceptanceId: parentOrderAcceptanceId);
             Assert.NotEqual(res2, null);
 
@@ -250,6 +276,17 @@ namespace BitFlyer.Apis.Test
             {
                 ProductCode = ProductCode.FxBtcJpy,
                 ParentOrderAcceptanceId = parentOrderAcceptanceId
+            });
+
+            Thread.Sleep(1000);
+
+            var resTrail2 = await _apiClient.GetParentOrder(ProductCode.FxBtcJpy, parentOrderAcceptanceId: trailParentOrderAcceptanceId);
+            Assert.NotEqual(resTrail2, null);
+
+            await _apiClient.CancelParentOrder(new CancelParentOrderParameter
+            {
+                ProductCode = ProductCode.FxBtcJpy,
+                ParentOrderAcceptanceId = trailParentOrderAcceptanceId
             });
 
             Thread.Sleep(1000);

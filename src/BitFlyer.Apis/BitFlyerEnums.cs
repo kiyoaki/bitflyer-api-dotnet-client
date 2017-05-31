@@ -99,6 +99,28 @@ namespace BitFlyer.Apis
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
+    public enum ParentOrderType
+    {
+        [EnumMember(Value = "IFD")]
+        IfDone,
+
+        [EnumMember(Value = "OCO")]
+        OneCancelsTheOther,
+
+        [EnumMember(Value = "IFDOCO")]
+        IfDoneOneCancelsTheOther,
+
+        [EnumMember(Value = "STOP")]
+        Stop,
+
+        [EnumMember(Value = "STOP_LIMIT")]
+        StopLimit,
+
+        [EnumMember(Value = "TRAIL")]
+        Trail,
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ConditionType
     {
         [EnumMember(Value = "LIMIT")]
@@ -168,7 +190,10 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "")]
         None,
 
-        [EnumMember(Value = "BTCJPY_THISWEEK")]
-        BtcJpyThisWeek
+        [EnumMember(Value = "BTCJPY_MAT1WK")]
+        BtcJpyThisWeek,
+
+        [EnumMember(Value = "BTCJPY_MAT2WK")]
+        BtcJpyNextWeek
     }
 }
