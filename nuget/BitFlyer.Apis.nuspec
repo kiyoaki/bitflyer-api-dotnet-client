@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>BitFlyer.Apis</id>
-        <version>4.0.0</version>
+        <version>4.1.0</version>
         <title>BitFlyer.Apis</title>
         <authors>Kiyoaki Tsurutani</authors>
         <owners>Kiyoaki Tsurutani</owners>
@@ -11,7 +11,7 @@
         <iconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>bitFlyer APIs Client Library for .NET</description>
-        <releaseNotes>Added Lightning Futures support.</releaseNotes>
+        <releaseNotes>Fixed GET /v1/markets and GET /v1/me/getparentorders response deserialization errors.</releaseNotes>
         <tags>bitFlyer Bitcoin</tags>
         <dependencies>
             <group targetFramework=".NETFramework4.5">
