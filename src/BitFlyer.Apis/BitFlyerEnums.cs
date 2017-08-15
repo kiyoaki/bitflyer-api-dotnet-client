@@ -14,7 +14,18 @@ namespace BitFlyer.Apis
         Btc,
 
         [EnumMember(Value = "ETH")]
-        Eth
+        Eth,
+
+        [EnumMember(Value = "ETC")]
+        Etc,
+
+        [EnumMember(Value = "LTC")]
+        Ltc,
+
+        [EnumMember(Value = "BCH")]
+        Bch,
+
+        Unknown
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -44,6 +55,9 @@ namespace BitFlyer.Apis
 
         [EnumMember(Value = "VERY BUSY")]
         VeryBusy,
+
+        [EnumMember(Value = "SUPER BUSY")]
+        SuperBusy,
 
         [EnumMember(Value = "STOP")]
         Stop

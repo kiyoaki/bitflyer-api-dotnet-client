@@ -1,123 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01865C9C-7B03-486F-976C-6AF3976CDB3D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BitFlyer.Apis</RootNamespace>
-    <AssemblyName>BitFlyer.Apis</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PubNub-Messaging, Version=0.0.0.0, Culture=neutral, PublicKeyToken=dc66f52ce6619f44, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Pubnub.3.8.5.0\lib\net40\PubNub-Messaging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Net.Http" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="PubnubNetPlatform" Version="3.8.7" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="PrivateApis\PositionApi.cs" />
-    <Compile Include="PrivateApis\PrivateExecutionApi.cs" />
-    <Compile Include="PrivateApis\ParentOrderApi.cs" />
-    <Compile Include="PrivateApis\ChildOrderApi.cs" />
-    <Compile Include="PrivateApis\WithdrawalApi.cs" />
-    <Compile Include="PrivateApis\WithdrawApi.cs" />
-    <Compile Include="PrivateApis\DepositApi.cs" />
-    <Compile Include="PrivateApis\BankAccountApi.cs" />
-    <Compile Include="PrivateApis\CoinOutApi.cs" />
-    <Compile Include="PrivateApis\SendCoinApi.cs" />
-    <Compile Include="PrivateApis\CoinInApi.cs" />
-    <Compile Include="PrivateApis\AddressApi.cs" />
-    <Compile Include="PrivateApis\CollateralApi.cs" />
-    <Compile Include="PrivateApis\BalanceApi.cs" />
-    <Compile Include="PrivateApis\PermissionApi.cs" />
-    <Compile Include="ProductCode.cs" />
-    <Compile Include="PublicApis\PublicExecutionApi.cs" />
-    <Compile Include="PublicApis\ChatApi.cs" />
-    <Compile Include="PublicApis\HealthApi.cs" />
-    <Compile Include="PublicApis\MarketApi.cs" />
-    <Compile Include="PublicApis\TickerApi.cs" />
-    <Compile Include="PublicApis\BoardApi.cs" />
-    <Compile Include="PublicApi.cs" />
-    <Compile Include="PrivateApi.cs" />
-    <Compile Include="PubnubChannel.cs" />
-    <Compile Include="RealtimeApi.cs" />
-    <Compile Include="BitFlyerConstants.cs" />
-    <Compile Include="BitFlyerEnums.cs" />
-    <Compile Include="Exceptions\BitFlyerApiException.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\DictionaryExtensions.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestData\CancelAllOrdersParameter.cs" />
-    <Compile Include="RequestData\CancelChildOrderParameter.cs" />
-    <Compile Include="RequestData\CancelParentOrderParameter.cs" />
-    <Compile Include="RequestData\SendChildOrderParameter.cs" />
-    <Compile Include="RequestData\SendCoinParameter.cs" />
-    <Compile Include="RequestData\SendParentOrderParameter.cs" />
-    <Compile Include="RequestData\WithdrawParameter.cs" />
-    <Compile Include="ResponseData\Market.cs" />
-    <Compile Include="ResponseData\Balance.cs" />
-    <Compile Include="ResponseData\BankAccount.cs" />
-    <Compile Include="ResponseData\Board.cs" />
-    <Compile Include="ResponseData\BoardOrder.cs" />
-    <Compile Include="ResponseData\Chat.cs" />
-    <Compile Include="ResponseData\ChildOrder.cs" />
-    <Compile Include="ResponseData\CoinIn.cs" />
-    <Compile Include="ResponseData\CoinOut.cs" />
-    <Compile Include="ResponseData\Collateral.cs" />
-    <Compile Include="ResponseData\CryptoCurrencyAddress.cs" />
-    <Compile Include="ResponseData\Deposit.cs" />
-    <Compile Include="ResponseData\Error.cs" />
-    <Compile Include="ResponseData\Health.cs" />
-    <Compile Include="ResponseData\ParentOrder.cs" />
-    <Compile Include="ResponseData\ParentOrderDetail.cs" />
-    <Compile Include="ResponseData\Position.cs" />
-    <Compile Include="ResponseData\PostResult.cs" />
-    <Compile Include="ResponseData\PrivateExecution.cs" />
-    <Compile Include="ResponseData\PublicExecution.cs" />
-    <Compile Include="ResponseData\Ticker.cs" />
-    <Compile Include="ResponseData\Withdrawal.cs" />
+    <PackageReference Update="NETStandard.Library" Version="2.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

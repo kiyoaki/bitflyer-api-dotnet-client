@@ -1,6 +1,5 @@
-﻿using System;
+using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -33,7 +32,7 @@ namespace BitFlyer.Apis.Test.NetCore
             catch (BitFlyerApiException ex)
             {
                 Assert.Equal(ex.ErrorResponse.Status, -500);
-                Assert.Equal(ex.ErrorResponse.ErrorMessage, "Key not found");
+                Assert.Equal("Key not found", ex.ErrorResponse.ErrorMessage);
             }
         }
 
@@ -41,108 +40,63 @@ namespace BitFlyer.Apis.Test.NetCore
         public async Task GetPermissions()
         {
             var res1 = await _apiClient.GetPermissions();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetBalance()
         {
             var res1 = await _apiClient.GetBalance();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetCollateral()
         {
             var res1 = await _apiClient.GetCollateral();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetAddresses()
         {
             var res1 = await _apiClient.GetAddresses();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetCoinIns()
         {
             var res1 = await _apiClient.GetCoinIns();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
-
-        /*
-        [Fact]
-        public async Task SendCoin()
-        {
-            var res1 = await _apiClient.SendCoin(new SendCoinParameter
-            {
-                CurrencyCode = CurrencyCode.Btc,
-                Amount = 0.001,
-                AdditionalFee = 0,
-                Address = "xxxxxx",
-                Code = 123456
-            });
-            Assert.NotEqual(res1, null);
-        }
-
-        [Fact]
-        public async Task GetCoinOut()
-        {
-            var res1 = await _apiClient.GetCoinOut("xxxxx");
-            Assert.NotEqual(res1, null);
-        }
-        */
 
         [Fact]
         public async Task GetCoinOuts()
         {
             var res1 = await _apiClient.GetCoinOuts();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetBankAccounts()
         {
             var res1 = await _apiClient.GetBankAccounts();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetDeposits()
         {
             var res1 = await _apiClient.GetDeposits();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
-
-        /*
-        [Fact]
-        public async Task Withdraw()
-        {
-            var res1 = await _apiClient.Withdraw(new WithdrawParameter
-            {
-                CurrencyCode = CurrencyCode.Jpy,
-                Amount = 1,
-                BankAccountId = 1234567890,
-                Code = 123456
-            });
-            Assert.NotEqual(res1, null);
-        }
-
-        [Fact]
-        public async Task GetWithdrawal()
-        {
-            var res1 = await _apiClient.GetWithdrawal("xxxxx");
-            Assert.NotEqual(res1, null);
-        }
-        */
 
         [Fact]
         public async Task GetWithdrawals()
         {
             var res1 = await _apiClient.GetWithdrawals();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
@@ -164,13 +118,14 @@ namespace BitFlyer.Apis.Test.NetCore
                 TimeInForce = TimeInForce.GoodTilCanceled
             });
             var childOrderAcceptanceId = res1?.ChildOrderAcceptanceId;
-            Assert.NotEqual(childOrderAcceptanceId, null);
+            Assert.NotNull(childOrderAcceptanceId);
 
-            Thread.Sleep(1000);
+            var health = await PublicApi.GetHealth();
+            Util.ThreadSleep(health.Status);
 
             var res2 = await _apiClient.GetChildOrders(ProductCode.FxBtcJpy);
-            Assert.True(res2.Any(x => x.ProductCode == ProductCode.FxBtcJpy
-                                        && x.ChildOrderState == ChildOrderState.Active));
+            Assert.Contains(res2, x => x.ProductCode == ProductCode.FxBtcJpy
+                                        && x.ChildOrderState == ChildOrderState.Active);
 
             await _apiClient.CancelChildOrder(new CancelChildOrderParameter
             {
@@ -189,14 +144,14 @@ namespace BitFlyer.Apis.Test.NetCore
                 TimeInForce = TimeInForce.GoodTilCanceled
             })));
 
-            Thread.Sleep(1000);
+            Util.ThreadSleep(health.Status);
 
             await _apiClient.CancelAllOrders(new CancelAllOrdersParameter
             {
                 ProductCode = ProductCode.FxBtcJpy
             });
 
-            Thread.Sleep(1000);
+            Util.ThreadSleep(health.Status);
 
             var res3 = await _apiClient.GetChildOrders(ProductCode.FxBtcJpy);
             Assert.True(res3.Count(x => x.ProductCode == ProductCode.FxBtcJpy
@@ -239,9 +194,10 @@ namespace BitFlyer.Apis.Test.NetCore
 
             var res1 = await _apiClient.SendParentOrder(parameter);
             var parentOrderAcceptanceId = res1?.ParentOrderAcceptanceId;
-            Assert.NotEqual(parentOrderAcceptanceId, null);
+            Assert.NotNull(parentOrderAcceptanceId);
 
-            Thread.Sleep(1000);
+            var health = await PublicApi.GetHealth();
+            Util.ThreadSleep(health.Status);
 
             var trail = new SendParentOrderParameter
             {
@@ -260,17 +216,17 @@ namespace BitFlyer.Apis.Test.NetCore
 
             var resTrail = await _apiClient.SendParentOrder(trail);
             var trailParentOrderAcceptanceId = resTrail?.ParentOrderAcceptanceId;
-            Assert.NotEqual(trailParentOrderAcceptanceId, null);
+            Assert.NotNull(trailParentOrderAcceptanceId);
 
-            Thread.Sleep(1000);
+            Util.ThreadSleep(health.Status);
 
             var resAll = await _apiClient.GetParentOrders(ProductCode.FxBtcJpy, 10);
-            Assert.NotEqual(resAll, null);
+            Assert.NotNull(resAll);
 
-            Thread.Sleep(1000);
+            Util.ThreadSleep(health.Status);
 
             var res2 = await _apiClient.GetParentOrder(ProductCode.FxBtcJpy, parentOrderAcceptanceId: parentOrderAcceptanceId);
-            Assert.NotEqual(res2, null);
+            Assert.NotNull(res2);
 
             await _apiClient.CancelParentOrder(new CancelParentOrderParameter
             {
@@ -278,10 +234,10 @@ namespace BitFlyer.Apis.Test.NetCore
                 ParentOrderAcceptanceId = parentOrderAcceptanceId
             });
 
-            Thread.Sleep(1000);
+            Util.ThreadSleep(health.Status);
 
             var resTrail2 = await _apiClient.GetParentOrder(ProductCode.FxBtcJpy, parentOrderAcceptanceId: trailParentOrderAcceptanceId);
-            Assert.NotEqual(resTrail2, null);
+            Assert.NotNull(resTrail2);
 
             await _apiClient.CancelParentOrder(new CancelParentOrderParameter
             {
@@ -289,18 +245,18 @@ namespace BitFlyer.Apis.Test.NetCore
                 ParentOrderAcceptanceId = trailParentOrderAcceptanceId
             });
 
-            Thread.Sleep(1000);
+            Util.ThreadSleep(health.Status);
 
             await Task.WhenAll(Enumerable.Range(0, 3).Select(_ => _apiClient.SendParentOrder(parameter)));
 
-            Thread.Sleep(1000);
+            Util.ThreadSleep(health.Status);
 
             await _apiClient.CancelAllOrders(new CancelAllOrdersParameter
             {
                 ProductCode = ProductCode.FxBtcJpy
             });
 
-            Thread.Sleep(1000);
+            Util.ThreadSleep(health.Status);
 
             var res3 = await _apiClient.GetParentOrders(ProductCode.FxBtcJpy);
             Assert.True(res3.Count(x => x.ProductCode == ProductCode.FxBtcJpy
@@ -311,14 +267,14 @@ namespace BitFlyer.Apis.Test.NetCore
         public async Task GetExecutions()
         {
             var res1 = await _apiClient.GetExecutions(ProductCode.FxBtcJpy);
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetPositions()
         {
             var res1 = await _apiClient.GetPositions(ProductCode.FxBtcJpy);
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
     }
 }

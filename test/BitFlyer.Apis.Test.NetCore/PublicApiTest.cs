@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Xunit;
 
-namespace BitFlyer.Apis.Test.NetCore
+namespace BitFlyer.Apis.Test
 {
     public class PublicApiTest
     {
@@ -10,60 +10,60 @@ namespace BitFlyer.Apis.Test.NetCore
         public async Task GetBoard()
         {
             var res1 = await PublicApi.GetBoard(ProductCode.BtcJpy);
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
 
             var res2 = await PublicApi.GetBoard(ProductCode.FxBtcJpy);
-            Assert.NotEqual(res2, null);
+            Assert.NotNull(res2);
 
             var res3 = await PublicApi.GetBoard(ProductCode.EthBtc);
-            Assert.NotEqual(res3, null);
+            Assert.NotNull(res3);
         }
 
         [Fact]
         public async Task GetTicker()
         {
             var res1 = await PublicApi.GetTicker(ProductCode.BtcJpy);
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
 
             var res2 = await PublicApi.GetTicker(ProductCode.FxBtcJpy);
-            Assert.NotEqual(res2, null);
+            Assert.NotNull(res2);
 
             var res3 = await PublicApi.GetTicker(ProductCode.EthBtc);
-            Assert.NotEqual(res3, null);
+            Assert.NotNull(res3);
         }
 
         [Fact]
         public async Task GetExecutions()
         {
             var res1 = await PublicApi.GetExecutions(ProductCode.BtcJpy);
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
 
             var res2 = await PublicApi.GetExecutions(ProductCode.FxBtcJpy, 500, 272500, 272000);
-            Assert.NotEqual(res2, null);
+            Assert.NotNull(res2);
 
             var res3 = await PublicApi.GetExecutions(ProductCode.EthBtc);
-            Assert.NotEqual(res3, null);
+            Assert.NotNull(res3);
         }
 
         [Fact]
         public async Task GetHealth()
         {
             var res1 = await PublicApi.GetHealth();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetChat()
         {
             var res1 = await PublicApi.GetChat(DateTime.UtcNow.Subtract(TimeSpan.FromHours(1)));
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
 
         [Fact]
         public async Task GetMarkets()
         {
             var res1 = await PublicApi.GetMarkets();
-            Assert.NotEqual(res1, null);
+            Assert.NotNull(res1);
         }
     }
 }
