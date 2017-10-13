@@ -10,7 +10,7 @@ for .NET, .NET Core
 
 Quick Start
 ---
-HTTP Public API
+### HTTP Public API
 
 ```csharp
 class Program
@@ -25,7 +25,7 @@ class Program
 }
 ```
 
-HTTP Private API
+### HTTP Private API
 
 You can create API Key and API Secret here.
 https://lightning.bitflyer.jp/developer
@@ -42,19 +42,19 @@ class Program
             ProductCode = ProductCode.FxBtcJpy,
             ChildOrderType = ChildOrderType.Limit,
             Side = Side.Buy,
-            Price = 600000,
+            Price = 10000,
             Size = 0.01,
             MinuteToExpire = 10000,
             TimeInForce = TimeInForce.GoodTilCanceled
         });
-        
+            
         Console.WriteLine(result);
         Console.ReadKey();
     }
 }
 ```
 
-Realtime API
+### Realtime API
 
 ```csharp
 class Program
