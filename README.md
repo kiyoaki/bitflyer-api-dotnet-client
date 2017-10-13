@@ -17,7 +17,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Ticker ticker = PublicApi.GetTicker(ProductCode.BtcJpy);
+        Ticker ticker = PublicApi.GetTicker(ProductCode.BtcJpy).Result;
         
         Console.WriteLine(ticker);
         Console.ReadKey();
@@ -42,12 +42,12 @@ class Program
             ProductCode = ProductCode.FxBtcJpy,
             ChildOrderType = ChildOrderType.Limit,
             Side = Side.Buy,
-            Price = 10000,
+            Price = 600000,
             Size = 0.01,
             MinuteToExpire = 10000,
             TimeInForce = TimeInForce.GoodTilCanceled
         });
-            
+        
         Console.WriteLine(result);
         Console.ReadKey();
     }
