@@ -112,7 +112,7 @@ namespace BitFlyer.Apis.Test
                 ProductCode = ProductCode.FxBtcJpy,
                 ChildOrderType = ChildOrderType.Limit,
                 Side = Side.Buy,
-                Price = 200000,
+                Price = 600000,
                 Size = 0.01,
                 MinuteToExpire = 10000,
                 TimeInForce = TimeInForce.GoodTilCanceled
@@ -138,7 +138,7 @@ namespace BitFlyer.Apis.Test
                 ProductCode = ProductCode.FxBtcJpy,
                 ChildOrderType = ChildOrderType.Limit,
                 Side = Side.Buy,
-                Price = 200000,
+                Price = 600000,
                 Size = 0.01,
                 MinuteToExpire = 10000,
                 TimeInForce = TimeInForce.GoodTilCanceled
@@ -178,7 +178,7 @@ namespace BitFlyer.Apis.Test
                         ProductCode = ProductCode.FxBtcJpy,
                         ConditionType = ConditionType.Limit,
                         Side = Side.Buy,
-                        Price = 200000,
+                        Price = 600000,
                         Size = 0.01
                     },
                     new ParentOrderDetailParameter
@@ -186,7 +186,7 @@ namespace BitFlyer.Apis.Test
                         ProductCode = ProductCode.FxBtcJpy,
                         ConditionType = ConditionType.Stop,
                         Side = Side.Sell,
-                        TriggerPrice = 210000,
+                        TriggerPrice = 590000,
                         Size = 0.01
                     }
                 }
