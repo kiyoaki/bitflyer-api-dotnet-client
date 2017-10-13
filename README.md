@@ -12,7 +12,7 @@ Quick Start
 ---
 ### HTTP Public API
 
-```csharp
+```
 class Program
 {
     static void Main(string[] args)
@@ -30,14 +30,14 @@ class Program
 You can create API Key and API Secret here.
 https://lightning.bitflyer.jp/developer
 
-```csharp
+```
 class Program
 {
     static void Main(string[] args)
     {
-        var api = new PrivateApi("{Your API Key}", "{Your API Secret}");
+        var api = new PrivateApi("{Your API Key}", "{Your API Secret}");
         
-        PostResult result = await api.SendChildOrder(new SendChildOrderParameter
+        var result = api.SendChildOrder(new SendChildOrderParameter
         {
             ProductCode = ProductCode.FxBtcJpy,
             ChildOrderType = ChildOrderType.Limit,
@@ -46,8 +46,8 @@ class Program
             Size = 0.01,
             MinuteToExpire = 10000,
             TimeInForce = TimeInForce.GoodTilCanceled
-        });
-            
+        }).Result;
+        
         Console.WriteLine(result);
         Console.ReadKey();
     }
