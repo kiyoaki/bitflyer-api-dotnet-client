@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>5.1.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>bitFlyer APIs Client Library for .NET</Description>
+    <Copyright>Kiyoaki Tsurutani</Copyright>
+    <PackageLicenseUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</PackageIconUrl>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageTags>bitflyer, Bitcoin</PackageTags>
+    <PackageReleaseNotes>Support API for USA market.
+Support Monacoin.</PackageReleaseNotes>
+    <RepositoryType></RepositoryType>
+    <NeutralLanguage></NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
