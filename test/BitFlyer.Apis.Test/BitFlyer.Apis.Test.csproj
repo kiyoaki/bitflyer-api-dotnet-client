@@ -62,6 +62,7 @@
     <Compile Include="PrivateApiTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicApiTest.cs" />
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -70,10 +71,6 @@
     <ProjectReference Include="..\..\src\BitFlyer.Apis\BitFlyer.Apis.csproj">
       <Project>{775cdefd-0c0f-44ec-a999-81a97e1b49e3}</Project>
       <Name>BitFlyer.Apis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BitFlyer.Apis.Test.Core\BitFlyer.Apis.Test.Core.csproj">
-      <Project>{5faa32d3-b2ba-4fce-8b2c-7fe1af703fdb}</Project>
-      <Name>BitFlyer.Apis.Test.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
