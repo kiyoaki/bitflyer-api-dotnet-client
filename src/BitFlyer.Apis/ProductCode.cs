@@ -17,5 +17,12 @@ namespace BitFlyer.Apis
             var btcJpyThisWeekMarket = markets.FirstOrDefault(x => x.ProductAlias == ProductAlias.BtcJpyThisWeek);
             return btcJpyThisWeekMarket?.ProductCode;
         }
+
+        public static async Task<string> GetBtcJpyNextWeek()
+        {
+            var markets = await PublicApi.GetMarkets();
+            var btcJpyNextWeekMarket = markets.FirstOrDefault(x => x.ProductAlias == ProductAlias.BtcJpyNextWeek);
+            return btcJpyNextWeekMarket?.ProductCode;
+        }
     }
 }
