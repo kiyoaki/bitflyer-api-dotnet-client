@@ -2,6 +2,8 @@
 
 bitFlyer APIs Client Library for .NET https://lightning.bitflyer.jp/docs
 
+[![Build status](https://ci.appveyor.com/api/projects/status/ejbfftj9qdkc69mp/branch/master?svg=true)](https://ci.appveyor.com/project/kiyoaki/bitflyer-api-dotnet-client/branch/master)
+
 Install
 ---
 for .NET, .NET Core
