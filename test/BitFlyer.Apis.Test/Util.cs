@@ -10,22 +10,22 @@ namespace BitFlyer.Apis.Test
             switch (health)
             {
                 case BitflyerSystemHealth.Normal:
-                    waitMilliSeconds = 4000;
+                    waitMilliSeconds = 5000;
                     break;
                 case BitflyerSystemHealth.Busy:
-                    waitMilliSeconds = 8000;
+                    waitMilliSeconds = 7000;
                     break;
                 case BitflyerSystemHealth.VeryBusy:
-                    waitMilliSeconds = 12000;
+                    waitMilliSeconds = 9000;
                     break;
                 case BitflyerSystemHealth.SuperBusy:
-                    waitMilliSeconds = 16000;
+                    waitMilliSeconds = 11000;
                     break;
                 case BitflyerSystemHealth.Stop:
-                    waitMilliSeconds = 20000;
+                    waitMilliSeconds = 13000;
                     break;
                 default:
-                    waitMilliSeconds = 24000;
+                    waitMilliSeconds = 15000;
                     break;
             }
 
