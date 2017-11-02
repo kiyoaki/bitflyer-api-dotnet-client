@@ -213,4 +213,20 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "BTCJPY_MAT2WK")]
         BtcJpyNextWeek
     }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum CollateralReasonCode
+    {
+        [EnumMember(Value = "CLEARING_COLL")]
+        Clearing,
+
+        [EnumMember(Value = "EXCHANGE_COLL")]
+        Exchange,
+
+        [EnumMember(Value = "POST_COLL")]
+        Post,
+
+        [EnumMember(Value = "CANCEL_COLL")]
+        Cancel
+    }
 }

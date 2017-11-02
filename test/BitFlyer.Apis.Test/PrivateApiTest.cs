@@ -283,5 +283,22 @@ namespace BitFlyer.Apis.Test
             var res1 = await apiClient.GetPositions(ProductCode.FxBtcJpy);
             Assert.NotNull(res1);
         }
+
+        [Fact]
+        public async Task GetCollateralHistory()
+        {
+            var res1 = await apiClient.GetCollateralHistory();
+            Assert.NotNull(res1);
+
+            res1 = await apiClient.GetCollateralHistory(100);
+            Assert.NotNull(res1);
+        }
+
+        [Fact]
+        public async Task GetTradingCommission()
+        {
+            var res1 = await apiClient.GetTradingCommission(ProductCode.BtcJpy);
+            Assert.NotNull(res1);
+        }
     }
 }
