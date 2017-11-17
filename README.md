@@ -14,7 +14,7 @@ Quick Start
 ---
 ### HTTP Public API
 
-```
+```csharp
 class Program
 {
     static void Main(string[] args)
@@ -32,7 +32,7 @@ class Program
 You can create API Key and API Secret here.
 https://lightning.bitflyer.jp/developer
 
-```
+```csharp
 class Program
 {
     static void Main(string[] args)
