@@ -1,10 +1,7 @@
 ﻿using System.Runtime.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace BitFlyer.Apis
 {
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum CurrencyCode
     {
         [EnumMember(Value = "JPY")]
@@ -31,7 +28,6 @@ namespace BitFlyer.Apis
         Unknown
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum Side
     {
         [EnumMember(Value = "")]
@@ -47,7 +43,6 @@ namespace BitFlyer.Apis
         BuySell
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum BitflyerSystemHealth
     {
         [EnumMember(Value = "NORMAL")]
@@ -66,7 +61,6 @@ namespace BitFlyer.Apis
         Stop
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum DepositStatus
     {
         [EnumMember(Value = "PENDING")]
@@ -76,7 +70,6 @@ namespace BitFlyer.Apis
         Completed
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum ChildOrderType
     {
         [EnumMember(Value = "LIMIT")]
@@ -86,7 +79,6 @@ namespace BitFlyer.Apis
         Market
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum TimeInForce
     {
         [EnumMember(Value = "GTC")]
@@ -99,7 +91,6 @@ namespace BitFlyer.Apis
         FillOrKill
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum OrderMethod
     {
         [EnumMember(Value = "SIMPLE")]
@@ -115,7 +106,6 @@ namespace BitFlyer.Apis
         IfDoneOneCancelsTheOther
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum ParentOrderType
     {
         [EnumMember(Value = "IFD")]
@@ -137,7 +127,6 @@ namespace BitFlyer.Apis
         Trail,
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum ConditionType
     {
         [EnumMember(Value = "LIMIT")]
@@ -156,14 +145,12 @@ namespace BitFlyer.Apis
         Trail
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum AddresseType
     {
         [EnumMember(Value = "NORMAL")]
         Normal
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum ChildOrderState
     {
         [EnumMember(Value = "ACTIVE")]
@@ -182,7 +169,6 @@ namespace BitFlyer.Apis
         Rejected
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum ParentOrderState
     {
         [EnumMember(Value = "ACTIVE")]
@@ -201,7 +187,6 @@ namespace BitFlyer.Apis
         Rejected
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum ProductAlias
     {
         [EnumMember(Value = "")]
@@ -214,7 +199,6 @@ namespace BitFlyer.Apis
         BtcJpyNextWeek
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
     public enum CollateralReasonCode
     {
         [EnumMember(Value = "CLEARING_COLL")]

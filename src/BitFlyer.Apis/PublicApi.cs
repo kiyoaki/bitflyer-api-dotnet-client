@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
@@ -28,7 +28,7 @@ namespace BitFlyer.Apis
                 var json = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)
                 {
-                    var error = JsonConvert.DeserializeObject<Error>(json);
+                    var error = JsonSerializer.Deserialize<Error>(json);
                     if (!string.IsNullOrEmpty(error?.ErrorMessage))
                     {
                         throw new BitFlyerApiException(path, error.ErrorMessage, error);
@@ -37,7 +37,7 @@ namespace BitFlyer.Apis
                         $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
                 }
 
-                return JsonConvert.DeserializeObject<T>(json);
+                return JsonSerializer.Deserialize<T>(json);
             }
             catch (TaskCanceledException)
             {

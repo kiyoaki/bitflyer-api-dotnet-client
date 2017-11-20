@@ -1,15 +1,18 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
     public partial class PrivateApi
     {
+        private static readonly MediaTypeHeaderValue MediaType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
         private static readonly HttpClient HttpClient = new HttpClient
         {
             BaseAddress = BitFlyerConstants.BaseUri,
@@ -54,7 +57,7 @@ namespace BitFlyer.Apis
             Dictionary<string, object> query = null, object body = null)
         {
             var responseJson = await SendRequest(method, path, query, body);
-            return JsonConvert.DeserializeObject<T>(responseJson);
+            return JsonSerializer.Deserialize<T>(responseJson);
         }
 
         private async Task<string> SendRequest(HttpMethod method, string path,
@@ -68,14 +71,17 @@ namespace BitFlyer.Apis
 
             using (var message = new HttpRequestMessage(method, path + queryString))
             {
-                string bodyJson = null;
+                byte[] bodyBytes = null;
                 if (body != null)
                 {
-                    bodyJson = JsonConvert.SerializeObject(body);
-                    message.Content = new StringContent(bodyJson, Encoding.UTF8, "application/json");
+                    bodyBytes = JsonSerializer.Serialize(body);
+                    message.Content = new ByteArrayContent(bodyBytes);
+                    message.Content.Headers.ContentType = MediaType;
                 }
                 var timestamp = DateTimeOffset.UtcNow.ToUnixTime().ToString();
-                var hash = SignWithHmacsha256(timestamp + method + path + queryString + bodyJson);
+                var payload = bodyBytes == null ? Encoding.UTF8.GetBytes(timestamp + method + path + queryString) :
+                    Encoding.UTF8.GetBytes(timestamp + method + path + queryString).Concat(bodyBytes).ToArray();
+                var hash = SignWithHmacsha256(payload);
                 message.Headers.Add("ACCESS-KEY", _apiKey);
                 message.Headers.Add("ACCESS-TIMESTAMP", timestamp);
                 message.Headers.Add("ACCESS-SIGN", hash);
@@ -86,7 +92,7 @@ namespace BitFlyer.Apis
                     var responseJson = await response.Content.ReadAsStringAsync();
                     if (!response.IsSuccessStatusCode)
                     {
-                        var error = JsonConvert.DeserializeObject<Error>(responseJson);
+                        var error = JsonSerializer.Deserialize<Error>(responseJson);
                         if (!string.IsNullOrEmpty(error?.ErrorMessage))
                         {
                             throw new BitFlyerApiException(path, error.ErrorMessage, error);
@@ -104,23 +110,13 @@ namespace BitFlyer.Apis
             }
         }
 
-        private string SignWithHmacsha256(string data)
+        private string SignWithHmacsha256(byte[] utf8Bytes)
         {
             using (var encoder = new HMACSHA256(_apiSecret))
             {
-                var hash = encoder.ComputeHash(Encoding.UTF8.GetBytes(data));
-                return ToHexString(hash);
+                var hash = encoder.ComputeHash(utf8Bytes);
+                return FastHexString.ToHex(hash);
             }
-        }
-
-        private static string ToHexString(IReadOnlyCollection<byte> bytes)
-        {
-            var sb = new StringBuilder(bytes.Count * 2);
-            foreach (var b in bytes)
-            {
-                sb.Append(b.ToString("x2"));
-            }
-            return sb.ToString();
         }
     }
 }

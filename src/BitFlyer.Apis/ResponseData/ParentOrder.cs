@@ -1,61 +1,63 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Runtime.Serialization;
+using System.Text;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
     public class ParentOrder
     {
-        [JsonProperty("id")]
+        [DataMember(Name = "id")]
         public int Id { get; set; }
 
-        [JsonProperty("parent_order_id")]
+        [DataMember(Name = "parent_order_id")]
         public string ParentOrderId { get; set; }
 
-        [JsonProperty("product_code")]
+        [DataMember(Name = "product_code")]
         public string ProductCode { get; set; }
 
-        [JsonProperty("side")]
+        [DataMember(Name = "side")]
         public Side Side { get; set; }
 
-        [JsonProperty("parent_order_type")]
+        [DataMember(Name = "parent_order_type")]
         public ParentOrderType ParentOrderType { get; set; }
 
-        [JsonProperty("price")]
+        [DataMember(Name = "price")]
         public double Price { get; set; }
 
-        [JsonProperty("average_price")]
+        [DataMember(Name = "average_price")]
         public double AveragePrice { get; set; }
 
-        [JsonProperty("size")]
+        [DataMember(Name = "size")]
         public double Size { get; set; }
 
-        [JsonProperty("parent_order_state")]
+        [DataMember(Name = "parent_order_state")]
         public ParentOrderState ParentOrderState { get; set; }
 
-        [JsonProperty("expire_date")]
+        [DataMember(Name = "expire_date")]
         public string ExpireDate { get; set; }
 
-        [JsonProperty("parent_order_date")]
+        [DataMember(Name = "parent_order_date")]
         public DateTime ParentOrderDate { get; set; }
 
-        [JsonProperty("parent_order_acceptance_id")]
+        [DataMember(Name = "parent_order_acceptance_id")]
         public string ParentOrderAcceptanceId { get; set; }
 
-        [JsonProperty("outstanding_size")]
+        [DataMember(Name = "outstanding_size")]
         public double OutstandingSize { get; set; }
 
-        [JsonProperty("cancel_size")]
+        [DataMember(Name = "cancel_size")]
         public double CancelSize { get; set; }
 
-        [JsonProperty("executed_size")]
+        [DataMember(Name = "executed_size")]
         public double ExecutedSize { get; set; }
 
-        [JsonProperty("total_commission")]
+        [DataMember(Name = "total_commission")]
         public double TotalCommission { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
         }
     }
 }

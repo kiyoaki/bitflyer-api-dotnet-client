@@ -1,31 +1,33 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Runtime.Serialization;
+using System.Text;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
     public class CollateralHistory
     {
-        [JsonProperty("id")]
+        [DataMember(Name = "id")]
         public long Id { get; set; }
 
-        [JsonProperty("currency_code")]
+        [DataMember(Name = "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [JsonProperty("change")]
+        [DataMember(Name = "change")]
         public double Change { get; set; }
 
-        [JsonProperty("amount")]
+        [DataMember(Name = "amount")]
         public double Amount { get; set; }
 
-        [JsonProperty("reason_code")]
+        [DataMember(Name = "reason_code")]
         public CollateralReasonCode ResonCode { get; set; }
 
-        [JsonProperty("date")]
+        [DataMember(Name = "date")]
         public DateTime date { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
         }
     }
 }

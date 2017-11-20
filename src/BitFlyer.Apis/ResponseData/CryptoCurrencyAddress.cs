@@ -1,21 +1,23 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using System.Text;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
     public class CryptoCurrencyAddress
     {
-        [JsonProperty("type")]
+        [DataMember(Name = "type")]
         public AddresseType Type { get; set; }
 
-        [JsonProperty("currency_code")]
+        [DataMember(Name = "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [JsonProperty("address")]
+        [DataMember(Name = "address")]
         public string Address { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
         }
     }
 }

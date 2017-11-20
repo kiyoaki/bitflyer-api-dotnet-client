@@ -1,19 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace BitFlyer.Apis
 {
     public class WithdrawParameter
     {
-        [JsonProperty("currency_code")]
+        [DataMember(Name = "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [JsonProperty("bank_account_id")]
+        [DataMember(Name = "bank_account_id")]
         public long BankAccountId { get; set; }
 
-        [JsonProperty("amount")]
+        [DataMember(Name = "amount")]
         public long Amount { get; set; }
 
-        [JsonProperty("code")]
+        [DataMember(Name = "code")]
         public int Code { get; set; }
     }
 }

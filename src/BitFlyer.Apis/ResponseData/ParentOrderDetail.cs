@@ -1,27 +1,29 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using System.Text;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
     public class ParentOrderDetail
     {
-        [JsonProperty("id")]
+        [DataMember(Name = "id")]
         public long Id { get; set; }
 
-        [JsonProperty("parent_order_id")]
+        [DataMember(Name = "parent_order_id")]
         public string ParentOrderId { get; set; }
 
-        [JsonProperty("order_method")]
+        [DataMember(Name = "order_method")]
         public OrderMethod OrderMethod { get; set; }
 
-        [JsonProperty("parent_order_acceptance_id")]
+        [DataMember(Name = "parent_order_acceptance_id")]
         public string ParentOrderAcceptanceId { get; set; }
 
-        [JsonProperty("parameters")]
+        [DataMember(Name = "parameters")]
         public ParentOrderDetailParameter[] Parameters { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
         }
     }
 }

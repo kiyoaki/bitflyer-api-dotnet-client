@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace BitFlyer.Apis
 {
     public class CancelAllOrdersParameter
     {
-        [JsonProperty("product_code")]
+        [DataMember(Name = "product_code")]
         public string ProductCode { get; set; }
     }
 }

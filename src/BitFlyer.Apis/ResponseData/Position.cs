@@ -1,43 +1,45 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Runtime.Serialization;
+using System.Text;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
     public class Position
     {
-        [JsonProperty("product_code")]
+        [DataMember(Name = "product_code")]
         public string ProductCode { get; set; }
 
-        [JsonProperty("side")]
+        [DataMember(Name = "side")]
         public Side Side { get; set; }
 
-        [JsonProperty("price")]
+        [DataMember(Name = "price")]
         public double Price { get; set; }
 
-        [JsonProperty("size")]
+        [DataMember(Name = "size")]
         public double Size { get; set; }
 
-        [JsonProperty("commission")]
+        [DataMember(Name = "commission")]
         public double Commission { get; set; }
 
-        [JsonProperty("swap_point_accumulate")]
+        [DataMember(Name = "swap_point_accumulate")]
         public double SwapPointAccumulate { get; set; }
 
-        [JsonProperty("require_collateral")]
+        [DataMember(Name = "require_collateral")]
         public double RequireCollateral { get; set; }
 
-        [JsonProperty("open_date")]
+        [DataMember(Name = "open_date")]
         public DateTime OpenDate { get; set; }
 
-        [JsonProperty("leverage")]
+        [DataMember(Name = "leverage")]
         public double Leverage { get; set; }
 
-        [JsonProperty("pnl")]
+        [DataMember(Name = "pnl")]
         public double ProfitOrLoss { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
         }
     }
 }

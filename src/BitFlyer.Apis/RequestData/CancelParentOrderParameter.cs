@@ -1,16 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace BitFlyer.Apis
 {
     public class CancelParentOrderParameter
     {
-        [JsonProperty("product_code")]
+        [DataMember(Name = "product_code")]
         public string ProductCode { get; set; }
 
-        [JsonProperty("parent_order_id")]
+        [DataMember(Name = "parent_order_id")]
         public string ParentOrderId { get; set; }
 
-        [JsonProperty("parent_order_acceptance_id")]
+        [DataMember(Name = "parent_order_acceptance_id")]
         public string ParentOrderAcceptanceId { get; set; }
     }
 }

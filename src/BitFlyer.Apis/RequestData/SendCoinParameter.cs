@@ -1,22 +1,22 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace BitFlyer.Apis
 {
     public class SendCoinParameter
     {
-        [JsonProperty("currency_code")]
+        [DataMember(Name = "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [JsonProperty("amount")]
+        [DataMember(Name = "amount")]
         public double Amount { get; set; }
 
-        [JsonProperty("address")]
+        [DataMember(Name = "address")]
         public string Address { get; set; }
 
-        [JsonProperty("additional_fee")]
+        [DataMember(Name = "additional_fee")]
         public double AdditionalFee { get; set; }
 
-        [JsonProperty("code")]
+        [DataMember(Name = "code")]
         public int Code { get; set; }
     }
 }

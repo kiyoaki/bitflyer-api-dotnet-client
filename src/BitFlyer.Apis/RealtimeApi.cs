@@ -1,6 +1,6 @@
-﻿using System;
-using Newtonsoft.Json;
-using PubNubMessaging.Core;
+﻿using PubNubMessaging.Core;
+using System;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
@@ -48,7 +48,7 @@ namespace BitFlyer.Apis
             T deserialized;
             try
             {
-                deserialized = JsonConvert.DeserializeObject<T>(resultActualMessage);
+                deserialized = JsonSerializer.Deserialize<T>(resultActualMessage);
             }
             catch (Exception ex)
             {

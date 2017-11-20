@@ -1,28 +1,28 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
 
 namespace BitFlyer.Apis
 {
     public class SendChildOrderParameter
     {
-        [JsonProperty("product_code")]
+        [DataMember(Name = "product_code")]
         public string ProductCode { get; set; }
 
-        [JsonProperty("child_order_type")]
+        [DataMember(Name = "child_order_type")]
         public ChildOrderType ChildOrderType { get; set; }
 
-        [JsonProperty("side")]
+        [DataMember(Name = "side")]
         public Side Side { get; set; }
 
-        [JsonProperty("price")]
+        [DataMember(Name = "price")]
         public double Price { get; set; }
 
-        [JsonProperty("size")]
+        [DataMember(Name = "size")]
         public double Size { get; set; }
 
-        [JsonProperty("minute_to_expire")]
+        [DataMember(Name = "minute_to_expire")]
         public int MinuteToExpire { get; set; }
 
-        [JsonProperty("time_in_force")]
+        [DataMember(Name = "time_in_force")]
         public TimeInForce TimeInForce { get; set; }
 
     }

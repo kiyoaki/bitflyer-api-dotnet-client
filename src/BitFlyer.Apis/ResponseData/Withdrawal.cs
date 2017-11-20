@@ -1,31 +1,33 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Runtime.Serialization;
+using System.Text;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
     public class Withdrawal
     {
-        [JsonProperty("id")]
+        [DataMember(Name = "id")]
         public long Id { get; set; }
 
-        [JsonProperty("order_id")]
+        [DataMember(Name = "order_id")]
         public string OrderId { get; set; }
 
-        [JsonProperty("currency_code")]
+        [DataMember(Name = "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [JsonProperty("amount")]
-        public long Amount { get; set; }
+        [DataMember(Name = "amount")]
+        public double Amount { get; set; }
 
-        [JsonProperty("status")]
+        [DataMember(Name = "status")]
         public DepositStatus Status { get; set; }
 
-        [JsonProperty("event_date")]
+        [DataMember(Name = "event_date")]
         public DateTime EventDate { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
         }
     }
 }

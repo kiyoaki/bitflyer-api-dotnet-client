@@ -1,33 +1,35 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using System.Text;
+using Utf8Json;
 
 namespace BitFlyer.Apis
 {
     public class BankAccount
     {
-        [JsonProperty("id")]
+        [DataMember(Name = "id")]
         public long Id { get; set; }
 
-        [JsonProperty("is_verified")]
+        [DataMember(Name = "is_verified")]
         public bool IsVerified { get; set; }
 
-        [JsonProperty("bank_name")]
+        [DataMember(Name = "bank_name")]
         public string BankName { get; set; }
 
-        [JsonProperty("branch_name")]
+        [DataMember(Name = "branch_name")]
         public string BranchName { get; set; }
 
-        [JsonProperty("account_type")]
+        [DataMember(Name = "account_type")]
         public string AccountType { get; set; }
 
-        [JsonProperty("account_number")]
-        public int AccountNumber { get; set; }
+        [DataMember(Name = "account_number")]
+        public string AccountNumber { get; set; }
 
-        [JsonProperty("account_name")]
+        [DataMember(Name = "account_name")]
         public string AccountName { get; set; }
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
         }
     }
 }
