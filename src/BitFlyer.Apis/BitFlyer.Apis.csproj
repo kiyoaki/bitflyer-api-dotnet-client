@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>5.2.0</Version>
+    <Version>5.3.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>bitFlyer APIs Client Library for .NET</Description>
     <Copyright>Kiyoaki Tsurutani</Copyright>
@@ -11,12 +11,17 @@
     <PackageIconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</RepositoryUrl>
     <PackageTags>bitflyer, Bitcoin</PackageTags>
-    <PackageReleaseNotes>Support getcollateralhistory and gettradingcommission API.</PackageReleaseNotes>
+    <PackageReleaseNotes>Improve JSON (de)serialization performance.
+Improve converting HMACSHA256 to hex string performance.</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
