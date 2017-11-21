@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -130,7 +131,7 @@ namespace BitFlyer.Apis.Test
             Assert.NotNull(childOrderAcceptanceId);
 
             var health = await PublicApi.GetHealth();
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             var res2 = await apiClient.GetChildOrders(ProductCode.FxBtcJpy);
             Assert.Contains(res2, x => x.ProductCode == ProductCode.FxBtcJpy
@@ -153,14 +154,14 @@ namespace BitFlyer.Apis.Test
                 TimeInForce = TimeInForce.GoodTilCanceled
             })));
 
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             await apiClient.CancelAllOrders(new CancelAllOrdersParameter
             {
                 ProductCode = ProductCode.FxBtcJpy
             });
 
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             var res3 = await apiClient.GetChildOrders(ProductCode.FxBtcJpy);
             Assert.True(res3.Count(x => x.ProductCode == ProductCode.FxBtcJpy
@@ -206,7 +207,7 @@ namespace BitFlyer.Apis.Test
             Assert.NotNull(parentOrderAcceptanceId);
 
             var health = await PublicApi.GetHealth();
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             var trail = new SendParentOrderParameter
             {
@@ -227,12 +228,12 @@ namespace BitFlyer.Apis.Test
             var trailParentOrderAcceptanceId = resTrail?.ParentOrderAcceptanceId;
             Assert.NotNull(trailParentOrderAcceptanceId);
 
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             var resAll = await apiClient.GetParentOrders(ProductCode.FxBtcJpy, 10);
             Assert.NotNull(resAll);
 
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             var res2 = await apiClient.GetParentOrder(ProductCode.FxBtcJpy, parentOrderAcceptanceId: parentOrderAcceptanceId);
             Assert.NotNull(res2);
@@ -243,7 +244,7 @@ namespace BitFlyer.Apis.Test
                 ParentOrderAcceptanceId = parentOrderAcceptanceId
             });
 
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             var resTrail2 = await apiClient.GetParentOrder(ProductCode.FxBtcJpy, parentOrderAcceptanceId: trailParentOrderAcceptanceId);
             Assert.NotNull(resTrail2);
@@ -254,18 +255,18 @@ namespace BitFlyer.Apis.Test
                 ParentOrderAcceptanceId = trailParentOrderAcceptanceId
             });
 
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             await Task.WhenAll(Enumerable.Range(0, 3).Select(_ => apiClient.SendParentOrder(parameter)));
 
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             await apiClient.CancelAllOrders(new CancelAllOrdersParameter
             {
                 ProductCode = ProductCode.FxBtcJpy
             });
 
-            Util.ThreadSleep(health.Status);
+            ThreadSleep(health.Status);
 
             var res3 = await apiClient.GetParentOrders(ProductCode.FxBtcJpy);
             Assert.True(res3.Count(x => x.ProductCode == ProductCode.FxBtcJpy
@@ -301,6 +302,34 @@ namespace BitFlyer.Apis.Test
         {
             var res1 = await apiClient.GetTradingCommission(ProductCode.BtcJpy);
             Assert.NotNull(res1);
+        }
+
+        public static void ThreadSleep(BitflyerSystemHealth health)
+        {
+            int waitMilliSeconds;
+            switch (health)
+            {
+                case BitflyerSystemHealth.Normal:
+                    waitMilliSeconds = 5000;
+                    break;
+                case BitflyerSystemHealth.Busy:
+                    waitMilliSeconds = 7000;
+                    break;
+                case BitflyerSystemHealth.VeryBusy:
+                    waitMilliSeconds = 9000;
+                    break;
+                case BitflyerSystemHealth.SuperBusy:
+                    waitMilliSeconds = 11000;
+                    break;
+                case BitflyerSystemHealth.Stop:
+                    waitMilliSeconds = 13000;
+                    break;
+                default:
+                    waitMilliSeconds = 15000;
+                    break;
+            }
+
+            Thread.Sleep(waitMilliSeconds);
         }
     }
 }
