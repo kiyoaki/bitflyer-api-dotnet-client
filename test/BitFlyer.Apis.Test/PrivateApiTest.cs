@@ -19,7 +19,7 @@ namespace BitFlyer.Apis.Test
             var apiSecret = Environment.GetEnvironmentVariable("BITFLYER_API_SECRET");
             if (apiKey == null || apiSecret == null)
             {
-                throw new Exception("BITFLYER_API_KEY or BITFLYER_API_SECRET is null.");
+                throw new Exception("Please set the environment variable BITFLYER_API_KEY and BITFLYER_API_SECRET for private API tests.");
             }
 
             apiClient = new PrivateApi(apiKey, apiSecret);
