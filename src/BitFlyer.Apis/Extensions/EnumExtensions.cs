@@ -3,10 +3,6 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Runtime.Serialization;
 
-#if NET_CORE || PORTABLE
-using System.Reflection;
-#endif
-
 namespace BitFlyer.Apis
 {
     public static class EnumExtensions
@@ -21,13 +17,9 @@ namespace BitFlyer.Apis
                 return returnValue;
             }
 
-#if NET_CORE
-            var attributes = value.GetType().GetTypeInfo().GetField(value.ToString()).GetCustomAttributes<EnumMemberAttribute>(false);
-#elif PORTABLE
-            var attributes = value.GetType().GetTypeInfo().GetDeclaredField(value.ToString()).GetCustomAttributes(typeof(EnumMemberAttribute), false) as EnumMemberAttribute[];
-#else
-            var attributes = value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(EnumMemberAttribute), false) as EnumMemberAttribute[];
-#endif
+            var attributes = value.GetType()
+                .GetField(value.ToString())
+                .GetCustomAttributes(typeof(EnumMemberAttribute), false) as EnumMemberAttribute[];
 
             returnValue = attributes?.FirstOrDefault()?.Value;
             if (returnValue != null)
