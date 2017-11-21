@@ -114,8 +114,7 @@ namespace BitFlyer.Apis
         {
             using (var encoder = new HMACSHA256(_apiSecret))
             {
-                var hash = encoder.ComputeHash(utf8Bytes);
-                return FastHexString.ToHex(hash);
+                return encoder.ComputeHash(utf8Bytes).ToHex();
             }
         }
     }

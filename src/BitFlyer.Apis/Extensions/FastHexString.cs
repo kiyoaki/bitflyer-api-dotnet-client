@@ -5,7 +5,7 @@ namespace BitFlyer.Apis
     /// <summary>
     /// https://www.codeproject.com/Tips/447938/High-performance-Csharp-byte-array-to-hex-string-t
     /// </summary>
-    public unsafe sealed partial class FastHexString
+    public unsafe static class FastHexString
     {
         // assigned int values for bytes (0-255)
         static readonly int[] toHexTable = new int[] {
@@ -37,13 +37,13 @@ namespace BitFlyer.Apis
             4259910, 4325446, 4390982, 4456518, 4522054, 4587590
         };
 
-        public static string ToHex(byte[] source)
+        public static string ToHex(this byte[] source)
         {
             return ToHex(source, false);
         }
 
         // hexIndicator: use prefix ("0x") or not
-        public static string ToHex(byte[] source, bool hexIndicator)
+        public static string ToHex(this byte[] source, bool hexIndicator)
         {
             // freeze toHexTable position in memory
             fixed (int* hexRef = toHexTable)
@@ -111,7 +111,7 @@ namespace BitFlyer.Apis
             208, 224, 240
         };
 
-        public static byte[] FromHex(string source)
+        public static byte[] FromHex(this string source)
         {
             // return an empty array in case of null or empty source
             if (string.IsNullOrEmpty(source))
