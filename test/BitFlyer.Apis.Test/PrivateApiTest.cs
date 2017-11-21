@@ -7,6 +7,8 @@ namespace BitFlyer.Apis.Test
 {
     public class PrivateApiTest
     {
+        private const double OrderSize = 0.001;
+
         private readonly PrivateApi apiClient;
         private readonly int buyPrice;
         private readonly int sellPrice;
@@ -24,8 +26,8 @@ namespace BitFlyer.Apis.Test
 
             var ticker = PublicApi.GetTicker(ProductCode.FxBtcJpy).Result;
             var latestPrice = ticker.LatestPrice;
-            buyPrice = (int)(latestPrice * 0.96);
-            sellPrice = (int)(latestPrice * 1.04);
+            buyPrice = (int)(latestPrice * 0.95);
+            sellPrice = (int)(latestPrice * 1.05);
         }
 
         [Fact]
@@ -120,7 +122,7 @@ namespace BitFlyer.Apis.Test
                 ChildOrderType = ChildOrderType.Limit,
                 Side = Side.Buy,
                 Price = buyPrice,
-                Size = 0.01,
+                Size = OrderSize,
                 MinuteToExpire = 10000,
                 TimeInForce = TimeInForce.GoodTilCanceled
             });
@@ -146,7 +148,7 @@ namespace BitFlyer.Apis.Test
                 ChildOrderType = ChildOrderType.Limit,
                 Side = Side.Buy,
                 Price = buyPrice,
-                Size = 0.01,
+                Size = OrderSize,
                 MinuteToExpire = 10000,
                 TimeInForce = TimeInForce.GoodTilCanceled
             })));
@@ -186,7 +188,7 @@ namespace BitFlyer.Apis.Test
                         ConditionType = ConditionType.Limit,
                         Side = Side.Buy,
                         Price = buyPrice,
-                        Size = 0.01
+                        Size = OrderSize
                     },
                     new ParentOrderDetailParameter
                     {
@@ -194,7 +196,7 @@ namespace BitFlyer.Apis.Test
                         ConditionType = ConditionType.Stop,
                         Side = Side.Sell,
                         TriggerPrice = sellPrice,
-                        Size = 0.01
+                        Size = OrderSize
                     }
                 }
             };
@@ -215,8 +217,8 @@ namespace BitFlyer.Apis.Test
                         ProductCode = ProductCode.FxBtcJpy,
                         ConditionType = ConditionType.Trail,
                         Side = Side.Buy,
-                        Offset = 10000,
-                        Size = 0.01
+                        Offset = 30000,
+                        Size = OrderSize
                     }
                 }
             };
