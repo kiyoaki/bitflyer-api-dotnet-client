@@ -1,5 +1,6 @@
 ﻿using PubNubMessaging.Core;
 using System;
+using System.Text;
 using Utf8Json;
 
 namespace BitFlyer.Apis
@@ -32,23 +33,13 @@ namespace BitFlyer.Apis
                 return;
             }
 
-            var deserializedMessage = _pubnub.JsonPluggableLibrary.DeserializeToListOfObject(result);
-            if (deserializedMessage == null || deserializedMessage.Count <= 0)
-            {
-                return;
-            }
+            var reader = new JsonReader(Encoding.UTF8.GetBytes(result));
+            reader.ReadIsBeginArrayWithVerify();
 
-            var subscribedObject = deserializedMessage[0];
-            if (subscribedObject == null)
-            {
-                return;
-            }
-
-            var resultActualMessage = _pubnub.JsonPluggableLibrary.SerializeToJsonString(subscribedObject);
             T deserialized;
             try
             {
-                deserialized = JsonSerializer.Deserialize<T>(resultActualMessage);
+                deserialized = JsonSerializer.Deserialize<T>(ref reader);
             }
             catch (Exception ex)
             {
