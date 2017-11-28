@@ -26,7 +26,7 @@ namespace BitFlyer.Apis
         }
 
         public async Task<ChildOrder[]> GetChildOrders(string productCode,
-            int? count = null, int? before = null, int? after = null)
+            int? count = null, int? before = null, int? after = null, ChildOrderState? childOrderState = null)
         {
             var query = new Dictionary<string, object>
             {
@@ -45,6 +45,21 @@ namespace BitFlyer.Apis
             {
                 query["after"] = after.Value;
             }
+            if (childOrderState != null)
+            {
+                query["child_order_state"] = childOrderState.GetEnumMemberValue();
+            }
+
+            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query);
+        }
+
+        public async Task<ChildOrder[]> GetChildOrder(string productCode, long childOrderId)
+        {
+            var query = new Dictionary<string, object>
+            {
+                { "product_code", productCode },
+                { "child_order_id", childOrderId }
+            };
 
             return await Get<ChildOrder[]>(GetChildOrdersApiPath, query);
         }

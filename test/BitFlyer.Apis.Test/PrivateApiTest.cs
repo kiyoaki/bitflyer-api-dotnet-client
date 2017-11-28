@@ -133,9 +133,11 @@ namespace BitFlyer.Apis.Test
             var health = await PublicApi.GetHealth();
             ThreadSleep(health.Status);
 
-            var res2 = await apiClient.GetChildOrders(ProductCode.FxBtcJpy);
-            Assert.Contains(res2, x => x.ProductCode == ProductCode.FxBtcJpy
-                                        && x.ChildOrderState == ChildOrderState.Active);
+            var res2 = await apiClient.GetChildOrders(ProductCode.FxBtcJpy, childOrderState: ChildOrderState.Active);
+            Assert.Contains(res2, x => x.ProductCode == ProductCode.FxBtcJpy);
+
+            var resSingle = await apiClient.GetChildOrder(ProductCode.FxBtcJpy, res2.First().Id);
+            Assert.NotNull(resSingle);
 
             await apiClient.CancelChildOrder(new CancelChildOrderParameter
             {
@@ -163,9 +165,8 @@ namespace BitFlyer.Apis.Test
 
             ThreadSleep(health.Status);
 
-            var res3 = await apiClient.GetChildOrders(ProductCode.FxBtcJpy);
-            Assert.True(res3.Count(x => x.ProductCode == ProductCode.FxBtcJpy
-                                          && x.ChildOrderState == ChildOrderState.Active) == 0);
+            var res3 = await apiClient.GetChildOrders(ProductCode.FxBtcJpy, childOrderState: ChildOrderState.Active);
+            Assert.True(res3.Count(x => x.ProductCode == ProductCode.FxBtcJpy) == 0);
         }
 
         [Fact]
