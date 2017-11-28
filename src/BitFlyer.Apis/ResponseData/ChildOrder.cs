@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     public class ChildOrder
     {
         [DataMember(Name = "id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [DataMember(Name = "child_order_id")]
         public string ChildOrderId { get; set; }
