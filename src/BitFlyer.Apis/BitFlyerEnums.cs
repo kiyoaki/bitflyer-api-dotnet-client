@@ -57,8 +57,35 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "SUPER BUSY")]
         SuperBusy,
 
+        [EnumMember(Value = "NO ORDER")]
+        NoOrder,
+
         [EnumMember(Value = "STOP")]
         Stop
+    }
+
+    public enum BoardStates
+    {
+        [EnumMember(Value = "RUNNING")]
+        Running,
+
+        [EnumMember(Value = "CLOSED")]
+        Closed,
+
+        [EnumMember(Value = "STARTING")]
+        Starting,
+
+        [EnumMember(Value = "PREOPEN")]
+        Preopen,
+
+        [EnumMember(Value = "CIRCUIT BREAK")]
+        CircuitBreak,
+
+        [EnumMember(Value = "AWAITING SQ")]
+        AWAITING_SQ,
+
+        [EnumMember(Value = "MATURED")]
+        MATURED,
     }
 
     public enum DepositStatus

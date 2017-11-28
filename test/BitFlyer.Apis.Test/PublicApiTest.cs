@@ -46,6 +46,22 @@ namespace BitFlyer.Apis.Test
         }
 
         [Fact]
+        public async Task GetBoardState()
+        {
+            var res1 = await PublicApi.GetBoardState(ProductCode.BtcJpy);
+            Assert.NotNull(res1);
+
+            var res2 = await PublicApi.GetBoardState(ProductCode.FxBtcJpy);
+            Assert.NotNull(res2);
+
+            var res3 = await PublicApi.GetBoardState(ProductCode.EthBtc);
+            Assert.NotNull(res3);
+
+            var res4 = await PublicApi.GetBoardState("BTCJPY24NOV2017");
+            Assert.NotNull(res4);
+        }
+
+        [Fact]
         public async Task GetHealth()
         {
             var res1 = await PublicApi.GetHealth();
