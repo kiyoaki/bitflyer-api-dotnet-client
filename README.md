@@ -6,9 +6,9 @@ bitFlyer APIs Client Library for .NET https://lightning.bitflyer.jp/docs
 
 Install
 ---
-for .NET, .NET Core
-
 * PM> Install-Package [BitFlyer.Apis](https://www.nuget.org/packages/BitFlyer.Apis)
+
+Private API needs your API Key and Secret. If you use Private API, I recommended you clone this repository and use it.
 
 Quick Start
 ---
