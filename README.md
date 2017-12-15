@@ -24,7 +24,7 @@ You can create API Key and API Secret here.
 https://lightning.bitflyer.jp/developer
 
 ```csharp
-var api = new PrivateApi("{Your API Key}", "{Your API Secret}");
+var api = new PrivateApi("Your API Key", "Your API Secret");
 var result = await api.SendChildOrder(new SendChildOrderParameter
 {
     ProductCode = ProductCode.FxBtcJpy,
