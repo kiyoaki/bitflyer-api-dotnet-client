@@ -1,6 +1,5 @@
-﻿using PubNubMessaging.Core;
+﻿using PubnubApi;
 using System;
-using System.Text;
 using Utf8Json;
 
 namespace BitFlyer.Apis
@@ -11,42 +10,57 @@ namespace BitFlyer.Apis
 
         public RealtimeApi()
         {
-            _pubnub = new Pubnub("nopublishkey", BitFlyerConstants.SubscribeKey);
+            var config = new PNConfiguration();
+            config.SubscribeKey = BitFlyerConstants.SubscribeKey;
+            config.PublishKey = "nopublishkey";
+            _pubnub = new Pubnub(config);
         }
 
         public void Subscribe<T>(string channel, Action<T> onReceive, Action<string> onConnect, Action<string, Exception> onError)
         {
-            _pubnub.Subscribe(
-                channel,
-                s => OnReceiveMessage(s, onReceive, onError),
-                onConnect,
-                error =>
+            _pubnub.AddListener(new SubscribeCallbackExt(
+                (pubnubObj, message) =>
                 {
-                    onError(error.Message, error.DetailedDotNetException);
-                });
-        }
+                    if (message.Message is string json)
+                    {
+                        T deserialized;
+                        try
+                        {
+                            deserialized = JsonSerializer.Deserialize<T>(json);
+                            onReceive(deserialized);
+                        }
+                        catch (Exception ex)
+                        {
+                            onError(ex.Message, ex);
+                            return;
+                        }
+                    }
+                },
+                (pubnubObj, presence) => { },
+                (pubnubObj, status) =>
+                {
+                    if (status.Category == PNStatusCategory.PNUnexpectedDisconnectCategory)
+                    {
+                        onError("unexpected disconnect.", null);
+                    }
+                    else if (status.Category == PNStatusCategory.PNConnectedCategory)
+                    {
+                        onConnect("connected.");
+                    }
+                    else if (status.Category == PNStatusCategory.PNReconnectedCategory)
+                    {
+                        onError("reconnected.", null);
+                    }
+                    else if (status.Category == PNStatusCategory.PNDecryptionErrorCategory)
+                    {
+                        onError("messsage decryption error.", null);
+                    }
+                }
+            ));
 
-        private void OnReceiveMessage<T>(string result, Action<T> onReceive, Action<string, Exception> onError)
-        {
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                return;
-            }
-
-            var reader = new JsonReader(Encoding.UTF8.GetBytes(result));
-            reader.ReadIsBeginArrayWithVerify();
-
-            T deserialized;
-            try
-            {
-                deserialized = JsonSerializer.Deserialize<T>(ref reader);
-            }
-            catch (Exception ex)
-            {
-                onError(ex.Message, ex);
-                return;
-            }
-            onReceive(deserialized);
+            _pubnub.Subscribe<string>()
+                .Channels(new[] { channel })
+                .Execute();
         }
     }
 }
