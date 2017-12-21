@@ -4,36 +4,55 @@ namespace BitFlyer.Apis
 {
     public static class PubnubChannel
     {
-        public const string BoardSnapshotBtcJpy = "lightning_board_snapshot_BTC_JPY";
+        #region prefix
+        public const string BoardSnapshotPrefix = "lightning_board_snapshot_";
+        public const string BoardPrefix = "lightning_board_";
+        public const string TickerPrefix = "lightning_ticker_";
+        public const string ExecutionPrefix = "lightning_executions_";
+        #endregion
 
-        public const string BoardSnapshotFxBtcJpy = "lightning_board_snapshot_FX_BTC_JPY";
+        #region BtcJpy
+        public const string BoardSnapshotBtcJpy = BoardSnapshotPrefix + ProductCode.BtcJpy;
+        public const string BoardBtcJpy = BoardPrefix + ProductCode.BtcJpy;
+        public const string TickerBtcJpy = TickerPrefix + ProductCode.BtcJpy;
+        public const string ExecutionsBtcJpy = ExecutionPrefix + ProductCode.BtcJpy;
+        #endregion
 
-        public const string BoardSnapshotEthBtc = "lightning_board_snapshot_ETH_BTC";
+        #region FxBtcJpy
+        public const string BoardSnapshotFxBtcJpy = BoardSnapshotPrefix + ProductCode.FxBtcJpy;
+        public const string BoardFxBtcJpy = BoardPrefix + ProductCode.FxBtcJpy;
+        public const string TickerFxBtcJpy = TickerPrefix + ProductCode.FxBtcJpy;
+        public const string ExecutionsFxBtcJpy = ExecutionPrefix + ProductCode.FxBtcJpy;
+        #endregion
 
-        public const string BoardBtcJpy = "lightning_board_BTC_JPY";
+        #region EthBtc
+        public const string BoardSnapshotEthBtc = BoardSnapshotPrefix + ProductCode.EthBtc;
+        public const string BoardEthBtc = BoardPrefix + ProductCode.EthBtc;
+        public const string TickerEthBtc = TickerPrefix + ProductCode.EthBtc;
+        public const string ExecutionsEthBtc = ExecutionPrefix + ProductCode.EthBtc;
+        #endregion
 
-        public const string BoardFxBtcJpy = "lightning_board_FX_BTC_JPY";
+        #region BchBtc
+        public const string BoardSnapshotBchBtc = BoardSnapshotPrefix + ProductCode.BchBtc;
+        public const string BoardBchBtc = BoardPrefix + ProductCode.BchBtc;
+        public const string TickerBchBtc = TickerPrefix + ProductCode.BchBtc;
+        public const string ExecutionsBchBtc = ExecutionPrefix + ProductCode.BchBtc;
+        #endregion
 
-        public const string BoardEthBtc = "lightning_board_ETH_BTC";
+        #region BtcUsd
+        public const string BoardSnapshotBtcUsd = BoardSnapshotPrefix + ProductCode.BtcUsd;
+        public const string BoardBtcUsd = BoardPrefix + ProductCode.BtcUsd;
+        public const string TickerBtcUsd = TickerPrefix + ProductCode.BtcUsd;
+        public const string ExecutionsBtcUsd = ExecutionPrefix + ProductCode.BtcUsd;
+        #endregion
 
-        public const string TickerBtcJpy = "lightning_ticker_BTC_JPY";
-
-        public const string TickerFxBtcJpy = "lightning_ticker_FX_BTC_JPY";
-
-        public const string TickerEthBtc = "lightning_ticker_ETH_BTC";
-
-        public const string ExecutionsBtcJpy = "lightning_executions_BTC_JPY";
-
-        public const string ExecutionsFxBtcJpy = "lightning_executions_FX_BTC_JPY";
-
-        public const string ExecutionsEthBtc = "lightning_executions_ETH_BTC";
-
+        #region BtcJpyThisWeek
         public static async Task<string> GetBoardSnapshotBtcJpyThisWeek()
         {
             var productCode = await ProductCode.GetBtcJpyThisWeek();
             if (productCode != null)
             {
-                return BoardSnapshot + productCode;
+                return BoardSnapshotPrefix + productCode;
             }
             return null;
         }
@@ -43,37 +62,72 @@ namespace BitFlyer.Apis
             var productCode = await ProductCode.GetBtcJpyThisWeek();
             if (productCode != null)
             {
-                return Board + productCode;
+                return BoardPrefix + productCode;
             }
             return null;
         }
 
-        public static async Task<string> GeTickerBtcJpyThisWeek()
+        public static async Task<string> GetTickerBtcJpyThisWeek()
         {
             var productCode = await ProductCode.GetBtcJpyThisWeek();
             if (productCode != null)
             {
-                return Ticker + productCode;
+                return TickerPrefix + productCode;
             }
             return null;
         }
 
-        public static async Task<string> GeExecutionBtcJpyThisWeek()
+        public static async Task<string> GetExecutionBtcJpyThisWeek()
         {
             var productCode = await ProductCode.GetBtcJpyThisWeek();
             if (productCode != null)
             {
-                return Execution + productCode;
+                return ExecutionPrefix + productCode;
+            }
+            return null;
+        }
+        #endregion BtcJpyThisWeek
+
+        #region BtcJpyNextWeek
+        public static async Task<string> GetBoardSnapshotBtcJpyNextWeek()
+        {
+            var productCode = await ProductCode.GetBtcJpyNextWeek();
+            if (productCode != null)
+            {
+                return BoardSnapshotPrefix + productCode;
             }
             return null;
         }
 
-        private const string BoardSnapshot = "lightning_board_snapshot_";
+        public static async Task<string> GetBoardBtcJpyNextWeek()
+        {
+            var productCode = await ProductCode.GetBtcJpyNextWeek();
+            if (productCode != null)
+            {
+                return BoardPrefix + productCode;
+            }
+            return null;
+        }
 
-        private const string Board = "lightning_board_";
+        public static async Task<string> GetTickerBtcJpyNextWeek()
+        {
+            var productCode = await ProductCode.GetBtcJpyNextWeek();
+            if (productCode != null)
+            {
+                return TickerPrefix + productCode;
+            }
+            return null;
+        }
 
-        private const string Ticker = "lightning_ticker_";
-
-        private const string Execution = "lightning_executions_";
+        public static async Task<string> GetExecutionBtcJpyNextWeek()
+        {
+            var productCode = await ProductCode.GetBtcJpyNextWeek();
+            if (productCode != null)
+            {
+                return ExecutionPrefix + productCode;
+            }
+            return null;
+        }
+        #endregion BtcJpyNextWeek
     }
 }
