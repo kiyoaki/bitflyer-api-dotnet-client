@@ -46,6 +46,13 @@ namespace BitFlyer.Apis
         public const string ExecutionsBtcUsd = ExecutionPrefix + ProductCode.BtcUsd;
         #endregion
 
+        #region BtcEur
+        public const string BoardSnapshotBtcEur = BoardSnapshotPrefix + ProductCode.BtcEur;
+        public const string BoardBtcEur = BoardPrefix + ProductCode.BtcEur;
+        public const string TickerBtcEur = TickerPrefix + ProductCode.BtcEur;
+        public const string ExecutionsBtcEur = ExecutionPrefix + ProductCode.BtcEur;
+        #endregion
+
         #region BtcJpyThisWeek
         public static async Task<string> GetBoardSnapshotBtcJpyThisWeek()
         {
