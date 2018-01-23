@@ -95,5 +95,19 @@ namespace BitFlyer.Apis.Test
             var res1 = await PublicApi.GetChatUsa(DateTime.UtcNow.Subtract(TimeSpan.FromHours(1)));
             Assert.NotNull(res1);
         }
+
+        [Fact]
+        public async Task GetMarketsEu()
+        {
+            var res1 = await PublicApi.GetMarketsEu();
+            Assert.NotNull(res1);
+        }
+
+        [Fact]
+        public async Task GetChatEu()
+        {
+            var res1 = await PublicApi.GetChatEu(DateTime.UtcNow.Subtract(TimeSpan.FromHours(1)));
+            Assert.NotNull(res1);
+        }
     }
 }
