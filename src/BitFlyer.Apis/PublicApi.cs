@@ -28,7 +28,16 @@ namespace BitFlyer.Apis
                 var json = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)
                 {
-                    var error = JsonSerializer.Deserialize<Error>(json);
+                    Error error = null;
+                    try
+                    {
+                        error = JsonSerializer.Deserialize<Error>(json);
+                    }
+                    catch
+                    {
+                        // ignore
+                    }
+
                     if (!string.IsNullOrEmpty(error?.ErrorMessage))
                     {
                         throw new BitFlyerApiException(path, error.ErrorMessage, error);
