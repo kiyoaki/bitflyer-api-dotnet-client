@@ -1,19 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2911F2CC-1BDB-46FD-806E-129202A37F75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Sample", "BitFlyer.Sample\BitFlyer.Sample.csproj", "{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitFlyer.Apis", "BitFlyer.Apis\BitFlyer.Apis.csproj", "{775CDEFD-0C0F-44EC-A999-81A97E1B49E3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{1A3A23F8-DA4A-44BD-BD8E-6EF61C2A8007}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Sample", "sample\BitFlyer.Sample\BitFlyer.Sample.csproj", "{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitFlyer.Apis", "src\BitFlyer.Apis\BitFlyer.Apis.csproj", "{775CDEFD-0C0F-44EC-A999-81A97E1B49E3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Apis.Test", "test\BitFlyer.Apis.Test\BitFlyer.Apis.Test.csproj", "{628CEC6E-CCCF-463E-A22D-036162F99086}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitFlyer.Apis.Test", "BitFlyer.Apis.Test\BitFlyer.Apis.Test.csproj", "{628CEC6E-CCCF-463E-A22D-036162F99086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,11 +72,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{DCD04ED8-AE91-4F95-BCBE-ECCA2F3B3ED1} = {1A3A23F8-DA4A-44BD-BD8E-6EF61C2A8007}
-		{775CDEFD-0C0F-44EC-A999-81A97E1B49E3} = {2911F2CC-1BDB-46FD-806E-129202A37F75}
-		{628CEC6E-CCCF-463E-A22D-036162F99086} = {6C5AC821-D3E9-4FD3-BF1D-4EE546F611CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A24C07AC-9E6B-4172-B043-0A9BC6D4E592}

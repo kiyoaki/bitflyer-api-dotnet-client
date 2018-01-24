@@ -8,8 +8,8 @@ namespace BitFlyer.Sample
         private static void Main()
         {
             var client = new RealtimeApi();
-            var channelName = PubnubChannel.GetTickerBtcJpyThisWeek().Result;
-            client.Subscribe<Ticker>(channelName, OnReceive, OnConnect, OnError);
+            var channelName = PubnubChannel.ExecutionsBtcEur;
+            client.Subscribe<PublicExecution>(channelName, OnReceive, OnConnect, OnError);
 
             Console.ReadKey();
         }
@@ -19,7 +19,7 @@ namespace BitFlyer.Sample
             Console.WriteLine(message);
         }
 
-        private static void OnReceive(Ticker data)
+        private static void OnReceive(PublicExecution data)
         {
             Console.WriteLine(data.ToString());
         }

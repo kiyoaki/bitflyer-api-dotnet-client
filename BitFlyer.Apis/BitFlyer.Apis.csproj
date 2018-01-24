@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <Version>5.9.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>bitFlyer APIs Client Library for .NET</Description>
+    <Copyright>Kiyoaki Tsurutani</Copyright>
+    <PackageLicenseUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</RepositoryUrl>
+    <PackageTags>bitflyer, Bitcoin</PackageTags>
+    <PackageReleaseNotes>Add TargetFramework NET45</PackageReleaseNotes>
+    <RepositoryType>git</RepositoryType>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Authors>Kiyoaki Tsurutani</Authors>
+    <Company />
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>opensource.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU' AND '$(TargetFramework)'=='net45'">
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;NETSTANDARD2_0;NET45</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU' AND '$(TargetFramework)'!='net45'">
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;NETSTANDARD2_0;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU' AND '$(TargetFramework)'=='net45'">
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DefineConstants>RELEASE;NETSTANDARD;NETSTANDARD2_0;NET45</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU' AND '$(TargetFramework)'!='net45'">
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DefineConstants>RELEASE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Utf8Json" Version="1.3.4" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <PackageReference Include="Pubnub" Version="4.0.11" />
+    <PackageReference Include="System.Net.Http" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="PubnubPCL" Version="4.0.11" />
+  </ItemGroup>
+
+</Project>
