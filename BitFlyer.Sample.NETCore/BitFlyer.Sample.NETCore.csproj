@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BitFlyer.Apis" Version="5.9.0" />
+    <ProjectReference Include="..\BitFlyer.Apis\BitFlyer.Apis.csproj" />
   </ItemGroup>
 
 </Project>
