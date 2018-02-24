@@ -130,7 +130,7 @@ namespace BitFlyer.Apis.Test
             var childOrderAcceptanceId = res1?.ChildOrderAcceptanceId;
             Assert.NotNull(childOrderAcceptanceId);
 
-            var health = await PublicApi.GetHealth();
+            var health = await PublicApi.GetHealth(ProductCode.FxBtcJpy);
             ThreadSleep(health.Status);
 
             var res2 = await apiClient.GetChildOrders(ProductCode.FxBtcJpy, childOrderState: ChildOrderState.Active);
@@ -207,7 +207,7 @@ namespace BitFlyer.Apis.Test
             var parentOrderAcceptanceId = res1?.ParentOrderAcceptanceId;
             Assert.NotNull(parentOrderAcceptanceId);
 
-            var health = await PublicApi.GetHealth();
+            var health = await PublicApi.GetHealth(ProductCode.FxBtcJpy);
             ThreadSleep(health.Status);
 
             var trail = new SendParentOrderParameter
