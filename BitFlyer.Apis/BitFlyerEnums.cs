@@ -25,6 +25,9 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "MONA")]
         Mona,
 
+        [EnumMember(Value = "LSK")]
+        Lisk,
+
         Unknown
     }
 
