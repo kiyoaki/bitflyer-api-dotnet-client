@@ -17,7 +17,7 @@ Add request parameter (product_code) to gethealth API</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>Kiyoaki Tsurutani</Authors>
     <Company />
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>opensource.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
