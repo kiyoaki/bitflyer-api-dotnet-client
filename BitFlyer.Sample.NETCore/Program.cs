@@ -8,15 +8,15 @@ namespace BitFlyer.Sample.NETCore
         private static void Main()
         {
             var client = new RealtimeApi();
-            var channelName = PubnubChannel.TickerFxBtcJpy;
-            client.Subscribe<Ticker>(channelName, OnReceive, OnConnect, OnError);
+            var channelName = RealtimeChannel.TickerFxBtcJpy;
+            client.Subscribe<Ticker>(channelName, OnReceive, OnConnect, OnError).Wait();
 
             Console.ReadKey();
         }
 
-        private static void OnConnect(string message)
+        private static void OnConnect()
         {
-            Console.WriteLine(message);
+            Console.WriteLine("connected.");
         }
 
         private static void OnReceive(Ticker data)

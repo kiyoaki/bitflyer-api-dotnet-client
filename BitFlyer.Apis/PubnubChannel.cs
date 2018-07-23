@@ -2,7 +2,7 @@
 
 namespace BitFlyer.Apis
 {
-    public static class PubnubChannel
+    public static class RealtimeChannel
     {
         #region prefix
         public const string BoardSnapshotPrefix = "lightning_board_snapshot_";
