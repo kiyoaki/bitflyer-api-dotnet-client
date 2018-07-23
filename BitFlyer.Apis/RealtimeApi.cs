@@ -118,18 +118,10 @@ namespace BitFlyer.Apis
 
         public void Dispose()
         {
-            Dispose(true);
-        }
-
-        private void Dispose(bool disposing)
-        {
             if (!disposed)
             {
-                if (disposing)
-                {
-                    if (clientWebSocket != null)
-                        clientWebSocket.Dispose();
-                }
+                if (clientWebSocket != null)
+                    clientWebSocket.Dispose();
 
                 disposed = true;
             }
