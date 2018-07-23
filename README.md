@@ -49,9 +49,9 @@ class Program
         Console.ReadKey();
     }
     
-    static void OnConnect(string message)
+    static void OnConnect()
     {
-        Console.WriteLine(message);
+        Console.WriteLine("connected.");
     }
     
     static void OnReceive(Ticker data)
