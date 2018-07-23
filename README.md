@@ -44,14 +44,14 @@ class Program
     {
         var api = new RealtimeApi();
         
-        api.Subscribe<Ticker>(PubnubChannel.TickerFxBtcJpy, OnReceive, OnConnect, OnError);
+        api.Subscribe<Ticker>(PubnubChannel.TickerFxBtcJpy, OnReceive, OnConnect, OnError).Wait();
         
         Console.ReadKey();
     }
     
-    static void OnConnect(string message)
+    static void OnConnect()
     {
-        Console.WriteLine(message);
+        Console.WriteLine("connected.");
     }
     
     static void OnReceive(Ticker data)
