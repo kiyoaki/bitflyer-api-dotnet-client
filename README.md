@@ -44,7 +44,7 @@ class Program
     {
         var api = new RealtimeApi();
         
-        api.Subscribe<Ticker>(PubnubChannel.TickerFxBtcJpy, OnReceive, OnConnect, OnError).Wait();
+        api.Subscribe<Ticker>(RealtimeChannel.TickerFxBtcJpy, OnReceive, OnConnect, OnError).Wait();
         
         Console.ReadKey();
     }
