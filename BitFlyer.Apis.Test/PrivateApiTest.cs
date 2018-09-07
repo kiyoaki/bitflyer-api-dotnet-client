@@ -8,7 +8,7 @@ namespace BitFlyer.Apis.Test
 {
     public class PrivateApiTest
     {
-        private const double OrderSize = 0.001;
+        private const double OrderSize = 0.01;
 
         private readonly PrivateApi apiClient;
         private readonly int buyPrice;
