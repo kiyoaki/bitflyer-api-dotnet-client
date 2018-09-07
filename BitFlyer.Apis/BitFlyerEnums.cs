@@ -226,7 +226,10 @@ namespace BitFlyer.Apis
         BtcJpyThisWeek,
 
         [EnumMember(Value = "BTCJPY_MAT2WK")]
-        BtcJpyNextWeek
+        BtcJpyNextWeek,
+
+        [EnumMember(Value = "BTCJPY_MAT3M")]
+        BtcJpyWeekAfterNext,
     }
 
     public enum CollateralReasonCode
