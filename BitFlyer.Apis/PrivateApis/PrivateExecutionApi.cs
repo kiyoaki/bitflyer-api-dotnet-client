@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
@@ -9,7 +10,8 @@ namespace BitFlyer.Apis
 
         public async Task<PrivateExecution[]> GetExecutions(string productCode,
             int? count = null, int? before = null, int? after = null,
-            string childOrderId = null, string childOrderAcceptanceId = null)
+            string childOrderId = null, string childOrderAcceptanceId = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var query = new Dictionary<string, object>
             {
@@ -37,7 +39,7 @@ namespace BitFlyer.Apis
                 query["child_order_acceptance_id"] = childOrderAcceptanceId;
             }
 
-            return await Get<PrivateExecution[]>(GetExecutionsApiPath, query).ConfigureAwait(false);
+            return await Get<PrivateExecution[]>(GetExecutionsApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

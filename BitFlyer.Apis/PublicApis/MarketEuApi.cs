@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
@@ -6,9 +7,9 @@ namespace BitFlyer.Apis
     {
         private const string MarketEuApiPath = "/v1/markets/eu";
 
-        public static async Task<Market[]> GetMarketsEu()
+        public static async Task<Market[]> GetMarketsEu(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Get<Market[]>(MarketEuApiPath).ConfigureAwait(false);
+            return await Get<Market[]>(MarketEuApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

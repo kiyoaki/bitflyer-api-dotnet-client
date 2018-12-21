@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
@@ -8,7 +9,8 @@ namespace BitFlyer.Apis
         private const string ExecutionsApiPath = "/v1/executions";
 
         public static async Task<PublicExecution[]> GetExecutions(string productCode,
-            int? count = null, int? before = null, int? after = null)
+            int? count = null, int? before = null, int? after = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var query = new Dictionary<string, object>
             {
@@ -28,7 +30,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<PublicExecution[]>(ExecutionsApiPath, query).ConfigureAwait(false);
+            return await Get<PublicExecution[]>(ExecutionsApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

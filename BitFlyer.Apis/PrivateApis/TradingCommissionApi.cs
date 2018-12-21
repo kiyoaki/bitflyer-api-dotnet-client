@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
@@ -7,12 +8,12 @@ namespace BitFlyer.Apis
     {
         private const string GetTradingCommissionApiPath = "/v1/me/gettradingcommission";
 
-        public async Task<TradingCommission> GetTradingCommission(string productCode)
+        public async Task<TradingCommission> GetTradingCommission(string productCode, CancellationToken cancellationToken = default(CancellationToken))
         {
             return await Get<TradingCommission>(GetTradingCommissionApiPath, new Dictionary<string, object>
             {
                 { "product_code", productCode }
-            }).ConfigureAwait(false);
+            }, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

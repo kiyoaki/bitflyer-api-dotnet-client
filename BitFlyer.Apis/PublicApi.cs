@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Utf8Json;
 
@@ -15,7 +16,8 @@ namespace BitFlyer.Apis
             Timeout = TimeSpan.FromSeconds(60)
         };
 
-        internal static async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
+        internal static async Task<T> Get<T>(string path, Dictionary<string, object> query = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var queryString = string.Empty;
             if (query != null)
@@ -25,7 +27,7 @@ namespace BitFlyer.Apis
 
             try
             {
-                var response = await HttpClient.GetAsync(path + queryString).ConfigureAwait(false);
+                var response = await HttpClient.GetAsync(path + queryString, cancellationToken).ConfigureAwait(false);
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {

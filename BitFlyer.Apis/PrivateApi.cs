@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Utf8Json;
 
@@ -29,40 +30,47 @@ namespace BitFlyer.Apis
             _apiSecret = Encoding.UTF8.GetBytes(apiSecret);
         }
 
-        internal async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
+        internal async Task<T> Get<T>(string path, Dictionary<string, object> query = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await SendRequest<T>(HttpMethod.Get, path, query).ConfigureAwait(false);
+            return await SendRequest<T>(HttpMethod.Get, path, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        internal async Task<T> Post<T>(string path, object body)
+        internal async Task<T> Post<T>(string path, object body,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await SendRequest<T>(HttpMethod.Post, path, null, body).ConfigureAwait(false);
+            return await SendRequest<T>(HttpMethod.Post, path, null, body, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        internal async Task<T> Post<T>(string path, Dictionary<string, object> query, object body)
+        internal async Task<T> Post<T>(string path, Dictionary<string, object> query, object body,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await SendRequest<T>(HttpMethod.Post, path, query, body).ConfigureAwait(false);
+            return await SendRequest<T>(HttpMethod.Post, path, query, body, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        internal async Task Post(string path, object body)
+        internal async Task Post(string path, object body,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            await SendRequest(HttpMethod.Post, path, null, body).ConfigureAwait(false);
+            await SendRequest(HttpMethod.Post, path, null, body, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        internal async Task Post(string path, Dictionary<string, object> query, object body)
+        internal async Task Post(string path, Dictionary<string, object> query, object body,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            await SendRequest(HttpMethod.Post, path, query, body).ConfigureAwait(false);
+            await SendRequest(HttpMethod.Post, path, query, body, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         private async Task<T> SendRequest<T>(HttpMethod method, string path,
-            Dictionary<string, object> query = null, object body = null)
+            Dictionary<string, object> query = null, object body = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
-            var responseJson = await SendRequest(method, path, query, body).ConfigureAwait(false);
+            var responseJson = await SendRequest(method, path, query, body, cancellationToken: cancellationToken).ConfigureAwait(false);
             return JsonSerializer.Deserialize<T>(responseJson);
         }
 
         private async Task<string> SendRequest(HttpMethod method, string path,
-            Dictionary<string, object> query = null, object body = null)
+            Dictionary<string, object> query = null, object body = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var queryString = string.Empty;
             if (query != null)
@@ -89,7 +97,7 @@ namespace BitFlyer.Apis
 
                 try
                 {
-                    var response = await HttpClient.SendAsync(message).ConfigureAwait(false);
+                    var response = await HttpClient.SendAsync(message, cancellationToken).ConfigureAwait(false);
                     var responseJson = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     if (!response.IsSuccessStatusCode)
                     {

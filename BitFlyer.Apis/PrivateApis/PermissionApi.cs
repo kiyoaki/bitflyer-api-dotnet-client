@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
@@ -6,9 +7,9 @@ namespace BitFlyer.Apis
     {
         private const string PermissionApiPath = "/v1/me/getpermissions";
 
-        public async Task<string[]> GetPermissions()
+        public async Task<string[]> GetPermissions(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Get<string[]>(PermissionApiPath).ConfigureAwait(false);
+            return await Get<string[]>(PermissionApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

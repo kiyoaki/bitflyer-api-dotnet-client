@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
@@ -6,9 +7,9 @@ namespace BitFlyer.Apis
     {
         private const string SendCoinApiPath = "/v1/me/sendcoin";
 
-        public async Task<PostResult> SendCoin(SendCoinParameter parameter)
+        public async Task<PostResult> SendCoin(SendCoinParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Post<PostResult>(SendCoinApiPath, parameter).ConfigureAwait(false);
+            return await Post<PostResult>(SendCoinApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

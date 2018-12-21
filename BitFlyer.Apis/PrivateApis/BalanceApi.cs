@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
@@ -6,9 +7,9 @@ namespace BitFlyer.Apis
     {
         private const string BalanceApiPath = "/v1/me/getbalance";
 
-        public async Task<Balance[]> GetBalance()
+        public async Task<Balance[]> GetBalance(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Get<Balance[]>(BalanceApiPath).ConfigureAwait(false);
+            return await Get<Balance[]>(BalanceApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
@@ -6,9 +7,9 @@ namespace BitFlyer.Apis
     {
         private const string AddressesApiPath = "/v1/me/getaddresses";
 
-        public async Task<CryptoCurrencyAddress[]> GetAddresses()
+        public async Task<CryptoCurrencyAddress[]> GetAddresses(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Get<CryptoCurrencyAddress[]>(AddressesApiPath).ConfigureAwait(false);
+            return await Get<CryptoCurrencyAddress[]>(AddressesApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

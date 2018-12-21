@@ -332,5 +332,12 @@ namespace BitFlyer.Apis.Test
 
             Thread.Sleep(waitMilliSeconds);
         }
+
+        [Fact]
+        public async Task TaskCanceledException()
+        {
+            var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
+            await Assert.ThrowsAsync<BitFlyerApiException>(async () => await apiClient.GetExecutions(ProductCode.FxBtcJpy, cancellationToken: cancellationTokenSource.Token));
+        }
     }
 }

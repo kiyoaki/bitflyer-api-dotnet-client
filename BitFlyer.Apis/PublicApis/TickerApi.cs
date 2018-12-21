@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
@@ -7,13 +8,13 @@ namespace BitFlyer.Apis
     {
         private const string TickerApiPath = "/v1/ticker";
 
-        public static async Task<Ticker> GetTicker(string productCode)
+        public static async Task<Ticker> GetTicker(string productCode, CancellationToken cancellationToken = default(CancellationToken))
         {
             var query = new Dictionary<string, object>
             {
                 { "product_code", productCode }
             };
-            return await Get<Ticker>(TickerApiPath, query).ConfigureAwait(false);
+            return await Get<Ticker>(TickerApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

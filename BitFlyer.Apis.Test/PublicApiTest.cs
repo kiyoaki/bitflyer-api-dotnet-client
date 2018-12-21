@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -108,6 +109,13 @@ namespace BitFlyer.Apis.Test
         {
             var res1 = await PublicApi.GetChatEu(DateTime.UtcNow.Subtract(TimeSpan.FromHours(1)));
             Assert.NotNull(res1);
+        }
+
+        [Fact]
+        public async Task TaskCanceledException()
+        {
+            var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
+            await Assert.ThrowsAsync<BitFlyerApiException>(async () => await PublicApi.GetBoard(ProductCode.FxBtcJpy, cancellationTokenSource.Token));
         }
     }
 }

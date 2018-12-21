@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
@@ -10,23 +11,24 @@ namespace BitFlyer.Apis
         private const string CancelAllOrdersApiPath = "/v1/me/cancelallchildorders";
         private const string GetChildOrdersApiPath = "/v1/me/getchildorders";
 
-        public async Task<PostResult> SendChildOrder(SendChildOrderParameter parameter)
+        public async Task<PostResult> SendChildOrder(SendChildOrderParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Post<PostResult>(SendChildOrderApiPath, parameter).ConfigureAwait(false);
+            return await Post<PostResult>(SendChildOrderApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task CancelChildOrder(CancelChildOrderParameter parameter)
+        public async Task CancelChildOrder(CancelChildOrderParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Post(CancelChildOrderApiPath, parameter).ConfigureAwait(false);
+            await Post(CancelChildOrderApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task CancelAllOrders(CancelAllOrdersParameter parameter)
+        public async Task CancelAllOrders(CancelAllOrdersParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
         {
-            await Post(CancelAllOrdersApiPath, parameter).ConfigureAwait(false);
+            await Post(CancelAllOrdersApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<ChildOrder[]> GetChildOrders(string productCode,
-            int? count = null, int? before = null, int? after = null, ChildOrderState? childOrderState = null)
+            int? count = null, int? before = null, int? after = null, ChildOrderState? childOrderState = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var query = new Dictionary<string, object>
             {
@@ -50,10 +52,10 @@ namespace BitFlyer.Apis
                 query["child_order_state"] = childOrderState.GetEnumMemberValue();
             }
 
-            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query).ConfigureAwait(false);
+            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<ChildOrder[]> GetChildOrder(string productCode, long childOrderId)
+        public async Task<ChildOrder[]> GetChildOrder(string productCode, long childOrderId, CancellationToken cancellationToken = default(CancellationToken))
         {
             var query = new Dictionary<string, object>
             {
@@ -61,7 +63,7 @@ namespace BitFlyer.Apis
                 { "child_order_id", childOrderId }
             };
 
-            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query).ConfigureAwait(false);
+            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

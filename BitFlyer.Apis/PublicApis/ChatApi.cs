@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
@@ -8,7 +9,7 @@ namespace BitFlyer.Apis
     {
         private const string ChatApiPath = "/v1/getchats";
 
-        public static async Task<Chat[]> GetChat(DateTime? fromDate = null)
+        public static async Task<Chat[]> GetChat(DateTime? fromDate = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (fromDate != null)
             {
@@ -17,10 +18,10 @@ namespace BitFlyer.Apis
                     { "from_date", fromDate.Value }
                 };
 
-                return await Get<Chat[]>(ChatApiPath, query).ConfigureAwait(false);
+                return await Get<Chat[]>(ChatApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
 
-            return await Get<Chat[]>(ChatApiPath).ConfigureAwait(false);
+            return await Get<Chat[]>(ChatApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

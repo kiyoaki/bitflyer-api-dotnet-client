@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
@@ -8,7 +9,8 @@ namespace BitFlyer.Apis
         private const string CoinInApiPath = "/v1/me/getcoinins";
 
         public async Task<CoinIn[]> GetCoinIns(AddresseType type = AddresseType.Normal,
-            int? count = null, int? before = null, int? after = null)
+            int? count = null, int? before = null, int? after = null,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var query = new Dictionary<string, object>();
 
@@ -25,7 +27,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<CoinIn[]>(CoinInApiPath, query).ConfigureAwait(false);
+            return await Get<CoinIn[]>(CoinInApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

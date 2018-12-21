@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace BitFlyer.Apis
 {
@@ -6,9 +7,9 @@ namespace BitFlyer.Apis
     {
         private const string DepositApiPath = "/v1/me/getdeposits";
 
-        public async Task<Deposit[]> GetDeposits()
+        public async Task<Deposit[]> GetDeposits(CancellationToken cancellationToken = default(CancellationToken))
         {
-            return await Get<Deposit[]>(DepositApiPath).ConfigureAwait(false);
+            return await Get<Deposit[]>(DepositApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
