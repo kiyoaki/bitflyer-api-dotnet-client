@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
@@ -16,7 +17,7 @@ namespace BitFlyer.Apis
         private static readonly HttpClient HttpClient = new HttpClient
         {
             BaseAddress = BitFlyerConstants.BaseUri,
-            Timeout = TimeSpan.FromSeconds(10)
+            Timeout = TimeSpan.FromSeconds(60)
         };
 
         private readonly string _apiKey;
@@ -112,7 +113,22 @@ namespace BitFlyer.Apis
 
                     return responseJson;
                 }
+                catch (WebException ex)
+                {
+                    switch (ex.Status)
+                    {
+                        case WebExceptionStatus.RequestCanceled:
+                        case WebExceptionStatus.Timeout:
+                            throw new BitFlyerApiException(path, "Request Timeout");
+                        default:
+                            throw;
+                    }
+                }
                 catch (TaskCanceledException)
+                {
+                    throw new BitFlyerApiException(path, "Request Timeout");
+                }
+                catch (OperationCanceledException)
                 {
                     throw new BitFlyerApiException(path, "Request Timeout");
                 }

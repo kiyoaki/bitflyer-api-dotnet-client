@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Utf8Json;
@@ -11,7 +12,7 @@ namespace BitFlyer.Apis
         private static readonly HttpClient HttpClient = new HttpClient
         {
             BaseAddress = BitFlyerConstants.BaseUri,
-            Timeout = TimeSpan.FromSeconds(10)
+            Timeout = TimeSpan.FromSeconds(60)
         };
 
         internal static async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
@@ -48,7 +49,22 @@ namespace BitFlyer.Apis
 
                 return JsonSerializer.Deserialize<T>(json);
             }
+            catch (WebException ex)
+            {
+                switch (ex.Status)
+                {
+                    case WebExceptionStatus.RequestCanceled:
+                    case WebExceptionStatus.Timeout:
+                        throw new BitFlyerApiException(path, "Request Timeout");
+                    default:
+                        throw;
+                }
+            }
             catch (TaskCanceledException)
+            {
+                throw new BitFlyerApiException(path, "Request Timeout");
+            }
+            catch (OperationCanceledException)
             {
                 throw new BitFlyerApiException(path, "Request Timeout");
             }

@@ -38,7 +38,7 @@ namespace BitFlyer.Apis.Test
             var res1 = await PublicApi.GetExecutions(ProductCode.BtcJpy);
             Assert.NotNull(res1);
 
-            var res2 = await PublicApi.GetExecutions(ProductCode.FxBtcJpy, 500, 272500, 272000);
+            var res2 = await PublicApi.GetExecutions(ProductCode.FxBtcJpy);
             Assert.NotNull(res2);
 
             var res3 = await PublicApi.GetExecutions(ProductCode.EthBtc);
