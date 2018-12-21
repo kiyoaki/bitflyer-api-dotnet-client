@@ -12,12 +12,12 @@ namespace BitFlyer.Apis
 
         public async Task<PostResult> SendParentOrder(SendParentOrderParameter parameter)
         {
-            return await Post<PostResult>(SendParentOrderApiPath, parameter);
+            return await Post<PostResult>(SendParentOrderApiPath, parameter).ConfigureAwait(false);
         }
 
         public async Task CancelParentOrder(CancelParentOrderParameter parameter)
         {
-            await Post(CancelParentOrderApiPath, parameter);
+            await Post(CancelParentOrderApiPath, parameter).ConfigureAwait(false);
         }
 
         public async Task<ParentOrderDetail> GetParentOrder(string productCode,
@@ -43,7 +43,7 @@ namespace BitFlyer.Apis
                 query["parent_order_acceptance_id"] = parentOrderAcceptanceId;
             }
 
-            return await Get<ParentOrderDetail>(GetParentOrderApiPath, query);
+            return await Get<ParentOrderDetail>(GetParentOrderApiPath, query).ConfigureAwait(false);
         }
 
         public async Task<ParentOrder[]> GetParentOrders(string productCode,
@@ -69,7 +69,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<ParentOrder[]>(GetParentOrdersApiPath, query);
+            return await Get<ParentOrder[]>(GetParentOrdersApiPath, query).ConfigureAwait(false);
         }
     }
 }

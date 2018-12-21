@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public async Task<BankAccount[]> GetBankAccounts()
         {
-            return await Get<BankAccount[]>(BankAccountsApiPath);
+            return await Get<BankAccount[]>(BankAccountsApiPath).ConfigureAwait(false);
         }
     }
 }

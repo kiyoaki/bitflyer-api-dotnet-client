@@ -13,7 +13,7 @@ namespace BitFlyer.Apis
             {
                 { "product_code", productCode }
             };
-            return await Get<Board>(BoardApiPath, query);
+            return await Get<Board>(BoardApiPath, query).ConfigureAwait(false);
         }
     }
 }

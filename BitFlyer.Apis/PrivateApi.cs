@@ -31,33 +31,33 @@ namespace BitFlyer.Apis
 
         internal async Task<T> Get<T>(string path, Dictionary<string, object> query = null)
         {
-            return await SendRequest<T>(HttpMethod.Get, path, query);
+            return await SendRequest<T>(HttpMethod.Get, path, query).ConfigureAwait(false);
         }
 
         internal async Task<T> Post<T>(string path, object body)
         {
-            return await SendRequest<T>(HttpMethod.Post, path, null, body);
+            return await SendRequest<T>(HttpMethod.Post, path, null, body).ConfigureAwait(false);
         }
 
         internal async Task<T> Post<T>(string path, Dictionary<string, object> query, object body)
         {
-            return await SendRequest<T>(HttpMethod.Post, path, query, body);
+            return await SendRequest<T>(HttpMethod.Post, path, query, body).ConfigureAwait(false);
         }
 
         internal async Task Post(string path, object body)
         {
-            await SendRequest(HttpMethod.Post, path, null, body);
+            await SendRequest(HttpMethod.Post, path, null, body).ConfigureAwait(false);
         }
 
         internal async Task Post(string path, Dictionary<string, object> query, object body)
         {
-            await SendRequest(HttpMethod.Post, path, query, body);
+            await SendRequest(HttpMethod.Post, path, query, body).ConfigureAwait(false);
         }
 
         private async Task<T> SendRequest<T>(HttpMethod method, string path,
             Dictionary<string, object> query = null, object body = null)
         {
-            var responseJson = await SendRequest(method, path, query, body);
+            var responseJson = await SendRequest(method, path, query, body).ConfigureAwait(false);
             return JsonSerializer.Deserialize<T>(responseJson);
         }
 
@@ -89,8 +89,8 @@ namespace BitFlyer.Apis
 
                 try
                 {
-                    var response = await HttpClient.SendAsync(message);
-                    var responseJson = await response.Content.ReadAsStringAsync();
+                    var response = await HttpClient.SendAsync(message).ConfigureAwait(false);
+                    var responseJson = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     if (!response.IsSuccessStatusCode)
                     {
                         Error error = null;

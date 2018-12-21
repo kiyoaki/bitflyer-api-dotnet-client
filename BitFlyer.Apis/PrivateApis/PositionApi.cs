@@ -12,7 +12,7 @@ namespace BitFlyer.Apis
             return await Get<Position[]>(GetPositionsApiPath, new Dictionary<string, object>
             {
                 { "product_code", productCode }
-            });
+            }).ConfigureAwait(false);
         }
     }
 }

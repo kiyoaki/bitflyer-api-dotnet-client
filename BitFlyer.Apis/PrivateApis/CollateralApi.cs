@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public async Task<Collateral> GetCollateral()
         {
-            return await Get<Collateral>(CollateralApiPath);
+            return await Get<Collateral>(CollateralApiPath).ConfigureAwait(false);
         }
     }
 }

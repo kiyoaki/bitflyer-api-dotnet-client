@@ -14,14 +14,14 @@ namespace BitFlyer.Apis
 
         public static async Task<string> GetBtcJpyThisWeek()
         {
-            var markets = await PublicApi.GetMarkets();
+            var markets = await PublicApi.GetMarkets().ConfigureAwait(false);
             var btcJpyThisWeekMarket = markets.FirstOrDefault(x => x.ProductAlias == ProductAlias.BtcJpyThisWeek);
             return btcJpyThisWeekMarket?.ProductCode;
         }
 
         public static async Task<string> GetBtcJpyNextWeek()
         {
-            var markets = await PublicApi.GetMarkets();
+            var markets = await PublicApi.GetMarkets().ConfigureAwait(false);
             var btcJpyNextWeekMarket = markets.FirstOrDefault(x => x.ProductAlias == ProductAlias.BtcJpyNextWeek);
             return btcJpyNextWeekMarket?.ProductCode;
         }

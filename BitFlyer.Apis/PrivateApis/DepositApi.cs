@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public async Task<Deposit[]> GetDeposits()
         {
-            return await Get<Deposit[]>(DepositApiPath);
+            return await Get<Deposit[]>(DepositApiPath).ConfigureAwait(false);
         }
     }
 }

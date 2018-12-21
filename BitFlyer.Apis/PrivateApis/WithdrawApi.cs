@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public async Task<PostResult> Withdraw(WithdrawParameter parameter)
         {
-            return await Post<PostResult>(WithdrawApiPath, parameter);
+            return await Post<PostResult>(WithdrawApiPath, parameter).ConfigureAwait(false);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public async Task<PostResult> SendCoin(SendCoinParameter parameter)
         {
-            return await Post<PostResult>(SendCoinApiPath, parameter);
+            return await Post<PostResult>(SendCoinApiPath, parameter).ConfigureAwait(false);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<CoinIn[]>(CoinInApiPath, query);
+            return await Get<CoinIn[]>(CoinInApiPath, query).ConfigureAwait(false);
         }
     }
 }

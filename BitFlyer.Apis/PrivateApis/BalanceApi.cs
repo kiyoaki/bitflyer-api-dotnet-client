@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public async Task<Balance[]> GetBalance()
         {
-            return await Get<Balance[]>(BalanceApiPath);
+            return await Get<Balance[]>(BalanceApiPath).ConfigureAwait(false);
         }
     }
 }

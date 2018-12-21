@@ -56,7 +56,7 @@ namespace BitFlyer.Apis
         #region BtcJpyThisWeek
         public static async Task<string> GetBoardSnapshotBtcJpyThisWeek()
         {
-            var productCode = await ProductCode.GetBtcJpyThisWeek();
+            var productCode = await ProductCode.GetBtcJpyThisWeek().ConfigureAwait(false);
             if (productCode != null)
             {
                 return BoardSnapshotPrefix + productCode;
@@ -66,7 +66,7 @@ namespace BitFlyer.Apis
 
         public static async Task<string> GetBoardBtcJpyThisWeek()
         {
-            var productCode = await ProductCode.GetBtcJpyThisWeek();
+            var productCode = await ProductCode.GetBtcJpyThisWeek().ConfigureAwait(false);
             if (productCode != null)
             {
                 return BoardPrefix + productCode;
@@ -76,7 +76,7 @@ namespace BitFlyer.Apis
 
         public static async Task<string> GetTickerBtcJpyThisWeek()
         {
-            var productCode = await ProductCode.GetBtcJpyThisWeek();
+            var productCode = await ProductCode.GetBtcJpyThisWeek().ConfigureAwait(false);
             if (productCode != null)
             {
                 return TickerPrefix + productCode;
@@ -86,7 +86,7 @@ namespace BitFlyer.Apis
 
         public static async Task<string> GetExecutionBtcJpyThisWeek()
         {
-            var productCode = await ProductCode.GetBtcJpyThisWeek();
+            var productCode = await ProductCode.GetBtcJpyThisWeek().ConfigureAwait(false);
             if (productCode != null)
             {
                 return ExecutionPrefix + productCode;
@@ -98,7 +98,7 @@ namespace BitFlyer.Apis
         #region BtcJpyNextWeek
         public static async Task<string> GetBoardSnapshotBtcJpyNextWeek()
         {
-            var productCode = await ProductCode.GetBtcJpyNextWeek();
+            var productCode = await ProductCode.GetBtcJpyNextWeek().ConfigureAwait(false);
             if (productCode != null)
             {
                 return BoardSnapshotPrefix + productCode;
@@ -108,7 +108,7 @@ namespace BitFlyer.Apis
 
         public static async Task<string> GetBoardBtcJpyNextWeek()
         {
-            var productCode = await ProductCode.GetBtcJpyNextWeek();
+            var productCode = await ProductCode.GetBtcJpyNextWeek().ConfigureAwait(false);
             if (productCode != null)
             {
                 return BoardPrefix + productCode;
@@ -118,7 +118,7 @@ namespace BitFlyer.Apis
 
         public static async Task<string> GetTickerBtcJpyNextWeek()
         {
-            var productCode = await ProductCode.GetBtcJpyNextWeek();
+            var productCode = await ProductCode.GetBtcJpyNextWeek().ConfigureAwait(false);
             if (productCode != null)
             {
                 return TickerPrefix + productCode;
@@ -128,7 +128,7 @@ namespace BitFlyer.Apis
 
         public static async Task<string> GetExecutionBtcJpyNextWeek()
         {
-            var productCode = await ProductCode.GetBtcJpyNextWeek();
+            var productCode = await ProductCode.GetBtcJpyNextWeek().ConfigureAwait(false);
             if (productCode != null)
             {
                 return ExecutionPrefix + productCode;

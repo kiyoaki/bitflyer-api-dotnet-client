@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public static async Task<Market[]> GetMarketsEu()
         {
-            return await Get<Market[]>(MarketEuApiPath);
+            return await Get<Market[]>(MarketEuApiPath).ConfigureAwait(false);
         }
     }
 }

@@ -17,10 +17,10 @@ namespace BitFlyer.Apis
                     { "from_date", fromDate.Value }
                 };
 
-                return await Get<Chat[]>(ChatEuApiPath, query);
+                return await Get<Chat[]>(ChatEuApiPath, query).ConfigureAwait(false);
             }
 
-            return await Get<Chat[]>(ChatEuApiPath);
+            return await Get<Chat[]>(ChatEuApiPath).ConfigureAwait(false);
         }
     }
 }

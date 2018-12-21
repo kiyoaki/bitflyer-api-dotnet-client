@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public async Task<string[]> GetPermissions()
         {
-            return await Get<string[]>(PermissionApiPath);
+            return await Get<string[]>(PermissionApiPath).ConfigureAwait(false);
         }
     }
 }

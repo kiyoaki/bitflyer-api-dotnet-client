@@ -12,17 +12,17 @@ namespace BitFlyer.Apis
 
         public async Task<PostResult> SendChildOrder(SendChildOrderParameter parameter)
         {
-            return await Post<PostResult>(SendChildOrderApiPath, parameter);
+            return await Post<PostResult>(SendChildOrderApiPath, parameter).ConfigureAwait(false);
         }
 
         public async Task CancelChildOrder(CancelChildOrderParameter parameter)
         {
-            await Post(CancelChildOrderApiPath, parameter);
+            await Post(CancelChildOrderApiPath, parameter).ConfigureAwait(false);
         }
 
         public async Task CancelAllOrders(CancelAllOrdersParameter parameter)
         {
-            await Post(CancelAllOrdersApiPath, parameter);
+            await Post(CancelAllOrdersApiPath, parameter).ConfigureAwait(false);
         }
 
         public async Task<ChildOrder[]> GetChildOrders(string productCode,
@@ -50,7 +50,7 @@ namespace BitFlyer.Apis
                 query["child_order_state"] = childOrderState.GetEnumMemberValue();
             }
 
-            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query);
+            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query).ConfigureAwait(false);
         }
 
         public async Task<ChildOrder[]> GetChildOrder(string productCode, long childOrderId)
@@ -61,7 +61,7 @@ namespace BitFlyer.Apis
                 { "child_order_id", childOrderId }
             };
 
-            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query);
+            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query).ConfigureAwait(false);
         }
     }
 }

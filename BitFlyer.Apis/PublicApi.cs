@@ -25,8 +25,8 @@ namespace BitFlyer.Apis
 
             try
             {
-                var response = await HttpClient.GetAsync(path + queryString);
-                var json = await response.Content.ReadAsStringAsync();
+                var response = await HttpClient.GetAsync(path + queryString).ConfigureAwait(false);
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
                     Error error = null;

@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
 
         public async Task<CryptoCurrencyAddress[]> GetAddresses()
         {
-            return await Get<CryptoCurrencyAddress[]>(AddressesApiPath);
+            return await Get<CryptoCurrencyAddress[]>(AddressesApiPath).ConfigureAwait(false);
         }
     }
 }

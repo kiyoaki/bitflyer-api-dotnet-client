@@ -20,7 +20,7 @@ namespace BitFlyer.Apis
                 { "message_id", messageId }
             };
 
-            return await Get<Withdrawal>(GetWithdrawalsApiPath, query);
+            return await Get<Withdrawal>(GetWithdrawalsApiPath, query).ConfigureAwait(false);
         }
 
         public async Task<Withdrawal[]> GetWithdrawals(int? count = null, int? before = null, int? after = null)
@@ -40,7 +40,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<Withdrawal[]>(GetWithdrawalsApiPath, query);
+            return await Get<Withdrawal[]>(GetWithdrawalsApiPath, query).ConfigureAwait(false);
         }
     }
 }

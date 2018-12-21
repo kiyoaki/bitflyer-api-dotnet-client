@@ -28,7 +28,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<PublicExecution[]>(ExecutionsApiPath, query);
+            return await Get<PublicExecution[]>(ExecutionsApiPath, query).ConfigureAwait(false);
         }
     }
 }

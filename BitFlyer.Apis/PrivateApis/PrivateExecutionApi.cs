@@ -37,7 +37,7 @@ namespace BitFlyer.Apis
                 query["child_order_acceptance_id"] = childOrderAcceptanceId;
             }
 
-            return await Get<PrivateExecution[]>(GetExecutionsApiPath, query);
+            return await Get<PrivateExecution[]>(GetExecutionsApiPath, query).ConfigureAwait(false);
         }
     }
 }

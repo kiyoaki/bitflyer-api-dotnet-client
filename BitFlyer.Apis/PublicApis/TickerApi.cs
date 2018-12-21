@@ -13,7 +13,7 @@ namespace BitFlyer.Apis
             {
                 { "product_code", productCode }
             };
-            return await Get<Ticker>(TickerApiPath, query);
+            return await Get<Ticker>(TickerApiPath, query).ConfigureAwait(false);
         }
     }
 }

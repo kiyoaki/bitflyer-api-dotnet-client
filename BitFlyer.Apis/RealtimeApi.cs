@@ -35,9 +35,9 @@ namespace BitFlyer.Apis
 
         public async Task Subscribe<T>(string channel, Action<T> onReceive, Action onConnect, Action<string, Exception> onError)
         {
-            await clientWebSocket.ConnectAsync(uri, cancellationToken);
+            await clientWebSocket.ConnectAsync(uri, cancellationToken).ConfigureAwait(false);
 
-            await SendMessageAsync(channel);
+            await SendMessageAsync(channel).ConfigureAwait(false);
 
             var buffer = new byte[ReceiveChunkSize];
 
@@ -50,11 +50,11 @@ namespace BitFlyer.Apis
                     WebSocketReceiveResult result;
                     do
                     {
-                        result = await clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
+                        result = await clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken).ConfigureAwait(false);
 
                         if (result.MessageType == WebSocketMessageType.Close)
                         {
-                            await clientWebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None);
+                            await clientWebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None).ConfigureAwait(false);
                             onError("closed", null);
                         }
                         else
@@ -112,7 +112,7 @@ namespace BitFlyer.Apis
                     count = sendingMessage.Length - offset;
                 }
 
-                await clientWebSocket.SendAsync(new ArraySegment<byte>(sendingMessage, offset, count), WebSocketMessageType.Text, lastMessage, cancellationToken);
+                await clientWebSocket.SendAsync(new ArraySegment<byte>(sendingMessage, offset, count), WebSocketMessageType.Text, lastMessage, cancellationToken).ConfigureAwait(false);
             }
         }
 

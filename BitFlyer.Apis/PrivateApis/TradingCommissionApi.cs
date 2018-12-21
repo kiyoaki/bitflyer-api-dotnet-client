@@ -12,7 +12,7 @@ namespace BitFlyer.Apis
             return await Get<TradingCommission>(GetTradingCommissionApiPath, new Dictionary<string, object>
             {
                 { "product_code", productCode }
-            });
+            }).ConfigureAwait(false);
         }
     }
 }

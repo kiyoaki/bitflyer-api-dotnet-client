@@ -24,7 +24,7 @@ namespace BitFlyer.Apis
                 query["after"] = after.Value;
             }
 
-            return await Get<CollateralHistory[]>(GetCollateralHistoryApiPath, query);
+            return await Get<CollateralHistory[]>(GetCollateralHistoryApiPath, query).ConfigureAwait(false);
         }
     }
 }

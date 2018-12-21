@@ -13,7 +13,7 @@ namespace BitFlyer.Apis
             {
                 { "product_code", productCode ?? ProductCode.BtcJpy }
             };
-            return await Get<Health>(HealthApiPath, query);
+            return await Get<Health>(HealthApiPath, query).ConfigureAwait(false);
         }
     }
 }
