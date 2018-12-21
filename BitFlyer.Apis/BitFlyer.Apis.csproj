@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-    <Version>6.2.0</Version>
+    <Version>6.3.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>bitFlyer APIs Client Library for .NET</Description>
     <Copyright>Kiyoaki Tsurutani</Copyright>
@@ -11,7 +11,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</RepositoryUrl>
     <PackageTags>bitflyer, Bitcoin</PackageTags>
-    <PackageReleaseNotes>Improve timout handling</PackageReleaseNotes>
+    <PackageReleaseNotes>Support CancellationToken</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>Kiyoaki Tsurutani</Authors>
