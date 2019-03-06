@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>bitFlyer APIs Client Library for .NET</Description>
     <Copyright>Kiyoaki Tsurutani</Copyright>
-    <PackageLicenseUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>https://github.com/kiyoaki/bitflyer-api-dotnet-client/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</RepositoryUrl>
