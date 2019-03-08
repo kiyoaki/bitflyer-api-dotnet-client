@@ -11,14 +11,14 @@ namespace BitFlyer.Apis
         [DataMember(Name = "trade_date")]
         public DateTime TradeDate { get; set; }
 
-        [DataMember(Name = "currency_code")]
+        [DataMember(Name = "product_code")]
         public string ProductCode { get; set; }
 
         [DataMember(Name = "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
         [DataMember(Name = "trade_type")]
-        public Side TradeType { get; set; }
+        public TradeType TradeType { get; set; }
 
         [DataMember(Name = "price")]
         public double Price { get; set; }

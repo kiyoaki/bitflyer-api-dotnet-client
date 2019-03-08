@@ -28,6 +28,7 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "LSK")]
         Lisk,
 
+        [EnumMember(Value = "")]
         Unknown
     }
 
@@ -245,5 +246,38 @@ namespace BitFlyer.Apis
 
         [EnumMember(Value = "CANCEL_COLL")]
         Cancel
+    }
+
+    public enum TradeType
+    {
+        [EnumMember(Value = "")]
+        Unknown,
+
+        [EnumMember(Value = "BUY")]
+        Buy,
+
+        [EnumMember(Value = "SELL")]
+        Sell,
+
+        [EnumMember(Value = "DEPOSIT")]
+        Deposit,
+
+        [EnumMember(Value = "WITHDRAW")]
+        Withdraw,
+
+        [EnumMember(Value = "FEE")]
+        Fee,
+
+        [EnumMember(Value = "POST_COLL")]
+        Post,
+
+        [EnumMember(Value = "CANCEL_COLL")]
+        Cancel,
+
+        [EnumMember(Value = "PAYMENT")]
+        Payment,
+
+        [EnumMember(Value = "TRANSFER")]
+        Transfer
     }
 }
