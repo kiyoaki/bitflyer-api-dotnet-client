@@ -339,5 +339,19 @@ namespace BitFlyer.Apis.Test
             var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
             await Assert.ThrowsAsync<BitFlyerApiException>(async () => await apiClient.GetExecutions(ProductCode.FxBtcJpy, cancellationToken: cancellationTokenSource.Token));
         }
+
+        [Fact]
+        public async Task GetBalanceHistory()
+        {
+            var res1 = await apiClient.GetBalanceHistory(CurrencyCode.Jpy);
+            Assert.NotNull(res1);
+        }
+
+        [Fact]
+        public async Task GetCollateralAccounts()
+        {
+            var res1 = await apiClient.GetCollateralAccounts();
+            Assert.NotNull(res1);
+        }
     }
 }
