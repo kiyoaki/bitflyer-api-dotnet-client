@@ -17,7 +17,7 @@ namespace BitFlyer.Apis
         };
 
         internal static async Task<T> Get<T>(string path, Dictionary<string, object> query = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var queryString = string.Empty;
             if (query != null)

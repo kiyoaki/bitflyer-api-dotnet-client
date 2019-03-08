@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
     {
         private const string GetPositionsApiPath = "/v1/me/getpositions";
 
-        public async Task<Position[]> GetPositions(string productCode, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Position[]> GetPositions(string productCode, CancellationToken cancellationToken = default)
         {
             return await Get<Position[]>(GetPositionsApiPath, new Dictionary<string, object>
             {

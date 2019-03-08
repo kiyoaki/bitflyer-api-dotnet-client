@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string WithdrawApiPath = "/v1/me/withdraw";
 
-        public async Task<PostResult> Withdraw(WithdrawParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<PostResult> Withdraw(WithdrawParameter parameter, CancellationToken cancellationToken = default)
         {
             return await Post<PostResult>(WithdrawApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

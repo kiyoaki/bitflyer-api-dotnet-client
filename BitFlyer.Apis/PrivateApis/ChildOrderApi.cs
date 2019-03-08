@@ -11,24 +11,24 @@ namespace BitFlyer.Apis
         private const string CancelAllOrdersApiPath = "/v1/me/cancelallchildorders";
         private const string GetChildOrdersApiPath = "/v1/me/getchildorders";
 
-        public async Task<PostResult> SendChildOrder(SendChildOrderParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<PostResult> SendChildOrder(SendChildOrderParameter parameter, CancellationToken cancellationToken = default)
         {
             return await Post<PostResult>(SendChildOrderApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task CancelChildOrder(CancelChildOrderParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task CancelChildOrder(CancelChildOrderParameter parameter, CancellationToken cancellationToken = default)
         {
             await Post(CancelChildOrderApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task CancelAllOrders(CancelAllOrdersParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task CancelAllOrders(CancelAllOrdersParameter parameter, CancellationToken cancellationToken = default)
         {
             await Post(CancelAllOrdersApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<ChildOrder[]> GetChildOrders(string productCode,
             int? count = null, int? before = null, int? after = null, ChildOrderState? childOrderState = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {
@@ -55,7 +55,7 @@ namespace BitFlyer.Apis
             return await Get<ChildOrder[]>(GetChildOrdersApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<ChildOrder[]> GetChildOrder(string productCode, long childOrderId, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<ChildOrder[]> GetChildOrder(string productCode, long childOrderId, CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {

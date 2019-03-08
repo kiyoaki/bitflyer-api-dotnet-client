@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string MarketApiPath = "/v1/markets";
 
-        public static async Task<Market[]> GetMarkets(CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<Market[]> GetMarkets(CancellationToken cancellationToken = default)
         {
             return await Get<Market[]>(MarketApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

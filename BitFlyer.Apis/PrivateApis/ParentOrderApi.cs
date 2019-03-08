@@ -11,19 +11,19 @@ namespace BitFlyer.Apis
         private const string GetParentOrderApiPath = "/v1/me/getparentorder";
         private const string GetParentOrdersApiPath = "/v1/me/getparentorders";
 
-        public async Task<PostResult> SendParentOrder(SendParentOrderParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<PostResult> SendParentOrder(SendParentOrderParameter parameter, CancellationToken cancellationToken = default)
         {
             return await Post<PostResult>(SendParentOrderApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task CancelParentOrder(CancelParentOrderParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task CancelParentOrder(CancelParentOrderParameter parameter, CancellationToken cancellationToken = default)
         {
             await Post(CancelParentOrderApiPath, parameter, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<ParentOrderDetail> GetParentOrder(string productCode,
             string parentOrderId = null, string parentOrderAcceptanceId = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             if (parentOrderId == null && parentOrderAcceptanceId == null)
             {
@@ -51,7 +51,7 @@ namespace BitFlyer.Apis
         public async Task<ParentOrder[]> GetParentOrders(string productCode,
             int? count = null, int? before = null, int? after = null,
             ParentOrderState parentOrderState = ParentOrderState.Active,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {

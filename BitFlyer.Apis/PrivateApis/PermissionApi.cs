@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string PermissionApiPath = "/v1/me/getpermissions";
 
-        public async Task<string[]> GetPermissions(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<string[]> GetPermissions(CancellationToken cancellationToken = default)
         {
             return await Get<string[]>(PermissionApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

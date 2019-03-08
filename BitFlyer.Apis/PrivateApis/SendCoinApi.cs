@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string SendCoinApiPath = "/v1/me/sendcoin";
 
-        public async Task<PostResult> SendCoin(SendCoinParameter parameter, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<PostResult> SendCoin(SendCoinParameter parameter, CancellationToken cancellationToken = default)
         {
             return await Post<PostResult>(SendCoinApiPath, parameter, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

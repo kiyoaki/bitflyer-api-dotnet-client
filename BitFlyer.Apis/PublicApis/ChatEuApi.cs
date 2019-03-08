@@ -9,7 +9,7 @@ namespace BitFlyer.Apis
     {
         private const string ChatEuApiPath = "/v1/getchats/eu";
 
-        public static async Task<Chat[]> GetChatEu(DateTime? fromDate = null, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<Chat[]> GetChatEu(DateTime? fromDate = null, CancellationToken cancellationToken = default)
         {
             if (fromDate != null)
             {

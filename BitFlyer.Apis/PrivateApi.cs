@@ -31,38 +31,38 @@ namespace BitFlyer.Apis
         }
 
         internal async Task<T> Get<T>(string path, Dictionary<string, object> query = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             return await SendRequest<T>(HttpMethod.Get, path, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         internal async Task<T> Post<T>(string path, object body,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             return await SendRequest<T>(HttpMethod.Post, path, null, body, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         internal async Task<T> Post<T>(string path, Dictionary<string, object> query, object body,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             return await SendRequest<T>(HttpMethod.Post, path, query, body, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         internal async Task Post(string path, object body,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             await SendRequest(HttpMethod.Post, path, null, body, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         internal async Task Post(string path, Dictionary<string, object> query, object body,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             await SendRequest(HttpMethod.Post, path, query, body, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
         private async Task<T> SendRequest<T>(HttpMethod method, string path,
             Dictionary<string, object> query = null, object body = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var responseJson = await SendRequest(method, path, query, body, cancellationToken: cancellationToken).ConfigureAwait(false);
             return JsonSerializer.Deserialize<T>(responseJson);
@@ -70,7 +70,7 @@ namespace BitFlyer.Apis
 
         private async Task<string> SendRequest(HttpMethod method, string path,
             Dictionary<string, object> query = null, object body = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var queryString = string.Empty;
             if (query != null)

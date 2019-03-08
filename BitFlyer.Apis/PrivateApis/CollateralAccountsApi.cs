@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string CollateralAccountsApiPath = "/v1/me/getcollateralaccounts";
 
-        public async Task<CollateralAccount[]> GetCollateralAccounts(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CollateralAccount[]> GetCollateralAccounts(CancellationToken cancellationToken = default)
         {
             return await Get<CollateralAccount[]>(CollateralAccountsApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

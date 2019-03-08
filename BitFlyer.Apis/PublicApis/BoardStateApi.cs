@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
     {
         private const string BoardStateApiPath = "/v1/getboardstate";
 
-        public static async Task<BoardState> GetBoardState(string productCode, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<BoardState> GetBoardState(string productCode, CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {

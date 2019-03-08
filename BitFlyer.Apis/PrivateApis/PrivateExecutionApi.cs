@@ -11,7 +11,7 @@ namespace BitFlyer.Apis
         public async Task<PrivateExecution[]> GetExecutions(string productCode,
             int? count = null, int? before = null, int? after = null,
             string childOrderId = null, string childOrderAcceptanceId = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {

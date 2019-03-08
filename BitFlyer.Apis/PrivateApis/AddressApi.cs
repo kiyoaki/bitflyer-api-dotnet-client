@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string AddressesApiPath = "/v1/me/getaddresses";
 
-        public async Task<CryptoCurrencyAddress[]> GetAddresses(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CryptoCurrencyAddress[]> GetAddresses(CancellationToken cancellationToken = default)
         {
             return await Get<CryptoCurrencyAddress[]>(AddressesApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

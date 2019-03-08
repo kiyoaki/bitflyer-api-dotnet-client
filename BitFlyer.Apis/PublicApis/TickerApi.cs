@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
     {
         private const string TickerApiPath = "/v1/ticker";
 
-        public static async Task<Ticker> GetTicker(string productCode, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<Ticker> GetTicker(string productCode, CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {

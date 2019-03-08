@@ -9,7 +9,7 @@ namespace BitFlyer.Apis
     {
         private const string CoinOutApiPath = "/v1/me/getcoinouts";
 
-        public async Task<CoinOut> GetCoinOut(string messageId, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CoinOut> GetCoinOut(string messageId, CancellationToken cancellationToken = default)
         {
             if (messageId == null)
             {
@@ -24,7 +24,7 @@ namespace BitFlyer.Apis
             return await Get<CoinOut>(CoinOutApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<CoinOut[]> GetCoinOuts(int? count = null, int? before = null, int? after = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<CoinOut[]> GetCoinOuts(int? count = null, int? before = null, int? after = null, CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>();
 

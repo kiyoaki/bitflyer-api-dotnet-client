@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
     {
         private const string HealthApiPath = "/v1/gethealth";
 
-        public static async Task<Health> GetHealth(string productCode = null, CancellationToken cancellationToken = default(CancellationToken))
+        public static async Task<Health> GetHealth(string productCode = null, CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {

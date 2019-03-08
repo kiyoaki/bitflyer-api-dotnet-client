@@ -8,7 +8,7 @@ namespace BitFlyer.Apis
     {
         private const string GetTradingCommissionApiPath = "/v1/me/gettradingcommission";
 
-        public async Task<TradingCommission> GetTradingCommission(string productCode, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<TradingCommission> GetTradingCommission(string productCode, CancellationToken cancellationToken = default)
         {
             return await Get<TradingCommission>(GetTradingCommissionApiPath, new Dictionary<string, object>
             {

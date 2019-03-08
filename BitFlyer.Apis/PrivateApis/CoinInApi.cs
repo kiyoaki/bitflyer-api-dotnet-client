@@ -10,7 +10,7 @@ namespace BitFlyer.Apis
 
         public async Task<CoinIn[]> GetCoinIns(AddresseType type = AddresseType.Normal,
             int? count = null, int? before = null, int? after = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>();
 

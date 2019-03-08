@@ -10,7 +10,7 @@ namespace BitFlyer.Apis
 
         public static async Task<PublicExecution[]> GetExecutions(string productCode,
             int? count = null, int? before = null, int? after = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {

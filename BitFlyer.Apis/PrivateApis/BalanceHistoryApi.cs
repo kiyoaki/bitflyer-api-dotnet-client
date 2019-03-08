@@ -9,7 +9,7 @@ namespace BitFlyer.Apis
         private const string BalanceHistoryApiPath = "/v1/me/getbalancehistory";
 
         public async Task<BalanceHistory[]> GetBalanceHistory(CurrencyCode currencyCode, int? count = null, int? before = null, int? after = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>()
             {

@@ -7,7 +7,7 @@ namespace BitFlyer.Apis
     {
         private const string DepositApiPath = "/v1/me/getdeposits";
 
-        public async Task<Deposit[]> GetDeposits(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Deposit[]> GetDeposits(CancellationToken cancellationToken = default)
         {
             return await Get<Deposit[]>(DepositApiPath, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

@@ -9,7 +9,7 @@ namespace BitFlyer.Apis
     {
         private const string GetWithdrawalsApiPath = "/v1/me/getwithdrawals";
 
-        public async Task<Withdrawal> GetWithdrawal(string messageId, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Withdrawal> GetWithdrawal(string messageId, CancellationToken cancellationToken = default)
         {
             if (messageId == null)
             {
@@ -25,7 +25,7 @@ namespace BitFlyer.Apis
         }
 
         public async Task<Withdrawal[]> GetWithdrawals(int? count = null, int? before = null, int? after = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>();
 
