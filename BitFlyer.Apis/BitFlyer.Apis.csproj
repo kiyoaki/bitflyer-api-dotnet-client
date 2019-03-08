@@ -2,22 +2,24 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-    <Version>6.3.0</Version>
+    <Version>6.4.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>bitFlyer APIs Client Library for .NET</Description>
     <Copyright>Kiyoaki Tsurutani</Copyright>
-    <PackageLicense>https://github.com/kiyoaki/bitflyer-api-dotnet-client/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</RepositoryUrl>
     <PackageTags>bitflyer, Bitcoin</PackageTags>
-    <PackageReleaseNotes>Support CancellationToken</PackageReleaseNotes>
+    <PackageReleaseNotes>Support /v1/me/getbalancehistory
+Support /v1/me/getcollateralaccounts</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>Kiyoaki Tsurutani</Authors>
     <Company />
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>opensource.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyVersion>6.4.0.0</AssemblyVersion>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU' AND '$(TargetFramework)'=='net45'">
@@ -53,6 +55,13 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
