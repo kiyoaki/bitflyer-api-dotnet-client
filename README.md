@@ -40,11 +40,11 @@ var result = await api.SendChildOrder(new SendChildOrderParameter
 ```csharp
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var api = new RealtimeApi();
         
-        api.Subscribe<Ticker>(RealtimeChannel.TickerFxBtcJpy, OnReceive, OnConnect, OnError).Wait();
+        await api.Subscribe<Ticker>(RealtimeChannel.TickerFxBtcJpy, OnReceive, OnConnect, OnError);
         
         Console.ReadKey();
     }
