@@ -114,7 +114,7 @@ namespace BitFlyer.Apis.Test
         [Fact]
         public async Task TaskCanceledException()
         {
-            var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
+            var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(10));
             await Assert.ThrowsAsync<BitFlyerApiException>(async () => await PublicApi.GetBoard(ProductCode.FxBtcJpy, cancellationTokenSource.Token));
         }
     }
