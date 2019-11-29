@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Utf8Json;
@@ -33,16 +35,52 @@ namespace BitFlyer.Apis
             clientId = new Random().Next(1, int.MaxValue - 1);
         }
 
-        public async Task Subscribe<T>(string channel, Action<T> onReceive, Action onConnect, Action<string, Exception> onError)
+        public async Task Subscribe<T>(string channel, Action<T> onReceive, Action onConnect, Action<string, Exception> onError, string key = null, string secret = null)
         {
             await clientWebSocket.ConnectAsync(uri, cancellationToken).ConfigureAwait(false);
 
-            await SendMessageAsync(channel).ConfigureAwait(false);
-
-            var buffer = new byte[ReceiveChunkSize];
-
             try
             {
+                if ((key != null) && (secret != null))
+                {
+                    await SendAuthMessageAsync(key, secret).ConfigureAwait(false);
+                    var buffer_auth = new byte[ReceiveChunkSize];
+
+                    while (clientWebSocket.State == WebSocketState.Open)
+                    {
+                        var resultBuffer = new List<byte>();
+
+                        WebSocketReceiveResult result;
+                        do
+                        {
+                            result = await clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer_auth), cancellationToken).ConfigureAwait(false);
+
+                            if (result.MessageType == WebSocketMessageType.Close)
+                            {
+                                await clientWebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, string.Empty, CancellationToken.None).ConfigureAwait(false);
+                                onError("closed", null);
+                            }
+                            else
+                            {
+                                resultBuffer.AddRange(buffer_auth.Take(result.Count));
+                            }
+                        } while (!result.EndOfMessage);
+
+                        var message = JsonSerializer.Deserialize<RealtimeJsonRpc<T>>(resultBuffer.ToArray());
+
+                        if (message.Id == clientId)
+                        {
+                            if(message.Result == true)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                await SendMessageAsync(channel).ConfigureAwait(false);
+                var buffer = new byte[ReceiveChunkSize];
+
                 while (clientWebSocket.State == WebSocketState.Open)
                 {
                     var resultBuffer = new List<byte>();
@@ -96,6 +134,80 @@ namespace BitFlyer.Apis
             {
                 method = "subscribe",
                 @params = new { channel },
+                id = clientId
+            });
+
+            var messagesCount = (int)Math.Ceiling((double)sendingMessage.Length / SendChunkSize);
+
+            for (var i = 0; i < messagesCount; i++)
+            {
+                var offset = SendChunkSize * i;
+                var count = SendChunkSize;
+                var lastMessage = (i + 1) == messagesCount;
+
+                if ((count * (i + 1)) > sendingMessage.Length)
+                {
+                    count = sendingMessage.Length - offset;
+                }
+
+                await clientWebSocket.SendAsync(new ArraySegment<byte>(sendingMessage, offset, count), WebSocketMessageType.Text, lastMessage, cancellationToken).ConfigureAwait(false);
+            }
+        }
+
+        private static DateTime UNIX_EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+
+        public static long GetUnixTime(DateTime targetTime)
+        {
+            targetTime = targetTime.ToUniversalTime();
+            TimeSpan elapsedTime = targetTime - UNIX_EPOCH;
+            return (long)elapsedTime.TotalSeconds;
+        }
+        private string GenerateNonce(int length)
+        {
+            RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
+            byte[] buffer = new byte[length];
+            rnd.GetBytes(buffer);
+
+            string nonce = "";
+            foreach (char letter in buffer)
+            {
+                int value = Convert.ToInt32(letter);
+                nonce += value.ToString("X");
+            }
+            return nonce.ToLower();
+        }
+        private byte[] ComputeHmacSha256(byte[] inputByteList, byte[] key)
+        {
+            using (var hmacSha256 = new HMACSHA256(key))
+            {
+                return hmacSha256.ComputeHash(inputByteList);
+            }
+        }
+
+        private async Task SendAuthMessageAsync(string key, string secret)
+        {
+            if (clientWebSocket.State != WebSocketState.Open)
+            {
+                throw new InvalidOperationException("Connection is not open.");
+            }
+
+            DateTime targetTime = DateTime.Now;
+            long unixTime = GetUnixTime(targetTime);
+
+            string nonce = GenerateNonce(16);
+
+            var inputByteList = Encoding.UTF8.GetBytes(unixTime.ToString() + nonce);
+            var hmackey = Encoding.UTF8.GetBytes(secret);
+            var outputByteList = ComputeHmacSha256(inputByteList, hmackey);
+
+            var sendingMessage = JsonSerializer.Serialize(new
+            {
+                method = "auth",
+                @params = new { api_key = key,
+                                timestamp = unixTime,
+                                nonce = nonce,
+                                signature = BitConverter.ToString(outputByteList).Replace("-", string.Empty).ToLower()
+                },
                 id = clientId
             });
 
