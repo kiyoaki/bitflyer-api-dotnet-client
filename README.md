@@ -70,4 +70,40 @@ class Program
 }
 ```
 
+### Realtime API (Private)
+
+```csharp
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        var key = "Your API Key";
+        var secret = "Your API Secret";
+        var api = new RealtimeApi();
+        
+        await api.Subscribe<ChildOrderEvents[]>("child_order_events", OnReceive, OnConnect, OnError, key, secret);
+        
+        Console.ReadKey();
+    }
+    
+    static void OnConnect()
+    {
+        Console.WriteLine("connected.");
+    }
+    
+    static void OnReceive(ChildOrderEvents[] data)
+    {
+        Console.WriteLine(data[0]);
+    }
+    
+    static void OnError(string message, Exception ex)
+    {
+        Console.WriteLine(message);
+        if (ex != null)
+        {
+            Console.WriteLine(ex);
+        }
+    }
+}
+```
 ---
