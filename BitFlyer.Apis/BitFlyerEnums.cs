@@ -28,6 +28,12 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "LSK")]
         Lisk,
 
+        [EnumMember(Value = "BAT")]
+        Bat,
+
+        [EnumMember(Value = "XRP")]
+        Xrp,
+
         [EnumMember(Value = "")]
         Unknown
     }

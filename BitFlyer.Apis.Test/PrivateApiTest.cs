@@ -145,6 +145,9 @@ namespace BitFlyer.Apis.Test
                 ChildOrderAcceptanceId = childOrderAcceptanceId
             });
 
+            health = await PublicApi.GetHealth(ProductCode.FxBtcJpy);
+            ThreadSleep(health.Status);
+
             await Task.WhenAll(Enumerable.Range(0, 3).Select(_ => apiClient.SendChildOrder(new SendChildOrderParameter
             {
                 ProductCode = ProductCode.FxBtcJpy,
@@ -336,7 +339,7 @@ namespace BitFlyer.Apis.Test
         [Fact]
         public async Task TaskCanceledException()
         {
-            var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(50));
+            var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(10));
             await Assert.ThrowsAsync<BitFlyerApiException>(async () => await apiClient.GetExecutions(ProductCode.FxBtcJpy, cancellationToken: cancellationTokenSource.Token));
         }
 
