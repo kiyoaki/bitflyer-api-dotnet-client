@@ -2,24 +2,24 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-    <Version>6.4.0</Version>
+    <Version>6.5.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>bitFlyer APIs Client Library for .NET</Description>
     <Copyright>Kiyoaki Tsurutani</Copyright>
     <PackageProjectUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/kiyoaki/bitflyer-api-dotnet-client/master/nuget/icon.png</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <RepositoryUrl>https://github.com/kiyoaki/bitflyer-api-dotnet-client</RepositoryUrl>
     <PackageTags>bitflyer, Bitcoin</PackageTags>
-    <PackageReleaseNotes>Support /v1/me/getbalancehistory
-Support /v1/me/getcollateralaccounts</PackageReleaseNotes>
+    <PackageReleaseNotes>Add currency code BAT and XRP</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>Kiyoaki Tsurutani</Authors>
     <Company />
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>opensource.pfx</AssemblyOriginatorKeyFile>
-    <AssemblyVersion>6.4.0.0</AssemblyVersion>
+    <AssemblyVersion>6.5.0.0</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU' AND '$(TargetFramework)'=='net45'">
@@ -59,6 +59,10 @@ Support /v1/me/getcollateralaccounts</PackageReleaseNotes>
 
   <ItemGroup>
     <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\nuget\icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
