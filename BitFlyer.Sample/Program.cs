@@ -1,7 +1,7 @@
 ﻿using BitFlyer.Apis;
 using System;
 
-namespace BitFlyer.Sample
+namespace BitFlyer.Sample.NETCore
 {
     class Program
     {

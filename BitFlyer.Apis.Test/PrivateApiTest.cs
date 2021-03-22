@@ -308,7 +308,7 @@ namespace BitFlyer.Apis.Test
             Assert.NotNull(res1);
         }
 
-        public static void ThreadSleep(BitflyerSystemHealth health)
+        static void ThreadSleep(BitflyerSystemHealth health)
         {
             int waitMilliSeconds;
             switch (health)
