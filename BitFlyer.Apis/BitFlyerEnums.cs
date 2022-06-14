@@ -56,7 +56,10 @@ namespace BitFlyer.Apis
         Xem,
 
         [EnumMember(Value = "USD")]
-        Usd
+        Usd,
+
+        [EnumMember(Value = "EUR")]
+        Eur
     }
 
     public enum Side

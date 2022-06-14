@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.7.0</Version>
+    <Version>6.8.0</Version>
     <Authors>Kiyoaki Tsurutani</Authors>
     <Copyright>Kiyoaki Tsurutani</Copyright>
     <Product>BitFlyer.Apis</Product>
@@ -15,8 +15,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>bitflyer, Bitcoin</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageReleaseNotes>Update to .NET 5
-Add some Currency Code</PackageReleaseNotes>
+    <PackageReleaseNotes>Add EUR Currency Code</PackageReleaseNotes>
     <SignAssembly>False</SignAssembly>
     <AssemblyOriginatorKeyFile>opensource.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
