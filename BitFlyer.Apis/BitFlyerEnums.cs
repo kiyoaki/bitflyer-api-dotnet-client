@@ -4,6 +4,9 @@ namespace BitFlyer.Apis
 {
     public enum CurrencyCode
     {
+        [EnumMember(Value = "")]
+        Unknown,
+
         [EnumMember(Value = "JPY")]
         Jpy,
 
@@ -26,7 +29,7 @@ namespace BitFlyer.Apis
         Mona,
 
         [EnumMember(Value = "LSK")]
-        Lisk,
+        Lsk,
 
         [EnumMember(Value = "BAT")]
         Bat,
@@ -34,8 +37,26 @@ namespace BitFlyer.Apis
         [EnumMember(Value = "XRP")]
         Xrp,
 
-        [EnumMember(Value = "")]
-        Unknown
+        [EnumMember(Value = "XYM")]
+        Xym,
+
+        [EnumMember(Value = "LINK")]
+        Link,
+
+        [EnumMember(Value = "DOT")]
+        Dot,
+
+        [EnumMember(Value = "XTZ")]
+        Xtz,
+
+        [EnumMember(Value = "XLM")]
+        Xlm,
+
+        [EnumMember(Value = "XEM")]
+        Xem,
+
+        [EnumMember(Value = "USD")]
+        Usd
     }
 
     public enum Side
