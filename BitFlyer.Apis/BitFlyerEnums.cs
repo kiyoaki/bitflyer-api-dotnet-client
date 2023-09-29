@@ -59,7 +59,28 @@ namespace BitFlyer.Apis
         Usd,
 
         [EnumMember(Value = "EUR")]
-        Eur
+        Eur,
+
+        [EnumMember(Value = "SHIB")]
+        Shib,
+
+        [EnumMember(Value = "PLT")]
+        Plt,
+
+        [EnumMember(Value = "FLR")]
+        Flr,
+
+        [EnumMember(Value = "MATIC")]
+        Matic,
+
+        [EnumMember(Value = "MKR")]
+        Mkr,
+
+        [EnumMember(Value = "ZPG")]
+        Zpg,
+
+        [EnumMember(Value = "SAND")]
+        Sand,
     }
 
     public enum Side

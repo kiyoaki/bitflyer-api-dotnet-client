@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>6.8.1</Version>
+    <Version>6.9.0</Version>
     <Authors>Kiyoaki Tsurutani</Authors>
     <Copyright>Kiyoaki Tsurutani</Copyright>
     <Product>BitFlyer.Apis</Product>
@@ -15,10 +15,11 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>bitflyer, Bitcoin</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageReleaseNotes>Add some Currency Code
-Support .NET 6</PackageReleaseNotes>
+    <PackageReleaseNotes>Support net6.0, netstandard2.1
+Add SHIB,PLT,FLR,MATIC,MKR,ZPG,SAND</PackageReleaseNotes>
     <SignAssembly>False</SignAssembly>
     <AssemblyOriginatorKeyFile>opensource.pfx</AssemblyOriginatorKeyFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -34,6 +35,10 @@ Support .NET 6</PackageReleaseNotes>
     <None Include="..\nuget\icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
