@@ -154,7 +154,7 @@ namespace BitFlyer.Apis
             }
         }
 
-        private static DateTime UNIX_EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+        private static readonly DateTime UNIX_EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 
         public static long GetUnixTime(DateTime targetTime)
         {
@@ -164,12 +164,15 @@ namespace BitFlyer.Apis
         }
         private string GenerateNonce(int length)
         {
-            RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
-            byte[] buffer = new byte[length];
+#if NET6_0_OR_GREATER
+            var buffer = RandomNumberGenerator.GetBytes(length);
+#else
+            var rnd = new RNGCryptoServiceProvider();
+            var buffer = new byte[length];
             rnd.GetBytes(buffer);
-
+#endif
             string nonce = "";
-            foreach (char letter in buffer)
+            foreach (char letter in buffer.Select(v => (char)v))
             {
                 int value = Convert.ToInt32(letter);
                 nonce += value.ToString("X");
