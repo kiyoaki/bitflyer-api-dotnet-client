@@ -41,7 +41,7 @@ namespace BitFlyer.Apis.Test
             }
             catch (BitFlyerApiException ex)
             {
-                Assert.Equal(ex.ErrorResponse.Status, -500);
+                Assert.Equal(-500, ex.ErrorResponse.Status);
                 Assert.Equal("Key not found", ex.ErrorResponse.ErrorMessage);
             }
         }
