@@ -70,7 +70,7 @@ namespace BitFlyer.Apis
 
                         if (message.Id == clientId)
                         {
-                            if(message.Result == true)
+                            if (message.Result == true)
                             {
                                 break;
                             }
@@ -162,7 +162,7 @@ namespace BitFlyer.Apis
             TimeSpan elapsedTime = targetTime - UNIX_EPOCH;
             return (long)elapsedTime.TotalSeconds;
         }
-        private string GenerateNonce(int length)
+        private static string GenerateNonce(int length)
         {
 #if NET6_0_OR_GREATER
             var buffer = RandomNumberGenerator.GetBytes(length);
@@ -206,10 +206,12 @@ namespace BitFlyer.Apis
             var sendingMessage = JsonSerializer.Serialize(new
             {
                 method = "auth",
-                @params = new { api_key = key,
-                                timestamp = unixTime,
-                                nonce = nonce,
-                                signature = BitConverter.ToString(outputByteList).Replace("-", string.Empty).ToLower()
+                @params = new
+                {
+                    api_key = key,
+                    timestamp = unixTime,
+                    nonce,
+                    signature = BitConverter.ToString(outputByteList).Replace("-", string.Empty).ToLower()
                 },
                 id = clientId
             });
@@ -235,9 +237,7 @@ namespace BitFlyer.Apis
         {
             if (!disposed)
             {
-                if (clientWebSocket != null)
-                    clientWebSocket.Dispose();
-
+                clientWebSocket?.Dispose();
                 disposed = true;
             }
         }
