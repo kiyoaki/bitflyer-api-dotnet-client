@@ -28,7 +28,18 @@ namespace BitFlyer.Apis
 
         public async Task<ChildOrder[]> GetChildOrders(string productCode,
             int? count = null, int? before = null, int? after = null, ChildOrderState? childOrderState = null,
+            string childOrderId = null, string childOrderAcceptanceId = null, string parentOrderId = null,
             CancellationToken cancellationToken = default)
+        {
+            var query = CreateGetChildOrdersQuery(productCode, count, before, after, childOrderState, childOrderId,
+                childOrderAcceptanceId, parentOrderId);
+
+            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+
+        internal static Dictionary<string, object> CreateGetChildOrdersQuery(string productCode, int? count,
+            int? before, int? after, ChildOrderState? childOrderState, string childOrderId,
+            string childOrderAcceptanceId, string parentOrderId)
         {
             var query = new Dictionary<string, object>
             {
@@ -51,8 +62,20 @@ namespace BitFlyer.Apis
             {
                 query["child_order_state"] = childOrderState.GetEnumMemberValue();
             }
+            if (!string.IsNullOrEmpty(childOrderId))
+            {
+                query["child_order_id"] = childOrderId;
+            }
+            if (!string.IsNullOrEmpty(childOrderAcceptanceId))
+            {
+                query["child_order_acceptance_id"] = childOrderAcceptanceId;
+            }
+            if (!string.IsNullOrEmpty(parentOrderId))
+            {
+                query["parent_order_id"] = parentOrderId;
+            }
 
-            return await Get<ChildOrder[]>(GetChildOrdersApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
+            return query;
         }
 
         public async Task<ChildOrder[]> GetChildOrder(string productCode, long childOrderId, CancellationToken cancellationToken = default)
