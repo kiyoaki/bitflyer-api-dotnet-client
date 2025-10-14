@@ -1,7 +1,7 @@
 # Plan to update bitFlyer .NET client according to Lightning API docs
 
 ## 0. Documentation acquisition and baselining
-- [ ] Access the official Lightning REST documentation (https://lightning.bitflyer.com/docs) **and** the realtime API documentation (https://bf-lightning-api.readme.io/docs/realtime-api) on demand when research is required.
+- [x] Access the official Lightning REST documentation (https://lightning.bitflyer.com/docs) **and** the realtime API documentation (https://bf-lightning-api.readme.io/docs/realtime-api) on demand when research is required.
   - Direct requests now succeed from this environment:
     - `curl -I https://lightning.bitflyer.com/docs` → HTTP 200 via Envoy proxy.
     - `curl -I https://bf-lightning-api.readme.io/docs/realtime-api` → HTTP 200 with Cloudflare headers.
@@ -12,10 +12,14 @@
     - Investigate whether bitFlyer publishes downloadable PDFs, an OpenAPI spec, or a GitHub repo mirror that can be tracked for future updates, and document references to those resources instead of mirroring them locally.
   - Ensure contributors understand that the latest authoritative information is always the live documentation, so links should remain in project docs to guide future updates.
 - [ ] From the docs, extract the canonical lists of HTTP endpoints, websocket channels (public and private), request/response schemas, and enumerations for later comparison.
+  - [x] Capture REST endpoint list snapshot in `docs/API_REFERENCE_SNAPSHOT.md`.
+  - [ ] Retrieve websocket channel inventory (requires alternate scraping approach).
+  - [ ] Enumerate request/response schema deltas.
+  - [ ] Update enumeration lists (product codes, etc.).
 
 ## 1. Gap analysis between documentation and current implementation
-- [ ] Build a coverage matrix mapping every documented HTTP public endpoint (e.g., `/v1/getticker`, `/v1/getboard`, `/v1/getexecutions`, `/v1/getmarkets`, regional chat endpoints, etc.) to the methods available under `BitFlyer.Apis/PublicApis`. Flag any documented endpoints or query parameters missing in the client (including recent additions such as new market listings, pagination parameters, or throttle information).
-- [ ] Perform the same coverage check for private endpoints described under “Private API” in the docs (e.g., `/v1/me/sendchildorder`, `/v1/me/getchildorders`, `/v1/me/getbalance`, `/v1/me/getwithdrawals`, `/v1/me/getpermissions`, `/v1/me/sendcoin`, `/v1/me/withdraw`). Highlight newer endpoints that are currently absent—particularly margin- or staking-related calls that were added after this client was last updated.
+- [x] Build a coverage matrix mapping every documented HTTP public endpoint (e.g., `/v1/getticker`, `/v1/getboard`, `/v1/getexecutions`, `/v1/getmarkets`, regional chat endpoints, etc.) to the methods available under `BitFlyer.Apis/PublicApis`. Flag any documented endpoints or query parameters missing in the client (including recent additions such as new market listings, pagination parameters, or throttle information).
+- [x] Perform the same coverage check for private endpoints described under “Private API” in the docs (e.g., `/v1/me/sendchildorder`, `/v1/me/getchildorders`, `/v1/me/getbalance`, `/v1/me/getwithdrawals`, `/v1/me/getpermissions`, `/v1/me/sendcoin`, `/v1/me/withdraw`). Highlight newer endpoints that are currently absent—particularly margin- or staking-related calls that were added after this client was last updated.
 - [ ] Review websocket channel documentation (`lightning_board_{product_code}`, `lightning_ticker_{product_code}`, `lightning_executions_{product_code}`, private channels requiring auth, etc.) from the realtime docs and compare with the helper methods available in `RealtimeApi`. Note any authentication requirements or additional channels (e.g., board snapshot or FX-specific feeds) that need new convenience wrappers.
 - [ ] Compare documented data models against classes in `ResponseData` and `RequestData`. Capture any new response fields (e.g., additional collateral metrics, event identifiers, settlement prices) or newly required request members so they can be reflected in the data contracts.
 - [ ] Review enumerations (`ProductCode`, `CurrencyCode`, `BoardStates`, `BitflyerSystemHealth`, etc.) against the doc’s lists to make sure any new currencies/products/status values are represented.
@@ -31,7 +35,7 @@
 - [ ] Refresh developer-facing documentation (`README.md` and samples under `BitFlyer.Sample`) to showcase the new capabilities and note any breaking changes or additional setup (e.g., websocket auth steps).
 
 ## 3. Deliverables and verification
-- [ ] Document the coverage matrix and summarize deltas in a new `docs/API_Coverage.md` (or similar) file so future maintainers can quickly see alignment with the official docs.
+- [x] Document the coverage matrix and summarize deltas in a new `docs/API_Coverage.md` (or similar) file so future maintainers can quickly see alignment with the official docs.
 - [ ] Ensure backward compatibility: version the NuGet package appropriately (minor or major bump depending on breaking changes) and communicate deprecations per doc guidance.
 - [ ] Perform manual sanity tests against the live API (respecting rate limits and sandbox availability) for at least one endpoint in each category (public, private, websocket) before releasing.
 - [ ] Coordinate with stakeholders for review of security-sensitive changes (e.g., handling of API secrets in websocket auth) in case the docs introduced new requirements.
