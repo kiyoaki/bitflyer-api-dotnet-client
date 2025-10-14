@@ -1,16 +1,16 @@
 # Plan to update bitFlyer .NET client according to Lightning API docs
 
 ## 0. Documentation acquisition and baselining
-- [ ] Obtain accessible copies of the official Lightning REST documentation (https://lightning.bitflyer.com/docs) **and** the realtime API documentation (https://bf-lightning-api.readme.io/docs/realtime-api).
+- [ ] Access the official Lightning REST documentation (https://lightning.bitflyer.com/docs) **and** the realtime API documentation (https://bf-lightning-api.readme.io/docs/realtime-api) on demand when research is required.
   - Direct requests now succeed from this environment:
     - `curl -I https://lightning.bitflyer.com/docs` → HTTP 200 via Envoy proxy.
     - `curl -I https://bf-lightning-api.readme.io/docs/realtime-api` → HTTP 200 with Cloudflare headers.
-  - Next steps:
-    - Use `curl -L -o docs/lightning-rest.html https://lightning.bitflyer.com/docs` and mirror any linked assets that the HTML requires for offline review (consider `wget --page-requisites`).
-    - Use `curl -L -o docs/lightning-realtime.html https://bf-lightning-api.readme.io/docs/realtime-api` and capture embedded JSON/OpenAPI snippets if present.
-    - Snapshot response headers (date, etags) in a `docs/SOURCE_NOTES.md` file for traceability.
-    - Investigate whether bitFlyer publishes downloadable PDFs, an OpenAPI spec, or a GitHub repo mirror that can be tracked for future updates.
-  - Once downloaded, snapshot the doc version/date to keep as reference in the repository (e.g., store hash or version string in README/CHANGELOG) so future diffs can be traced.
+  - Usage guidelines:
+    - Download the relevant pages temporarily during active work sessions (e.g., `curl -L` to a temp directory) and avoid committing the downloaded HTML/asset files to the repository.
+    - Capture key details (endpoint descriptions, schema changes, etc.) as curated notes or summaries within project documentation rather than copying the full text of the official docs.
+    - Record retrieval metadata (URL, access date, notable response headers) in `docs/SOURCE_NOTES.md` or task-specific notes to provide traceability without storing the raw documentation.
+    - Investigate whether bitFlyer publishes downloadable PDFs, an OpenAPI spec, or a GitHub repo mirror that can be tracked for future updates, and document references to those resources instead of mirroring them locally.
+  - Ensure contributors understand that the latest authoritative information is always the live documentation, so links should remain in project docs to guide future updates.
 - [ ] From the docs, extract the canonical lists of HTTP endpoints, websocket channels (public and private), request/response schemas, and enumerations for later comparison.
 
 ## 1. Gap analysis between documentation and current implementation
