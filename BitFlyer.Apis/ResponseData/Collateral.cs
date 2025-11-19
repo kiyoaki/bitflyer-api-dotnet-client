@@ -1,26 +1,27 @@
-﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class Collateral
     {
-        [DataMember(Name = "collateral")]
+        [JsonPropertyName( "collateral")]
         public double Amount { get; set; }
 
-        [DataMember(Name = "open_position_pnl")]
+        [JsonPropertyName( "open_position_pnl")]
         public double OpenPositionProfitOrLoss { get; set; }
 
-        [DataMember(Name = "require_collateral")]
+        [JsonPropertyName( "require_collateral")]
         public double RequireCollateral { get; set; }
 
-        [DataMember(Name = "keep_rate")]
+        [JsonPropertyName( "keep_rate")]
         public double KeepRate { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

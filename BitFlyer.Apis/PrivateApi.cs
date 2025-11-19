@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
@@ -83,7 +83,7 @@ namespace BitFlyer.Apis
                 byte[] bodyBytes = null;
                 if (body != null)
                 {
-                    bodyBytes = JsonSerializer.Serialize(body);
+                    bodyBytes = JsonSerializer.SerializeToUtf8Bytes(body);
                     message.Content = new ByteArrayContent(bodyBytes);
                     message.Content.Headers.ContentType = MediaType;
                 }

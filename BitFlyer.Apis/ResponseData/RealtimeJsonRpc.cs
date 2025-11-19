@@ -1,31 +1,32 @@
-﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace BitFlyer.Apis
 {
     public partial class RealtimeJsonRpc<T>
     {
-        [DataMember(Name = "jsonrpc")]
+        [JsonPropertyName( "jsonrpc")]
         public string Jsonrpc { get; set; }
 
-        [DataMember(Name = "id")]
+        [JsonPropertyName( "id")]
         public int? Id { get; set; }
 
-        [DataMember(Name = "result")]
+        [JsonPropertyName( "result")]
         public bool? Result { get; set; }
 
-        [DataMember(Name = "method")]
+        [JsonPropertyName( "method")]
         public string Method { get; set; }
 
-        [DataMember(Name = "params")]
+        [JsonPropertyName( "params")]
         public Params<T> Params { get; set; }
     }
 
     public partial class Params<T>
     {
-        [DataMember(Name = "channel")]
+        [JsonPropertyName( "channel")]
         public string Channel { get; set; }
 
-        [DataMember(Name = "message")]
+        [JsonPropertyName( "message")]
         public T Message { get; set; }
     }
 }
+

@@ -1,23 +1,24 @@
-﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class Balance
     {
-        [DataMember(Name = "currency_code")]
+        [JsonPropertyName( "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [DataMember(Name = "amount")]
+        [JsonPropertyName( "amount")]
         public double Amount { get; set; }
 
-        [DataMember(Name = "available")]
+        [JsonPropertyName( "available")]
         public double Available { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

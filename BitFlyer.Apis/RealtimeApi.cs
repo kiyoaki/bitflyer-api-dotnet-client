@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Utf8Json;
+using System.Text.Json;
 #if NET45
 using System.Net;
 #endif
@@ -130,7 +130,7 @@ namespace BitFlyer.Apis
                 throw new InvalidOperationException("Connection is not open.");
             }
 
-            var sendingMessage = JsonSerializer.Serialize(new
+            var sendingMessage = JsonSerializer.SerializeToUtf8Bytes(new
             {
                 method = "subscribe",
                 @params = new { channel },
@@ -203,7 +203,7 @@ namespace BitFlyer.Apis
             var hmackey = Encoding.UTF8.GetBytes(secret);
             var outputByteList = ComputeHmacSha256(inputByteList, hmackey);
 
-            var sendingMessage = JsonSerializer.Serialize(new
+            var sendingMessage = JsonSerializer.SerializeToUtf8Bytes(new
             {
                 method = "auth",
                 @params = new

@@ -1,24 +1,25 @@
-﻿using System;
-using System.Runtime.Serialization;
+using System;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class Chat
     {
-        [DataMember(Name = "nickname")]
+        [JsonPropertyName( "nickname")]
         public string Nickname { get; set; }
 
-        [DataMember(Name = "message")]
+        [JsonPropertyName( "message")]
         public string Message { get; set; }
 
-        [DataMember(Name = "date")]
+        [JsonPropertyName( "date")]
         public DateTime Date { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

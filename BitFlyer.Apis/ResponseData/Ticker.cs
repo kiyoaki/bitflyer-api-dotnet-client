@@ -1,51 +1,52 @@
-﻿using System;
-using System.Runtime.Serialization;
+using System;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class Ticker
     {
-        [DataMember(Name = "product_code")]
+        [JsonPropertyName( "product_code")]
         public string ProductCode { get; set; }
 
-        [DataMember(Name = "timestamp")]
+        [JsonPropertyName( "timestamp")]
         public DateTime Timestamp { get; set; }
 
-        [DataMember(Name = "tick_id")]
+        [JsonPropertyName( "tick_id")]
         public long TickId { get; set; }
 
-        [DataMember(Name = "best_bid")]
+        [JsonPropertyName( "best_bid")]
         public double BestBid { get; set; }
 
-        [DataMember(Name = "best_ask")]
+        [JsonPropertyName( "best_ask")]
         public double BestAsk { get; set; }
 
-        [DataMember(Name = "best_bid_size")]
+        [JsonPropertyName( "best_bid_size")]
         public double BestBidSize { get; set; }
 
-        [DataMember(Name = "best_ask_size")]
+        [JsonPropertyName( "best_ask_size")]
         public double BestAskSize { get; set; }
 
-        [DataMember(Name = "total_bid_depth")]
+        [JsonPropertyName( "total_bid_depth")]
         public double TotalBidDepth { get; set; }
 
-        [DataMember(Name = "total_ask_depth")]
+        [JsonPropertyName( "total_ask_depth")]
         public double TotalAskDepth { get; set; }
 
-        [DataMember(Name = "ltp")]
+        [JsonPropertyName( "ltp")]
         public double LatestPrice { get; set; }
 
-        [DataMember(Name = "volume")]
+        [JsonPropertyName( "volume")]
         public double Volume { get; set; }
 
-        [DataMember(Name = "volume_by_product")]
+        [JsonPropertyName( "volume_by_product")]
         public double VolumeByProduct { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

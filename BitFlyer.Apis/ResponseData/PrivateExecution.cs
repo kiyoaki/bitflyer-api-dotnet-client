@@ -1,39 +1,40 @@
-﻿using System;
-using System.Runtime.Serialization;
+using System;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class PrivateExecution
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName( "id")]
         public long Id { get; set; }
 
-        [DataMember(Name = "child_order_id")]
+        [JsonPropertyName( "child_order_id")]
         public string ChildOrderId { get; set; }
 
-        [DataMember(Name = "side")]
+        [JsonPropertyName( "side")]
         public Side Side { get; set; }
 
-        [DataMember(Name = "price")]
+        [JsonPropertyName( "price")]
         public double Price { get; set; }
 
-        [DataMember(Name = "size")]
+        [JsonPropertyName( "size")]
         public double Size { get; set; }
 
-        [DataMember(Name = "commission")]
+        [JsonPropertyName( "commission")]
         public double Commission { get; set; }
 
-        [DataMember(Name = "exec_date")]
+        [JsonPropertyName( "exec_date")]
         public DateTime ExecDate { get; set; }
 
-        [DataMember(Name = "child_order_acceptance_id")]
+        [JsonPropertyName( "child_order_acceptance_id")]
         public string ChildOrderAcceptanceId { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

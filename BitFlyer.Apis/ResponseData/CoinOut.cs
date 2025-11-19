@@ -1,43 +1,44 @@
-﻿using System;
-using System.Runtime.Serialization;
+using System;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class CoinOut
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName( "id")]
         public long Id { get; set; }
 
-        [DataMember(Name = "order_id")]
+        [JsonPropertyName( "order_id")]
         public string OrderId { get; set; }
 
-        [DataMember(Name = "currency_code")]
+        [JsonPropertyName( "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [DataMember(Name = "amount")]
+        [JsonPropertyName( "amount")]
         public double Amount { get; set; }
 
-        [DataMember(Name = "address")]
+        [JsonPropertyName( "address")]
         public string Address { get; set; }
 
-        [DataMember(Name = "tx_hash")]
+        [JsonPropertyName( "tx_hash")]
         public string TransactionHash { get; set; }
 
-        [DataMember(Name = "additional_fee")]
+        [JsonPropertyName( "additional_fee")]
         public double AdditionalFee { get; set; }
 
-        [DataMember(Name = "status")]
+        [JsonPropertyName( "status")]
         public DepositStatus Status { get; set; }
 
-        [DataMember(Name = "event_date")]
+        [JsonPropertyName( "event_date")]
         public DateTime EventDate { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
 
     }
 }
+

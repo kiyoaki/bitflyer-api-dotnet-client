@@ -1,20 +1,21 @@
-﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class BoardOrder
     {
-        [DataMember(Name = "price")]
+        [JsonPropertyName( "price")]
         public double Price { get; set; }
 
-        [DataMember(Name = "size")]
+        [JsonPropertyName( "size")]
         public double Size { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

@@ -1,29 +1,30 @@
-﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class ParentOrderDetail
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName( "id")]
         public long Id { get; set; }
 
-        [DataMember(Name = "parent_order_id")]
+        [JsonPropertyName( "parent_order_id")]
         public string ParentOrderId { get; set; }
 
-        [DataMember(Name = "order_method")]
+        [JsonPropertyName( "order_method")]
         public OrderMethod OrderMethod { get; set; }
 
-        [DataMember(Name = "parent_order_acceptance_id")]
+        [JsonPropertyName( "parent_order_acceptance_id")]
         public string ParentOrderAcceptanceId { get; set; }
 
-        [DataMember(Name = "parameters")]
+        [JsonPropertyName( "parameters")]
         public ParentOrderDetailParameter[] Parameters { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

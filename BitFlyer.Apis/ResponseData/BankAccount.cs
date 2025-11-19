@@ -1,35 +1,36 @@
-﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class BankAccount
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName( "id")]
         public long Id { get; set; }
 
-        [DataMember(Name = "is_verified")]
+        [JsonPropertyName( "is_verified")]
         public bool IsVerified { get; set; }
 
-        [DataMember(Name = "bank_name")]
+        [JsonPropertyName( "bank_name")]
         public string BankName { get; set; }
 
-        [DataMember(Name = "branch_name")]
+        [JsonPropertyName( "branch_name")]
         public string BranchName { get; set; }
 
-        [DataMember(Name = "account_type")]
+        [JsonPropertyName( "account_type")]
         public string AccountType { get; set; }
 
-        [DataMember(Name = "account_number")]
+        [JsonPropertyName( "account_number")]
         public string AccountNumber { get; set; }
 
-        [DataMember(Name = "account_name")]
+        [JsonPropertyName( "account_name")]
         public string AccountName { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

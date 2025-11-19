@@ -1,45 +1,46 @@
-﻿using System;
-using System.Runtime.Serialization;
+using System;
+using System.Text.Json.Serialization;
 using System.Text;
-using Utf8Json;
+using System.Text.Json;
 
 namespace BitFlyer.Apis
 {
     public class Position
     {
-        [DataMember(Name = "product_code")]
+        [JsonPropertyName( "product_code")]
         public string ProductCode { get; set; }
 
-        [DataMember(Name = "side")]
+        [JsonPropertyName( "side")]
         public Side Side { get; set; }
 
-        [DataMember(Name = "price")]
+        [JsonPropertyName( "price")]
         public double Price { get; set; }
 
-        [DataMember(Name = "size")]
+        [JsonPropertyName( "size")]
         public double Size { get; set; }
 
-        [DataMember(Name = "commission")]
+        [JsonPropertyName( "commission")]
         public double Commission { get; set; }
 
-        [DataMember(Name = "swap_point_accumulate")]
+        [JsonPropertyName( "swap_point_accumulate")]
         public double SwapPointAccumulate { get; set; }
 
-        [DataMember(Name = "require_collateral")]
+        [JsonPropertyName( "require_collateral")]
         public double RequireCollateral { get; set; }
 
-        [DataMember(Name = "open_date")]
+        [JsonPropertyName( "open_date")]
         public DateTime OpenDate { get; set; }
 
-        [DataMember(Name = "leverage")]
+        [JsonPropertyName( "leverage")]
         public double Leverage { get; set; }
 
-        [DataMember(Name = "pnl")]
+        [JsonPropertyName( "pnl")]
         public double ProfitOrLoss { get; set; }
 
         public override string ToString()
         {
-            return Encoding.UTF8.GetString(JsonSerializer.Serialize(this));
+            return JsonSerializer.Serialize(this);
         }
     }
 }
+

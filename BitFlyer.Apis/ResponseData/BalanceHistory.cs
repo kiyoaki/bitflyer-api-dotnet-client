@@ -1,42 +1,43 @@
-﻿using System;
-using System.Runtime.Serialization;
+using System;
+using System.Text.Json.Serialization;
 
 namespace BitFlyer.Apis
 {
     public class BalanceHistory
     {
-        [DataMember(Name = "id")]
+        [JsonPropertyName( "id")]
         public long Id { get; set; }
 
-        [DataMember(Name = "trade_date")]
+        [JsonPropertyName( "trade_date")]
         public DateTime TradeDate { get; set; }
 
-        [DataMember(Name = "product_code")]
+        [JsonPropertyName( "product_code")]
         public string ProductCode { get; set; }
 
-        [DataMember(Name = "currency_code")]
+        [JsonPropertyName( "currency_code")]
         public CurrencyCode CurrencyCode { get; set; }
 
-        [DataMember(Name = "trade_type")]
+        [JsonPropertyName( "trade_type")]
         public TradeType TradeType { get; set; }
 
-        [DataMember(Name = "price")]
+        [JsonPropertyName( "price")]
         public double Price { get; set; }
 
-        [DataMember(Name = "amount")]
+        [JsonPropertyName( "amount")]
 
         public double Amount { get; set; }
 
-        [DataMember(Name = "quantity")]
+        [JsonPropertyName( "quantity")]
         public double Quantity { get; set; }
 
-        [DataMember(Name = "commission")]
+        [JsonPropertyName( "commission")]
         public double Commission { get; set; }
 
-        [DataMember(Name = "balance")]
+        [JsonPropertyName( "balance")]
         public double Balance { get; set; }
 
-        [DataMember(Name = "order_id")]
+        [JsonPropertyName( "order_id")]
         public string OrderId { get; set; }
     }
 }
+
