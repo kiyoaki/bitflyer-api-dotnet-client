@@ -136,7 +136,8 @@ public partial class PrivateApi
     {
         using (var encoder = new HMACSHA256(_apiSecret))
         {
-            return encoder.ComputeHash(utf8Bytes).ToHex();
+            var hash = encoder.ComputeHash(utf8Bytes);
+            return hash.ToHexString().ToLowerInvariant();
         }
     }
 }
