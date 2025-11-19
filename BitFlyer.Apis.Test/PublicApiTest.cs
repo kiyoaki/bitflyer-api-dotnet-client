@@ -65,7 +65,7 @@ namespace BitFlyer.Apis.Test
         [Fact]
         public async Task GetHealth()
         {
-            var res1 = await PublicApi.GetHealth();
+            var res1 = await PublicApi.GetHealth(ProductCode.BtcJpy);
             Assert.NotNull(res1);
         }
 

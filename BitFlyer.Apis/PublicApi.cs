@@ -6,70 +6,58 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text.Json;
 
-namespace BitFlyer.Apis
+namespace BitFlyer.Apis;
+
+public partial class PublicApi
 {
-    public partial class PublicApi
+    private static readonly HttpClient HttpClient = new HttpClient
     {
-        private static readonly HttpClient HttpClient = new HttpClient
-        {
-            BaseAddress = BitFlyerConstants.BaseUri,
-            Timeout = TimeSpan.FromSeconds(60)
-        };
+        BaseAddress = BitFlyerConstants.BaseUri,
+        Timeout = TimeSpan.FromSeconds(60)
+    };
 
-        internal static async Task<T> Get<T>(string path, Dictionary<string, object> query = null,
-            CancellationToken cancellationToken = default)
+    internal static async Task<T> Get<T>(string path, Dictionary<string, object>? query = null,
+        CancellationToken cancellationToken = default)
+    {
+        var queryString = string.Empty;
+        if (query != null)
         {
-            var queryString = string.Empty;
-            if (query != null)
-            {
-                queryString = query.ToQueryString();
-            }
+            queryString = query.ToQueryString();
+        }
 
-            try
+        try
+        {
+            var response = await HttpClient.GetAsync(path + queryString, cancellationToken).ConfigureAwait(false);
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            if (!response.IsSuccessStatusCode)
             {
-                var response = await HttpClient.GetAsync(path + queryString, cancellationToken).ConfigureAwait(false);
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                if (!response.IsSuccessStatusCode)
+                Error? error = null;
+                try
                 {
-                    Error error = null;
-                    try
-                    {
-                        error = JsonSerializer.Deserialize<Error>(json);
-                    }
-                    catch
-                    {
-                        // ignore
-                    }
-
-                    if (!string.IsNullOrEmpty(error?.ErrorMessage))
-                    {
-                        throw new BitFlyerApiException(path, error.ErrorMessage, error);
-                    }
-                    throw new BitFlyerApiException(path,
-                        $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
+                    error = JsonSerializer.Deserialize<Error>(json);
+                }
+                catch
+                {
+                    // ignore
                 }
 
-                return JsonSerializer.Deserialize<T>(json);
-            }
-            catch (WebException ex)
-            {
-                switch (ex.Status)
+                if (!string.IsNullOrEmpty(error?.ErrorMessage))
                 {
-                    case WebExceptionStatus.RequestCanceled:
-                    case WebExceptionStatus.Timeout:
-                        throw new BitFlyerApiException(path, "Request Timeout");
-                    default:
-                        throw;
+                    throw new BitFlyerApiException(path, error.ErrorMessage, error);
                 }
+                throw new BitFlyerApiException(path,
+                    $"Error has occurred. Response StatusCode:{response.StatusCode} ReasonPhrase:{response.ReasonPhrase}.");
             }
-            catch (TaskCanceledException)
-            {
-                throw new BitFlyerApiException(path, "Request Timeout");
-            }
-            catch (OperationCanceledException)
-            {
-                throw new BitFlyerApiException(path, "Request Timeout");
-            }
+
+            return JsonSerializer.Deserialize<T>(json)!;
+        }
+        catch (TaskCanceledException)
+        {
+            throw new BitFlyerApiException(path, "Request Timeout");
+        }
+        catch (OperationCanceledException)
+        {
+            throw new BitFlyerApiException(path, "Request Timeout");
         }
     }
 }

@@ -1,6 +1,5 @@
-using System.Text.Json.Serialization;
-using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BitFlyer.Apis
 {
@@ -9,8 +8,8 @@ namespace BitFlyer.Apis
         [JsonPropertyName( "product_code")]
         public string ProductCode { get; set; }
 
-        [JsonPropertyName( "alias")]
-        public ProductAlias ProductAlias { get; set; }
+        [JsonPropertyName("market_type")]
+        public string MarketType { get; set; }
 
         public override string ToString()
         {

@@ -8,11 +8,11 @@ namespace BitFlyer.Apis
     {
         private const string HealthApiPath = "/v1/gethealth";
 
-        public static async Task<Health> GetHealth(string productCode = null, CancellationToken cancellationToken = default)
+        public static async Task<Health> GetHealth(string productCode, CancellationToken cancellationToken = default)
         {
             var query = new Dictionary<string, object>
             {
-                { "product_code", productCode ?? ProductCode.BtcJpy }
+                { "product_code", productCode }
             };
             return await Get<Health>(HealthApiPath, query, cancellationToken: cancellationToken).ConfigureAwait(false);
         }

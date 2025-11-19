@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace BitFlyer.Apis
+namespace BitFlyer.Apis.JsonConverters
 {
     public class EnumMemberConverter<T> : JsonConverter<T> where T : struct, Enum
     {

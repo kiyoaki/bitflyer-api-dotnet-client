@@ -1,351 +1,335 @@
 ﻿using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
+using BitFlyer.Apis.JsonConverters;
 
-namespace BitFlyer.Apis
+namespace BitFlyer.Apis;
+
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum CurrencyCode
 {
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum CurrencyCode
-    {
-        [EnumMember(Value = "")]
-        Unknown,
+    [EnumMember(Value = "")]
+    Unknown,
 
-        [EnumMember(Value = "JPY")]
-        Jpy,
+    [EnumMember(Value = "JPY")]
+    Jpy,
 
-        [EnumMember(Value = "BTC")]
-        Btc,
+    [EnumMember(Value = "BTC")]
+    Btc,
 
-        [EnumMember(Value = "ETH")]
-        Eth,
+    [EnumMember(Value = "ETH")]
+    Eth,
 
-        [EnumMember(Value = "ETC")]
-        Etc,
+    [EnumMember(Value = "ETC")]
+    Etc,
 
-        [EnumMember(Value = "LTC")]
-        Ltc,
+    [EnumMember(Value = "LTC")]
+    Ltc,
 
-        [EnumMember(Value = "BCH")]
-        Bch,
+    [EnumMember(Value = "BCH")]
+    Bch,
 
-        [EnumMember(Value = "MONA")]
-        Mona,
+    [EnumMember(Value = "MONA")]
+    Mona,
 
-        [EnumMember(Value = "LSK")]
-        Lsk,
+    [EnumMember(Value = "LSK")]
+    Lsk,
 
-        [EnumMember(Value = "BAT")]
-        Bat,
+    [EnumMember(Value = "BAT")]
+    Bat,
 
-        [EnumMember(Value = "XRP")]
-        Xrp,
+    [EnumMember(Value = "XRP")]
+    Xrp,
 
-        [EnumMember(Value = "XYM")]
-        Xym,
+    [EnumMember(Value = "XYM")]
+    Xym,
 
-        [EnumMember(Value = "LINK")]
-        Link,
+    [EnumMember(Value = "LINK")]
+    Link,
 
-        [EnumMember(Value = "DOT")]
-        Dot,
+    [EnumMember(Value = "DOT")]
+    Dot,
 
-        [EnumMember(Value = "XTZ")]
-        Xtz,
+    [EnumMember(Value = "XTZ")]
+    Xtz,
 
-        [EnumMember(Value = "XLM")]
-        Xlm,
+    [EnumMember(Value = "XLM")]
+    Xlm,
 
-        [EnumMember(Value = "XEM")]
-        Xem,
+    [EnumMember(Value = "XEM")]
+    Xem,
 
-        [EnumMember(Value = "USD")]
-        Usd,
+    [EnumMember(Value = "USD")]
+    Usd,
 
-        [EnumMember(Value = "EUR")]
-        Eur,
+    [EnumMember(Value = "EUR")]
+    Eur,
 
-        [EnumMember(Value = "SHIB")]
-        Shib,
+    [EnumMember(Value = "SHIB")]
+    Shib,
 
-        [EnumMember(Value = "PLT")]
-        Plt,
+    [EnumMember(Value = "PLT")]
+    Plt,
 
-        [EnumMember(Value = "FLR")]
-        Flr,
+    [EnumMember(Value = "FLR")]
+    Flr,
 
-        [EnumMember(Value = "MATIC")]
-        Matic,
+    [EnumMember(Value = "MATIC")]
+    Matic,
 
-        [EnumMember(Value = "MKR")]
-        Mkr,
+    [EnumMember(Value = "MKR")]
+    Mkr,
 
-        [EnumMember(Value = "ZPG")]
-        Zpg,
+    [EnumMember(Value = "ZPG")]
+    Zpg,
 
-        [EnumMember(Value = "SAND")]
-        Sand,
-    }
+    [EnumMember(Value = "SAND")]
+    Sand,
+}
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum Side
-    {
-        [EnumMember(Value = "")]
-        Unknown,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum Side
+{
+    [EnumMember(Value = "")]
+    Unknown,
 
-        [EnumMember(Value = "BUY")]
-        Buy,
+    [EnumMember(Value = "BUY")]
+    Buy,
 
-        [EnumMember(Value = "SELL")]
-        Sell,
+    [EnumMember(Value = "SELL")]
+    Sell,
 
-        [EnumMember(Value = "BUYSELL")]
-        BuySell
-    }
+    [EnumMember(Value = "BUYSELL")]
+    BuySell
+}
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum BitflyerSystemHealth
-    {
-        [EnumMember(Value = "NORMAL")]
-        Normal,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum BitflyerSystemHealth
+{
+    [EnumMember(Value = "NORMAL")]
+    Normal,
 
-        [EnumMember(Value = "BUSY")]
-        Busy,
+    [EnumMember(Value = "BUSY")]
+    Busy,
 
-        [EnumMember(Value = "VERY BUSY")]
-        VeryBusy,
+    [EnumMember(Value = "VERY BUSY")]
+    VeryBusy,
 
-        [EnumMember(Value = "SUPER BUSY")]
-        SuperBusy,
+    [EnumMember(Value = "SUPER BUSY")]
+    SuperBusy,
 
-        [EnumMember(Value = "NO ORDER")]
-        NoOrder,
+    [EnumMember(Value = "NO ORDER")]
+    NoOrder,
 
-        [EnumMember(Value = "STOP")]
-        Stop
-    }
+    [EnumMember(Value = "STOP")]
+    Stop
+}
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum BoardStates
-    {
-        [EnumMember(Value = "RUNNING")]
-        Running,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum BoardStates
+{
+    [EnumMember(Value = "RUNNING")]
+    Running,
 
-        [EnumMember(Value = "CLOSED")]
-        Closed,
+    [EnumMember(Value = "CLOSED")]
+    Closed,
 
-        [EnumMember(Value = "STARTING")]
-        Starting,
+    [EnumMember(Value = "STARTING")]
+    Starting,
 
-        [EnumMember(Value = "PREOPEN")]
-        Preopen,
+    [EnumMember(Value = "PREOPEN")]
+    Preopen,
 
-        [EnumMember(Value = "CIRCUIT BREAK")]
-        CircuitBreak,
+    [EnumMember(Value = "CIRCUIT BREAK")]
+    CircuitBreak,
 
-        [EnumMember(Value = "AWAITING SQ")]
-        AWAITING_SQ,
+    [EnumMember(Value = "AWAITING SQ")]
+    AWAITING_SQ,
 
-        [EnumMember(Value = "MATURED")]
-        MATURED,
-    }
+    [EnumMember(Value = "MATURED")]
+    MATURED,
+}
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum DepositStatus
-    {
-        [EnumMember(Value = "PENDING")]
-        Pending,
-
-        [EnumMember(Value = "COMPLETED")]
-        Completed
-    }
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum DepositStatus
+{
+    [EnumMember(Value = "PENDING")]
+    Pending,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum ChildOrderType
-    {
-        [EnumMember(Value = "LIMIT")]
-        Limit,
+    [EnumMember(Value = "COMPLETED")]
+    Completed
+}
 
-        [EnumMember(Value = "MARKET")]
-        Market
-    }
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum ChildOrderType
+{
+    [EnumMember(Value = "LIMIT")]
+    Limit,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum TimeInForce
-    {
-        [EnumMember(Value = "GTC")]
-        GoodTilCanceled,
+    [EnumMember(Value = "MARKET")]
+    Market
+}
 
-        [EnumMember(Value = "IOC")]
-        ImmediateOrCancel,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum TimeInForce
+{
+    [EnumMember(Value = "GTC")]
+    GoodTilCanceled,
 
-        [EnumMember(Value = "FOK")]
-        FillOrKill
-    }
+    [EnumMember(Value = "IOC")]
+    ImmediateOrCancel,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum OrderMethod
-    {
-        [EnumMember(Value = "SIMPLE")]
-        Simple,
+    [EnumMember(Value = "FOK")]
+    FillOrKill
+}
 
-        [EnumMember(Value = "IFD")]
-        IfDone,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum OrderMethod
+{
+    [EnumMember(Value = "SIMPLE")]
+    Simple,
 
-        [EnumMember(Value = "OCO")]
-        OneCancelsTheOther,
+    [EnumMember(Value = "IFD")]
+    IfDone,
 
-        [EnumMember(Value = "IFDOCO")]
-        IfDoneOneCancelsTheOther
-    }
+    [EnumMember(Value = "OCO")]
+    OneCancelsTheOther,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum ParentOrderType
-    {
-        [EnumMember(Value = "IFD")]
-        IfDone,
+    [EnumMember(Value = "IFDOCO")]
+    IfDoneOneCancelsTheOther
+}
 
-        [EnumMember(Value = "OCO")]
-        OneCancelsTheOther,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum ParentOrderType
+{
+    [EnumMember(Value = "IFD")]
+    IfDone,
 
-        [EnumMember(Value = "IFDOCO")]
-        IfDoneOneCancelsTheOther,
+    [EnumMember(Value = "OCO")]
+    OneCancelsTheOther,
 
-        [EnumMember(Value = "STOP")]
-        Stop,
+    [EnumMember(Value = "IFDOCO")]
+    IfDoneOneCancelsTheOther,
 
-        [EnumMember(Value = "STOP_LIMIT")]
-        StopLimit,
+    [EnumMember(Value = "STOP")]
+    Stop,
 
-        [EnumMember(Value = "TRAIL")]
-        Trail,
-    }
+    [EnumMember(Value = "STOP_LIMIT")]
+    StopLimit,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum ConditionType
-    {
-        [EnumMember(Value = "LIMIT")]
-        Limit,
+    [EnumMember(Value = "TRAIL")]
+    Trail,
+}
 
-        [EnumMember(Value = "MARKET")]
-        Market,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum ConditionType
+{
+    [EnumMember(Value = "LIMIT")]
+    Limit,
 
-        [EnumMember(Value = "STOP")]
-        Stop,
+    [EnumMember(Value = "MARKET")]
+    Market,
 
-        [EnumMember(Value = "STOP_LIMIT")]
-        StopLimit,
+    [EnumMember(Value = "STOP")]
+    Stop,
 
-        [EnumMember(Value = "TRAIL")]
-        Trail
-    }
+    [EnumMember(Value = "STOP_LIMIT")]
+    StopLimit,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum AddresseType
-    {
-        [EnumMember(Value = "NORMAL")]
-        Normal
-    }
+    [EnumMember(Value = "TRAIL")]
+    Trail
+}
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum ChildOrderState
-    {
-        [EnumMember(Value = "ACTIVE")]
-        Active,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum AddresseType
+{
+    [EnumMember(Value = "NORMAL")]
+    Normal
+}
 
-        [EnumMember(Value = "COMPLETED")]
-        Completed,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum ChildOrderState
+{
+    [EnumMember(Value = "ACTIVE")]
+    Active,
 
-        [EnumMember(Value = "CANCELED")]
-        Canceled,
+    [EnumMember(Value = "COMPLETED")]
+    Completed,
 
-        [EnumMember(Value = "EXPIRED")]
-        Expired,
+    [EnumMember(Value = "CANCELED")]
+    Canceled,
 
-        [EnumMember(Value = "REJECTED")]
-        Rejected
-    }
+    [EnumMember(Value = "EXPIRED")]
+    Expired,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum ParentOrderState
-    {
-        [EnumMember(Value = "ACTIVE")]
-        Active,
+    [EnumMember(Value = "REJECTED")]
+    Rejected
+}
 
-        [EnumMember(Value = "COMPLETED")]
-        Completed,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum ParentOrderState
+{
+    [EnumMember(Value = "ACTIVE")]
+    Active,
 
-        [EnumMember(Value = "CANCELED")]
-        Canceled,
+    [EnumMember(Value = "COMPLETED")]
+    Completed,
 
-        [EnumMember(Value = "EXPIRED")]
-        Expired,
+    [EnumMember(Value = "CANCELED")]
+    Canceled,
 
-        [EnumMember(Value = "REJECTED")]
-        Rejected
-    }
+    [EnumMember(Value = "EXPIRED")]
+    Expired,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum ProductAlias
-    {
-        [EnumMember(Value = "")]
-        None,
+    [EnumMember(Value = "REJECTED")]
+    Rejected
+}
 
-        [EnumMember(Value = "BTCJPY_MAT1WK")]
-        BtcJpyThisWeek,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum CollateralReasonCode
+{
+    [EnumMember(Value = "CLEARING_COLL")]
+    Clearing,
 
-        [EnumMember(Value = "BTCJPY_MAT2WK")]
-        BtcJpyNextWeek,
+    [EnumMember(Value = "EXCHANGE_COLL")]
+    Exchange,
 
-        [EnumMember(Value = "BTCJPY_MAT3M")]
-        BtcJpyWeekAfterNext,
-    }
+    [EnumMember(Value = "POST_COLL")]
+    Post,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum CollateralReasonCode
-    {
-        [EnumMember(Value = "CLEARING_COLL")]
-        Clearing,
+    [EnumMember(Value = "CANCEL_COLL")]
+    Cancel
+}
 
-        [EnumMember(Value = "EXCHANGE_COLL")]
-        Exchange,
+[JsonConverter(typeof(EnumMemberConverter))]
+public enum TradeType
+{
+    [EnumMember(Value = "")]
+    Unknown,
 
-        [EnumMember(Value = "POST_COLL")]
-        Post,
+    [EnumMember(Value = "BUY")]
+    Buy,
 
-        [EnumMember(Value = "CANCEL_COLL")]
-        Cancel
-    }
+    [EnumMember(Value = "SELL")]
+    Sell,
 
-    [JsonConverter(typeof(EnumMemberConverter))]
-    public enum TradeType
-    {
-        [EnumMember(Value = "")]
-        Unknown,
+    [EnumMember(Value = "DEPOSIT")]
+    Deposit,
 
-        [EnumMember(Value = "BUY")]
-        Buy,
+    [EnumMember(Value = "WITHDRAW")]
+    Withdraw,
 
-        [EnumMember(Value = "SELL")]
-        Sell,
+    [EnumMember(Value = "FEE")]
+    Fee,
 
-        [EnumMember(Value = "DEPOSIT")]
-        Deposit,
+    [EnumMember(Value = "POST_COLL")]
+    Post,
 
-        [EnumMember(Value = "WITHDRAW")]
-        Withdraw,
+    [EnumMember(Value = "CANCEL_COLL")]
+    Cancel,
 
-        [EnumMember(Value = "FEE")]
-        Fee,
+    [EnumMember(Value = "PAYMENT")]
+    Payment,
 
-        [EnumMember(Value = "POST_COLL")]
-        Post,
-
-        [EnumMember(Value = "CANCEL_COLL")]
-        Cancel,
-
-        [EnumMember(Value = "PAYMENT")]
-        Payment,
-
-        [EnumMember(Value = "TRANSFER")]
-        Transfer
-    }
+    [EnumMember(Value = "TRANSFER")]
+    Transfer
 }
