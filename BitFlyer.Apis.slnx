@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BitFlyer.Apis.Test/BitFlyer.Apis.Test.csproj" />
+  <Project Path="BitFlyer.Apis/BitFlyer.Apis.csproj" />
+  <Project Path="BitFlyer.Sample/BitFlyer.Sample.csproj" />
+</Solution>
