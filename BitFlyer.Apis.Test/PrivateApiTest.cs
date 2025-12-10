@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Xunit;
+using NextUnit;
 
 namespace BitFlyer.Apis.Test
 {
@@ -31,7 +31,7 @@ namespace BitFlyer.Apis.Test
             sellPrice = (int)(latestPrice * 1.05);
         }
 
-        [Fact]
+        [Test]
         public async Task ApiKeyNotFound()
         {
             var apiClient = new PrivateApi("xxxxxxxxxxx", "xxxxxxxxxxx");
@@ -46,70 +46,70 @@ namespace BitFlyer.Apis.Test
             }
         }
 
-        [Fact]
+        [Test]
         public async Task GetPermissions()
         {
             var res1 = await apiClient.GetPermissions();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetBalance()
         {
             var res1 = await apiClient.GetBalance();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetCollateral()
         {
             var res1 = await apiClient.GetCollateral();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetAddresses()
         {
             var res1 = await apiClient.GetAddresses();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetCoinIns()
         {
             var res1 = await apiClient.GetCoinIns();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetCoinOuts()
         {
             var res1 = await apiClient.GetCoinOuts();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetBankAccounts()
         {
             var res1 = await apiClient.GetBankAccounts();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetDeposits()
         {
             var res1 = await apiClient.GetDeposits();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetWithdrawals()
         {
             var res1 = await apiClient.GetWithdrawals();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task ChildOrder()
         {
             await apiClient.CancelAllOrders(new CancelAllOrdersParameter
@@ -172,7 +172,7 @@ namespace BitFlyer.Apis.Test
             Assert.True(res3.Count(x => x.ProductCode == ProductCode.FxBtcJpy) == 0);
         }
 
-        [Fact]
+        [Test]
         public async Task ParentOrder()
         {
             await apiClient.CancelAllOrders(new CancelAllOrdersParameter
@@ -277,21 +277,21 @@ namespace BitFlyer.Apis.Test
                                         && x.ParentOrderState == ParentOrderState.Active) == 0);
         }
 
-        [Fact]
+        [Test]
         public async Task GetExecutions()
         {
             var res1 = await apiClient.GetExecutions(ProductCode.FxBtcJpy);
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetPositions()
         {
             var res1 = await apiClient.GetPositions(ProductCode.FxBtcJpy);
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetCollateralHistory()
         {
             var res1 = await apiClient.GetCollateralHistory();
@@ -301,7 +301,7 @@ namespace BitFlyer.Apis.Test
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetTradingCommission()
         {
             var res1 = await apiClient.GetTradingCommission(ProductCode.BtcJpy);
@@ -336,21 +336,21 @@ namespace BitFlyer.Apis.Test
             Thread.Sleep(waitMilliSeconds);
         }
 
-        [Fact]
+        [Test]
         public async Task TaskCanceledException()
         {
             var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromMilliseconds(10));
             await Assert.ThrowsAsync<BitFlyerApiException>(async () => await apiClient.GetExecutions(ProductCode.FxBtcJpy, cancellationToken: cancellationTokenSource.Token));
         }
 
-        [Fact]
+        [Test]
         public async Task GetBalanceHistory()
         {
             var res1 = await apiClient.GetBalanceHistory(CurrencyCode.Jpy);
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetCollateralAccounts()
         {
             var res1 = await apiClient.GetCollateralAccounts();

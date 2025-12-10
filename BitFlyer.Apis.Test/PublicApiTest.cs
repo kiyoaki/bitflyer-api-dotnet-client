@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Xunit;
+using NextUnit;
 
 namespace BitFlyer.Apis.Test
 {
     public class PublicApiTest
     {
-        [Fact]
+        [Test]
         public async Task GetBoard()
         {
             var res1 = await PublicApi.GetBoard(ProductCode.BtcJpy);
@@ -20,7 +20,7 @@ namespace BitFlyer.Apis.Test
             Assert.NotNull(res3);
         }
 
-        [Fact]
+        [Test]
         public async Task GetTicker()
         {
             var res1 = await PublicApi.GetTicker(ProductCode.BtcJpy);
@@ -33,7 +33,7 @@ namespace BitFlyer.Apis.Test
             Assert.NotNull(res3);
         }
 
-        [Fact]
+        [Test]
         public async Task GetExecutions()
         {
             var res1 = await PublicApi.GetExecutions(ProductCode.BtcJpy);
@@ -46,7 +46,7 @@ namespace BitFlyer.Apis.Test
             Assert.NotNull(res3);
         }
 
-        [Fact]
+        [Test]
         public async Task GetBoardState()
         {
             var res1 = await PublicApi.GetBoardState(ProductCode.BtcJpy);
@@ -62,49 +62,49 @@ namespace BitFlyer.Apis.Test
             Assert.NotNull(res4);
         }
 
-        [Fact]
+        [Test]
         public async Task GetHealth()
         {
             var res1 = await PublicApi.GetHealth(ProductCode.BtcJpy);
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetChat()
         {
             var res1 = await PublicApi.GetChat(DateTime.UtcNow.Subtract(TimeSpan.FromHours(1)));
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetMarkets()
         {
             var res1 = await PublicApi.GetMarkets();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetMarketsUsa()
         {
             var res1 = await PublicApi.GetMarketsUsa();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetChatUsa()
         {
             var res1 = await PublicApi.GetChatUsa(DateTime.UtcNow.Subtract(TimeSpan.FromHours(1)));
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetMarketsEu()
         {
             var res1 = await PublicApi.GetMarketsEu();
             Assert.NotNull(res1);
         }
 
-        [Fact]
+        [Test]
         public async Task GetChatEu()
         {
             var res1 = await PublicApi.GetChatEu(DateTime.UtcNow.Subtract(TimeSpan.FromHours(1)));
